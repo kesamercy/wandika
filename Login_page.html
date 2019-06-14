@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="./style_sheet.css">
+    <title>Login Page</title>
+</head>
+<body>
+    <div id="login_card">
+        <div id="login">
+        <h1>Login</h1>
+        <form action="" method="GET">
+            <!--Username Block-->
+            <input id="username" name="username" type="text" placeholder="Username" required minlength="3" maxlength="15">
+            <br>
+            <!--Password Block-->
+            <input id="user_pass" name="user_pass" type="password" placeholder="Password" required minlength="8" maxlength="20">
+            <br>
+            <!--Forgot password link-->
+            <div id="forgot">
+            <a href="./forgot_password.html">Forgot Password?</a>
+            </div>
+            <input id="submit" type="submit" value="Sign In">
+            </form>
+        </div>  
+        <!--Or Login Using:-->
+        <div id="alt_login" >
+            <p>Or Login Using:</p>
+            <!--Icon for facebook and link-->
+            <a href=""><img src="./f_logo_RGB-Blue_58.png" alt="Login with Facebook" class="facebook"/></a>
+            <!--Icon for Twitter and link-->
+            <a href=""><img src="./Twitter_Social_Icon_Circle_Color.png" alt="Login with Twitter" class="twitter"/></a>
+            <!--Icon for google+ and link-->
+            <a href=""><img src="./btn_google_signin_dark_pressed_web.png" alt="Login with Google" class="google"/></a>
+        </div>
+    </div>       
+</body>
+</html>
