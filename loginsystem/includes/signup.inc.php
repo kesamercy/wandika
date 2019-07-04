@@ -4,27 +4,27 @@ if(isset($_POST['submit'])){
 
  include_once 'dbh.inc.php';
 
- $uid= mysqli_real_escape_string($conn, $_POST['uid']);
+ $uid= mysqli_real_escape_string($conn, $_POST['username']);
  $email= mysqli_real_escape_string($conn, $_POST['email']);
- $pwd= mysqli_real_escape_string($conn, $_POST['pwd']);
- $pwd_2= mysqli_real_escape_string($conn, $_POST['pwd_2']);
+ $pwd= mysqli_real_escape_string($conn, $_POST['user_pass']);
+ $pwd_2= mysqli_real_escape_string($conn, $_POST['password']);
  $country= mysqli_real_escape_string($conn, $_POST['country']);
 
  //Error Handlers
  //Check for emty fields(Check for errors first. Always a good practice!)
  if(empty($uid) || empty($email) || empty($pwd) || empty($pwd_2) || empty($country)){
-    header("Location: ../signup.php?signup=empty");
+    header("Location: ../spalashpage.html?signup=empty");
 	exit();
  }
  else{
     //Check if input characters are valid.
     if(!preg_match("/^[a-zA-Z]*$/", $uid)){
-        header("Location: ../signup.php?signup=invalid");
+        header("Location: ../spalashpage.html?signup=invalid");
 	    exit();
     } else{
          //Check if email is valid
     	if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-           header("Location: ../signup.php?signup=email");
+           header("Location: ../spalashpage.html?signup=email");
 	       exit();
     	}else{
     		//check if the username has been taken.
@@ -32,7 +32,7 @@ if(isset($_POST['submit'])){
     		$result=mysqli_query($conn, $sql);
     		$resultCheck=mysqli_num_rows($result);
     		if($resultCheck > 0){
-    			header("Location: ../signup.php?signup=usertaken");
+    			header("Location: ../spalashpage.html?signup=usertaken");
 	            exit();
     		}else{
     			//Hashing Password
@@ -40,7 +40,7 @@ if(isset($_POST['submit'])){
     			//Insert the user into the database
     			$sql="INSERT INTO user (username, email, password, country) VALUES ('$uid', '$email', '$hashedPwd', '$country');";
     			mysqli_query($conn, $sql);
-    			header("Location: ../signup.php?signup=success");
+    			header("Location: ../spalashpage.html?signup=success");
 	            exit();
     		}
     	}
@@ -49,6 +49,6 @@ if(isset($_POST['submit'])){
 
 }
 else{
-	header("Location: ../signup.php");
+	header("Location: ../spalashpage.html");
 	exit();
 }

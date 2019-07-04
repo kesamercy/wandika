@@ -1,0 +1,223 @@
+ <!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" type="text/css" href="CSS\styleV2.css?version=1">
+
+  <title>Hello, world!</title>
+</head>
+<body>
+
+  <div class="top_section">
+
+    <div class="logo" id="left_side">
+      <img src="..\Images\official_logo.png" width="200" height="170" class="d-inline-block align-top" alt="">
+    </div>
+
+    <div class="menu_bar"  id="right side" onclick="myFunction(this)">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+    
+  </div>
+
+  <section class="title_section" id="right_side">
+
+    <div class="title_group">
+
+      <h1 class="wandika top_word">Wandika</h1>
+      <h1 class="wandika bottom_word"> write</h1>
+      <hr class="wandika_bar">
+
+      <div class="title_icon">
+        <img src="..\Images\feather_title.gif" width="200" height="170" class="d-inline-block align-top" alt="">
+      </div>
+
+    </div>
+
+  </section>
+
+  <div class="main_content">
+
+    <main id="left_side">
+
+      <div class="content_details">
+
+        <p> 
+          Write about things you want to share with the world. 
+
+          Read blogs in your favorite genres. 
+
+          Recieve constructive feedback about your blogs from your community. 
+
+          See what other bloggers say has helped them improve their blogs. 
+        </p>
+
+      </div>
+
+    </main>
+
+    <div class="left_navicons">
+
+      <p>
+        <img src="..\images\feather_icon.png" width="100" height="70" class="d-inline-block align-top" alt=""> 
+
+        <img src="..\images\feather_icon.png" width="100" height="70" class="d-inline-block align-top" alt="">
+
+        <img src="..\images\feather_icon.png" width="100" height="70" class="d-inline-block align-top" alt="">
+
+        <img src="..\images\feather_icon.png" width="100" height="70" class="d-inline-block align-top" alt=""> 
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- code for the login and create account buttons -->
+
+  <div class="container">
+    <button class="signup button" id="right_btn">Sign Up</button>
+    <button class="log button" id="left_btn">Login</button>
+  </div>
+
+  <!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+
+<!-- lOGIN PAGE CONTENT DETAILS -->
+
+    <div id="login_card">
+        <div id="login">
+        <h1>Login</h1>
+        <hr class="login_line"> </hr>
+        <form action="includes/login.inc.php" method="POST">
+            <!--Username Block-->
+            <input id="username" name="username" type="text" placeholder="Username" required minlength="3" maxlength="15">
+            <br>
+            <!--Password Block-->
+            <input id="user_pass" name="user_pass" type="password" placeholder="Password" required minlength="8" maxlength="20">
+            <br>
+            <!--Forgot password link-->
+            <div id="forgot">
+            <a href="./forgot_password.html">Forgot Password?</a>
+            <br>
+            <br>
+            </div>
+            <input id="submit" name="submit" type="submit" value="Sign In">
+            </form>
+        </div>  
+        <!--Or Login Using:-->
+        <div id="alt_login" >
+            <p>Or Login Using: &nbsp&nbsp&nbsp&nbsp&nbsp                
+            <!--Icon for facebook and link-->
+            <a href=""><img src="./f_logo_RGB-Blue_58.png" alt="Login with Facebook" class="facebook"/></a>
+            <!--Icon for Twitter and link-->
+            <a href=""><img src="./Twitter_Social_Icon_Circle_Color.png" alt="Login with Twitter" class="twitter"/></a>
+            <!--Icon for google+ and link-->
+            <a href=""><img src="./btn_google_signin_light_pressed_web.png" alt="Login with Google" class="google"/></a></p>
+        </div>
+    </div>       
+    
+  </div>
+
+</div>
+
+
+<!-- CREATE ACCOUNT DETAILS -->
+<div id="create_acct" class="acct_modal">
+
+  <!-- Modal content -->
+  <div class="acct-content">
+    <span class="acct_close">&times;</span>
+
+    <div id="login_card">
+        <div id="login">
+        <h1>Create account</h1>
+        <hr class="login_line"> </hr>
+        <form action="includes/signup.inc.php" method="POST">
+            <!--Username Block-->
+            <input id="username" name="username" type="text" placeholder="Username" required minlength="3" maxlength="15">
+            <br>
+            <!--email-->
+            <input id="email" name="email" type="text" placeholder="Email" required minlength="3" maxlength="15">
+            <br>
+            <!--Password Block-->
+            <input id="user_pass" name="user_pass" type="password" placeholder="Password" required minlength="8" maxlength="20">
+            <br>
+            <!--confirm password-->
+            <input id="password" name="password" type="text" placeholder="Confirm Password" required minlength="3" maxlength="15">
+            <br>
+            <!--country-->
+            <input id="country" name="country" type="text" placeholder="Country" required minlength="3" maxlength="15">
+            <br>
+            <input id="submit"  name="submit" type="submit" value="Sign In">
+            </form>
+        </div>  
+        
+    </div> 
+
+ </div>
+</div>
+
+
+  <!-- javascript section -->
+  <script>
+    //javascript for the menu button
+    function myFunction(x) {
+      x.classList.toggle("change");
+    }
+    //script for the login
+// Get the modal
+var modal = document.getElementById("myModal");
+// Get the button that opens the modal
+var log = document.getElementById("left_btn");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+// When the user clicks the button, open the modal 
+log.onclick = function() {
+  modal.style.display = "block";
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+//script for create account
+// Get the modal
+var acct_modal = document.getElementById("create_acct");
+// Get the button that opens the modal
+var signup = document.getElementById("right_btn");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("acct_close")[0];
+// When the user clicks the button, open the modal 
+signup.onclick = function() {
+  acct_modal.style.display = "block";
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  acct_modal.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == acct_modal) {
+    acct_modal.style.display = "none";
+  }
+}
+  </script>
+
+
+</body>
+</html>
