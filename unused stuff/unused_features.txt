@@ -1,0 +1,20 @@
+HTML
+
+<div class="menu_bar"  id="right side" onclick="myFunction(this)">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+
+
+  CSS FOR TEXT  
+
+
+   
+    .menu_bar {
+  display: inline-block;
+  cursor: pointer;
+  position: absolute;
+  right: 100px;
+  top: 50px;
+}
