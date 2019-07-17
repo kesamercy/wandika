@@ -3,7 +3,7 @@
 
 $dbServername= "webdev.cse.buffalo.edu";
 $dbUsername= "wandika_user";
-$dbPassword= "wandika19"; //leaving it empty ciz XAMPP does not have a password by default.
+$dbPassword= "wandika19!"; //leaving it empty cuz XAMPP does not have a password by default.
 $dbName= "wandika";
 
 $conn=mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
