@@ -34,7 +34,7 @@ if(isset($_POST['submit'])){
 		    	$_SESSION['u_email'] = $row['email'];
 		    	$_SESSION['u_pwd'] = $row['password'];
 		    	$_SESSION['u_cntry'] = $row['country'];
-		    	header("Location: ../spalashpage.html?login=success");
+		    	header("Location: ../newsfeed/newsfeed.html?login=success");
 	            exit();
 		    }
 		}
