@@ -8,6 +8,7 @@ function loadModal(modalId) {
     showModal.style.display = "block";
     loadHtmlPage(modalId);
   } else {
+    debugger
     showModal.style.display = "none";
   }
 }
@@ -21,8 +22,10 @@ function loadHtmlPage(id){
   }
 }
 
-function closeModal() {
-  var hideModal = document.getElementById("myModal").hide();
-
-}
+// function closeModal() {
+//   debugger
+//   var hideModal = document.getElementById("myModal");
+//   hideModal.style.display = "block";
+//   hideModal.style.display = "none";
+// }
 
