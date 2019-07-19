@@ -109,13 +109,13 @@ body {
   color:black;}
 
 .textbox{
-	position:relative;
-	left:0.1%;
-	top:0.3%;
-	width:99%;
-	height: 55%;
-	border: 1px solid #0AA2A4;
-	border-radius: 5px;}
+  position:relative;
+  left:0.1%;
+  top:0.3%;
+  width:99%;
+  height: 55%;
+  border: 1px solid #0AA2A4;
+  border-radius: 5px;}
 
 .menu_bar {
   display: inline-block;
@@ -132,14 +132,14 @@ body {
   transition: 0.4s;}
 
 .button-type1{
-	position:relative;
-	left: 63%;
-	top:5%;
-	background-color: #e7e7e7;
-	color: black;
-	border-radius: 13px;
-	height: 30px;
-	border: 2px solid #0AA2A4;}
+  position:relative;
+  left: 63%;
+  top:5%;
+  background-color: #e7e7e7;
+  color: black;
+  border-radius: 13px;
+  height: 30px;
+  border: 2px solid #0AA2A4;}
 
 .smallElements{
   height:100%;}
@@ -232,14 +232,14 @@ body {
   width: 120px;}
 
 .button6{
-	position:relative;
-	left:75%;
+  position:relative;
+  left:75%;
   bottom:40px;
   width: 120px;}
 
 .postSpace{
-	position:relative;  	
-	left:15%;
+  position:relative;    
+  left:15%;
   bottom:42%;
   background-color: #0AA2A4;
   width:75%;
@@ -248,12 +248,12 @@ body {
   color:white;}
 
 .sideBar{
-	background-color:white;
-	width:150px;
-	height:150px;
-	position:relative;
-	bottom:600px;
-	left:8%;}
+  background-color:white;
+  width:150px;
+  height:150px;
+  position:relative;
+  bottom:600px;
+  left:8%;}
 
 .typesOfGenre{
   position:relative;
