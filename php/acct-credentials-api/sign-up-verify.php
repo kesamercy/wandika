@@ -2,7 +2,7 @@
 
 if(isset($_POST['submit'])){
 
- include_once 'dbh.inc.php';
+ include_once 'main-db-connection.php';
 
  $uid= mysqli_real_escape_string($conn, $_POST['username']);
  $email= mysqli_real_escape_string($conn, $_POST['email']);
@@ -13,18 +13,18 @@ if(isset($_POST['submit'])){
  //Error Handlers
  //Check for emty fields(Check for errors first. Always a good practice!)
  if(empty($uid) || empty($email) || empty($pwd) || empty($pwd_2) || empty($country)){
-    header("Location: ../spalashpage.html?signup=empty");
+    header("Location: ../../html/create-account.html?signup=empty");
 	exit();
  }
  else{
     //Check if input characters are valid.
     if(!preg_match("/^[a-zA-Z]*$/", $uid)){
-        header("Location: ../spalashpage.html?signup=invalid");
+        header("Location: ../../html/create-account.html?signup=invalid");
 	    exit();
     } else{
          //Check if email is valid
     	if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-           header("Location: ../spalashpage.html?signup=email");
+           header("Location: ../../html/create-account.html?signup=email");
 	       exit();
     	}else{
     		//check if the username has been taken.
@@ -32,7 +32,7 @@ if(isset($_POST['submit'])){
     		$result=mysqli_query($conn, $sql);
     		$resultCheck=mysqli_num_rows($result);
     		if($resultCheck > 0){
-    			header("Location: ../spalashpage.html?signup=usertaken");
+    			header("Location: ../../html/create-account.html?signup=usertaken");
 	            exit();
     		}else{
     			//Hashing Password
@@ -40,7 +40,7 @@ if(isset($_POST['submit'])){
     			//Insert the user into the database
     			$sql="INSERT INTO user (username, email, password, country) VALUES ('$uid', '$email', '$hashedPwd', '$country');";
     			mysqli_query($conn, $sql);
-    			header("Location: ../spalashpage.html?signup=success");
+    			header("Location: ../../html/login.html?signup=success");
 	            exit();
     		}
     	}
@@ -49,6 +49,6 @@ if(isset($_POST['submit'])){
 
 }
 else{
-	header("Location: ../spalashpage.html");
+	header("Location: ../../html/create-account.html");
 	exit();
 }

@@ -14,10 +14,10 @@
       <div id="login">
         <h1>Login</h1>
         <hr class="login_line"> </hr>
-        <form action="includes/login.inc.php" method="POST">
-          <input id="username" name="username" type="text" placeholder="Username" required minlength="3" maxlength="15">
+        <form action="../php/acct-credentials-api/login-verify.php" method="POST">
+          <input id="username" name="username" type="text" placeholder="Username" >
           <br>
-          <input id="user_pass" name="user_pass" type="text" placeholder="Password" required minlength="8" maxlength="20">
+          <input id="user_pass" name="user_pass" type="text" placeholder="Password" >
           <br>
           <div id="forgot">
             <a href="./forgot_password.html">Forgot Password?</a>
