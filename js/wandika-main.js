@@ -1,5 +1,3 @@
-//RENAME ALL THE VARAIBELS IN HERE
-
 function menuButton(x) {
   x.classList.toggle("change");
 }
@@ -16,10 +14,10 @@ function loadModal(modalId) {
 
 function loadHtmlPage(id){
   if (id === "myModal") {
-    document.getElementById("myModal").innerHTML='<object type="text/html" width="1500" height="1500" data="../html/login.html" ></object>';
+    document.getElementById(id).innerHTML='<object type="text/html" width="1500" height="1500" data="../html/login.html" ></object>';
   }
   else {
-    document.getElementById("create_acct").innerHTML='<object type="text/html" width="1500" height="1500" data="../html/create-account.html" ></object>';
+    document.getElementById(id).innerHTML='<object type="text/html" width="1500" height="1500" data="../html/create-account.html" ></object>';
   }
 }
 
