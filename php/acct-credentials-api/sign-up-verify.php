@@ -13,18 +13,18 @@ if(isset($_POST['submit'])){
  //Error Handlers
  //Check for emty fields(Check for errors first. Always a good practice!)
  if(empty($uid) || empty($email) || empty($pwd) || empty($pwd_2) || empty($country)){
-    header("Location: ../../html/create-account.html?signup=empty");
+    header("Location: create-account.php?signup=empty");
 	exit();
  }
  else{
     //Check if input characters are valid.
     if(!preg_match("/^[a-zA-Z]*$/", $uid)){
-        header("Location: ../../html/create-account.html?signup=invalid");
+        header("Location: create-account.php?signup=invalid&email=$email&country=$country");
 	    exit();
     } else{
          //Check if email is valid
     	if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-           header("Location: ../../html/create-account.html?signup=email");
+           header("Location: create-account.php?signup=email&username=$uid&country=$country");
 	       exit();
     	}else{
     		//check if the username has been taken.
@@ -32,7 +32,7 @@ if(isset($_POST['submit'])){
     		$result=mysqli_query($conn, $sql);
     		$resultCheck=mysqli_num_rows($result);
     		if($resultCheck > 0){
-    			header("Location: ../../html/create-account.html?signup=usertaken");
+    			header("Location: create-account.php?signup=usertaken&username=$uid&country=$country");
 	            exit();
     		}else{
     			//Hashing Password
@@ -40,7 +40,7 @@ if(isset($_POST['submit'])){
     			//Insert the user into the database
     			$sql="INSERT INTO user (username, email, password, country) VALUES ('$uid', '$email', '$hashedPwd', '$country');";
     			mysqli_query($conn, $sql);
-    			header("Location: ../../html/login.html?signup=success");
+    			header("Location: login.php?signup=success");
 	            exit();
     		}
     	}
@@ -49,6 +49,6 @@ if(isset($_POST['submit'])){
 
 }
 else{
-	header("Location: ../../html/create-account.html");
+	header("Location: create-account.php");
 	exit();
 }

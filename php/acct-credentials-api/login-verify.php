@@ -11,16 +11,14 @@ if(isset($_POST['submit'])){
 	//Error handlers
 	//Check if inputs are empty
 	if(empty($uid) || empty($pwd)){
-         header("Location: ../../html/login.html?login=empty");
+         header("Location: login.php?login=empty");
 	     exit();
 	}else{
 		$sql= "SELECT * FROM user WHERE username='$uid' OR email='$uid'";
 		$result=mysqli_query($conn, $sql);
 		$resultCheck= mysqli_num_rows($result);
 		if($resultCheck<1){
-			$message = "Please enter the UserName and/or Password.\\nTry again.";
-            echo "<script type='text/javascript'>alert('$message');</script>";
-			header("Location: ../../html/login.html?login=error");
+			header("Location: login.php?login=nosuchuser");
 			
 	        exit();
 		}else{
@@ -28,7 +26,7 @@ if(isset($_POST['submit'])){
 			//De-hashing the password
 			$hashedPwdCheck= password_verify($pwd, $row['password']); //matching the database password with the password entered by the user using inbuilt password_verify().
 		    if($hashedPwdCheck == false){
-		    	header("Location: ../../html/login.html?login=error");
+		    	header("Location: login.php?login=incorrectpass");
 	            exit();
 		    } elseif($hashedPwdCheck == true){
 		    	//Log in the user here
@@ -37,12 +35,12 @@ if(isset($_POST['submit'])){
 		    	$_SESSION['u_email'] = $row['email'];
 		    	$_SESSION['u_pwd'] = $row['password'];
 		    	$_SESSION['u_cntry'] = $row['country'];
-		    	header("Location: ../../html/newsfeed.html?login=success");
+		    	header("Location: newsfeed.php?login=success");
 	            exit();
 		    }
 		}
 	}
 }else{
-	header("Location: ../../html/login.html?login=error");
+	header("Location: login.php?login=error");
 	exit();
 }

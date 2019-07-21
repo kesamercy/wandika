@@ -274,3 +274,8 @@ a:link {
 .google {
  position: relative;
   right: 4px; }
+
+.error{
+  color:red;
+  text-align:center;
+  }

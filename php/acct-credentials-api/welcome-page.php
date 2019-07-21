@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" type="text/css" href="..\css\wandika-main.css?version=1">
+  <link rel="stylesheet" type="text/css" href="..\..\css\wandika-main.css?version=1">
   <title>Wandika Welcome Page</title>
 </head>
 <body>
   <div class="logoSection">
     <div class="logoIcon" id="left_side">
-      <img src="..\Images\official_logo.png" width="200" height="170" class="d-inline-block align-top" alt="">
+      <img src="..\..\Images\official_logo.png" width="200" height="170" class="d-inline-block align-top" alt="">
     </div>
   </div>
 <!--  -->
@@ -19,7 +19,7 @@
       <h1 class="wandika bottom_word"> write</h1>
       <hr class="wandika_bar">
       <div class="title_icon">
-        <img src="..\Images\feather_title.gif" width="200" height="170" class="d-inline-block align-top" alt="">
+        <img src="..\..\Images\feather_title.gif" width="200" height="170" class="d-inline-block align-top" alt="">
       </div>
     </div>
   </section>
@@ -44,25 +44,25 @@
     <div class="left_navicons">
       <p>
 
-        <img src="..\Images\feather_icon.png" width="100" height="70" class="d-inline-block align-top" alt="">
+        <img src="..\..\Images\feather_icon.png" width="100" height="70" class="d-inline-block align-top" alt="">
 
-        <img src="..\Images\feather_icon.png" width="100" height="70" class="d-inline-block align-top" alt="">
+        <img src="..\..\Images\feather_icon.png" width="100" height="70" class="d-inline-block align-top" alt="">
 
-        <img src="..\Images\feather_icon.png" width="100" height="70" class="d-inline-block align-top" alt="">
+        <img src="..\..\Images\feather_icon.png" width="100" height="70" class="d-inline-block align-top" alt="">
 
-        <img src="..\Images\feather_icon.png" width="100" height="70" class="d-inline-block align-top" alt="">
+        <img src="..\..\Images\feather_icon.png" width="100" height="70" class="d-inline-block align-top" alt="">
       </p>
     </div>
   </div>
 
   <!-- chnage the names for the buttons to the login and create account names  -->
   <div class="container">
-    <button class="signup button" onclick="window.location.href='create-account.html'" >Create Account</button>
-    <button class="log button"  onclick="window.location.href='login.html'" id="left_btn">Login</button>
+    <button class="signup button" onclick="window.location.href='create-account.php'" >Create Account</button>
+    <button class="log button"  onclick="window.location.href='login.php'"" id="left_btn">Login</button>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="../js/wandika-main.js"></script>
+  <script src="../../js/wandika-main.js"></script>
   <script>
     $(document).ready(function() {
 
