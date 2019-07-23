@@ -151,7 +151,24 @@ p img {
   width: 1090px;
   color: white;
 
-  font-family: Verdana, sans-serif; }
+  font-family: Verdana, sans-serif; 
+}
+
+.new-user-content{
+  background-color: var(--std_black_color);
+  border: 2px solid var(--green_font_color);
+  border-color:  var(--green_font_color);
+  border-radius: 50px;
+  height: 550px;
+  margin: auto;
+  padding: 20px;
+  position: relative;
+  left: 35px;
+  width: 1090px;
+  color: white;
+
+  font-family: Verdana, sans-serif;
+}
 
 /* The Close Button */
 .close {
@@ -223,6 +240,22 @@ input[type=submit] {
   color: white;
   box-sizing: border-box;
   text-align: center; }
+
+  /*style for new user  information model*/
+  /* #new_user_card{
+    width: 1000px;
+    height: 500px;
+    margin: auto;
+    position: relative;
+    top: 30px; 
+  }
+  
+  .acct-content #new_user{
+    position: relative;
+    top: -60px;
+  } */
+
+
 
 h1 {
   font-family: Ubuntu;
