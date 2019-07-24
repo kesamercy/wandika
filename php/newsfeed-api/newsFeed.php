@@ -66,6 +66,59 @@
         close_connection();
     }
 
+    function save_blog_post($user_id){
+        $conn = connect();
+        $sql = "INSERT INTO saved_items (saved_items_id, blogs_id, user_id, content, genre, date_posted, post_type)
+        VALUES(:user_id, :content, :genre, :date_posted, :post_type)";
+    }
+
+    function get_title($user_id, $post_id){
+        $conn = connect();
+        $sql = "SELECT title FROM posts_table WHERE user_id=$user_id AND post_id=$post_id";
+        $title = $conn->query($sql);
+        close_connection();
+        return json_encode($title);
+    }
+
+    function get_genre($user_id, $post_id){
+        $conn = connect();
+        $sql = "SELECT genre FROM posts_table WHERE user_id=$user_id AND post_id=$post_id";
+        $genre = $conn->query($sql);
+        close_connection();
+        return json_encode($genre);
+    }
+
+    function get_date_posted($user_id, $post_id){
+        $conn = connect();
+        $sql = "SELECT date_posted FROM posts_table WHERE user_id=$user_id AND post_id=$post_id";
+        $date_posted = $conn->query($sql);
+        close_connection();
+        return json_encode($date_posted);
+    }
+
+    function get_time_posted($user_id, $post_id){
+        $conn = connect();
+        $sql = "SELECT time_posted FROM posts_table WHERE user_id=$user_id AND post_id=$post_id";
+        $time_posted = $conn->query($sql);
+        close_connection();
+        return json_encode($time_posted);
+    }
+
+    function get_time_read($user_id, $post_id){
+        $conn = connect();
+        $sql = "SELECT time_read FROM posts_table WHERE user_id=$user_id AND post_id=$post_id";
+        $time_read = $conn->query($sql);
+        close_connection();
+        return json_encode($time_read);
+    }
+
+    function get_post_image($user_id, $post_id){
+        $conn = connect();
+        $sql = "SELECT post_image FROM posts_table WHERE user_id=$user_id AND post_id=$post_id";
+        $post_image = $conn->query($sql);
+        close_connection();
+        return json_encode($post_image);
+    }
     /*
     *Function that retrieves a blog post associated with a user_id and post_id.
     *Returns a .json.
@@ -73,7 +126,7 @@
     function get_blog_post($user_id, $post_id){
         //match user name
         $conn = connect();
-        $sql = "SELECT post FROM posts WHERE user_id=$user_id AND post_id=$post_id";
+        $sql = "SELECT content FROM posts_table WHERE user_id=$user_id AND post_id=$post_id";
         $user_blog = $conn->query($sql);
         close_connection();
         return json_encode($user_blog);
@@ -228,7 +281,7 @@
         //$stmt->bindParam(`:user_id`, $user_id);
         
         $search_result = $conn->prepare($search);
-        $search_result->bindParam(':query', %{$query}%);
+        $search_result->bindParam(':query', %$query%);
         $conn->execute();
         $results = $conn->fetchAll();
         return json_encode($results, JSON_FORCE_OBJECT);
