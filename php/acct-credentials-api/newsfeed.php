@@ -26,13 +26,13 @@
   <img src="..\..\Images\feather-filled-shape.png" class="feather2" align="middle"  alt="">
   <div class="postBlogInner">
     <input class="textbox" name="blog-post" type="text" placeholder="Start typing your post here...">
-    <button class="button-type1 button1" type="submit" name="writerTip">Post as Writer's Tip</button>
-    <button class="button-type1 button2" type="submit" name="blog">Post as Blog</button>
+    <button class="button-type1 button1" type="submit" name="writerTip" onclick="displayPost()">Post as Writer's Tip</button>
+    <button class="button-type1 button2" type="submit" name="blog" onclick="displayBlog()">Post as Blog</button>
   </div>
 </div>
 
 <div class="blogAndPostGrid">
-  <div class="blogContainer"> 
+  <div class="blogContainer" style="display:none;"> 
     <div class="smallElements">
       <img src="..\..\Images\username.jpeg" class="userlogo" alt="">
       <p class="username"><b>username</b></p>
@@ -51,7 +51,7 @@
     </div>
 </div>
 
-<div class="postContainer">
+<div class="postContainer" style="display:none;">
     <div class="smallElements"> 
      <img src="..\..\Images\username.jpeg" class="userlogo" alt="">
      <p class="username2"><b>username</b></p>
@@ -103,6 +103,14 @@ window.onclick = function(event) {
   if (event.target == tags) {
     tags.style.display = "none";
   }
+}
+
+function displayBlog(){
+  document.getElementById("blogContainer").display="block";
+}
+
+function displayPost(){
+  document.getElementById("postContainer").display="block";
 }
 </script>
 

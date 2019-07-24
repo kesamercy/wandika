@@ -26,3 +26,11 @@ function closeModal() {
 
 }
 
+function displayBlog(){
+  document.getElementById("blogContainer").display="block";
+}
+
+function displayPost(){
+  document.getElementById("postContainer").display="block";
+}
+
