@@ -7,9 +7,8 @@
     header('Access-Control-Allow-Origin: *');
     header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");$json = array();
     // pull the input, which should be in the form of a JSON object
-    $json_params = file_get_contents('php://input');
-    
-    
+    //$json_params = file_get_contents('php://input');
+   
     /**
      * Function that accepts a written post from an html form and associates it with the specified user_id.
      * The function will take the necessary parts from the post fields and input them into the sql database. Uses PDO and
@@ -25,11 +24,11 @@
         $sql = "INSERT INTO posts_table (user_id, title, content, genre, date_posted, time_read, post_image, post_type, allow_comments)
         VALUES(:user_id, :title, :post, :genre, :`data`, :time_read, :post_image, :post_type, :allow_comments)";
         $conn->prepare($sql);
-        $conn->bindParam(`:user_id`, $user_id);
+        $conn->bindParam(`:user_id`, $user_id); //From session ID
         $conn->bindParam(`:title`, $title);
-        $conn->bindParam(`:content`, $written_post);
+        $conn->bindParam(`:content`, $written_post); //from text box
         $conn->bindParam(`:genre`, $genre);
-        $conn->bindParam(`:date_posted`, $date);
+        $conn->bindParam(`:date_posted`, $date); //dont worry about this. From php date function
         $conn->bindParam(`:time_read`, $time_to_read);
         $conn->bindParam(`:post_image`, $post_image);
         $conn->bindParam(`:post_type`, $type_of_post);
@@ -57,15 +56,95 @@
         $time_to_read = $_POST['timeToRead'];
 
         $type_of_post = "Blog";
+        
         $allow_comments = ((isset($comments) && $comments=='Allow') ? true : false);
-
         //insert into table posts            
+        $conn->exec();
+        $last_id = $conn->lastInsertId();
+        echo "New post created successfully. Last inserted ID is: " . $last_id;
+        close_connection();
+        return json_encode($last_id);
+    }
+
+    function set_blog_post_test(){
+        //connect to database
+        $conn = connect();
+        
+        //prepare statement
+        $sql = "INSERT INTO posts_table (content, date_posted, post_type)
+        VALUES(:content, :'date', :post_type)";
+        $conn->prepare($sql);
+        $conn->bindParam(`:content`, $written_post); //from text box
+        $conn->bindParam(`:date_posted`, $date); //dont worry about this. From php date function
+        $conn->bindParam(`:post_type`, $type_of_post);
+        //collect data
+
+        $written_post = $_POST['blog-post'];
+        
+        //insert date into date field using php DATE
+        $date = date('l jS \of F Y h:i:s A');
+
+        $type_of_post = "Blog";
+              
         $conn->exec();
         echo "New post created successfully.";
 
         close_connection();
     }
 
+    function save_blog_post($user_id){
+        $conn = connect();
+        $sql = "INSERT INTO saved_items (saved_items_id, blogs_id, user_id, content, genre, date_posted, post_type)
+        VALUES(:user_id, :content, :genre, :date_posted, :post_type)";
+    }
+
+    function get_title($user_id, $post_id){
+        $conn = connect();
+        $sql = "SELECT title FROM posts_table WHERE user_id=$user_id AND post_id=$post_id";
+        $title = $conn->query($sql);
+        close_connection();
+        return json_encode($title);
+    }
+
+    function get_genre($user_id, $post_id){
+        $conn = connect();
+        $sql = "SELECT genre FROM posts_table WHERE user_id=$user_id AND post_id=$post_id";
+        $genre = $conn->query($sql);
+        close_connection();
+        return json_encode($genre);
+    }
+
+    function get_date_posted($user_id, $post_id){
+        $conn = connect();
+        $sql = "SELECT date_posted FROM posts_table WHERE user_id=$user_id AND post_id=$post_id";
+        $date_posted = $conn->query($sql);
+        close_connection();
+        return json_encode($date_posted);
+    }
+
+    function get_time_posted($user_id, $post_id){
+        $conn = connect();
+        $sql = "SELECT time_posted FROM posts_table WHERE user_id=$user_id AND post_id=$post_id";
+        $time_posted = $conn->query($sql);
+        close_connection();
+        return json_encode($time_posted);
+    }
+
+    function get_time_read($user_id, $post_id){
+        $conn = connect();
+        $sql = "SELECT time_read FROM posts_table WHERE user_id=$user_id AND post_id=$post_id";
+        $time_read = $conn->query($sql);
+        close_connection();
+        return json_encode($time_read);
+    }
+
+    function get_post_image($user_id, $post_id){
+        $conn = connect();
+        $sql = "SELECT post_image FROM posts_table WHERE user_id=$user_id AND post_id=$post_id";
+        $post_image = $conn->query($sql);
+        close_connection();
+        return json_encode($post_image);
+    }
     /*
     *Function that retrieves a blog post associated with a user_id and post_id.
     *Returns a .json.
@@ -73,11 +152,22 @@
     function get_blog_post($user_id, $post_id){
         //match user name
         $conn = connect();
-        $sql = "SELECT post FROM posts WHERE user_id=$user_id AND post_id=$post_id";
+        $sql = "SELECT content FROM posts_table WHERE user_id=$user_id AND post_id=$post_id";
         $user_blog = $conn->query($sql);
         close_connection();
         return json_encode($user_blog);
     }
+
+    function get_blog_post_test(){
+        //match user name
+        $conn = connect();
+        $sql = "SELECT content FROM posts_table WHERE user_id=$user_id AND post_id=$post_id";
+        $user_blog = $conn->query($sql);
+        close_connection();
+        return json_encode($user_blog);
+    }
+
+
 
     function delete_post($user_id, $post_id){
         $conn = connect();
@@ -109,6 +199,27 @@
 
         close_connection();
     }
+
+    function set_tip_test(){
+        //open connection
+        $conn = connect();
+        //prepared statement
+        $sql = "INSERT INTO posts_table (content, date_posted, post_type)
+        VALUES(:content, :date_posted, :post_type)";
+        $conn->prepare($sql);     
+        $conn->bindParam(`:content`, $tip_content);
+        $conn->bindParam(`:date_posted`, $date_posted);
+        $conn->bindParam(`:post_type`, $post_type);
+        //fill in variables
+        $tip_content = $_POST['content'];
+        $date_posted = date('l jS \of F Y h:i:s A');
+        $post_type = "Tip";       
+        //execute prepared statement
+        $conn->execute();
+
+        close_connection();
+    }
+
 
     function delete_tip($user_id, $tip_id){
         $conn = connect();
@@ -228,7 +339,7 @@
         //$stmt->bindParam(`:user_id`, $user_id);
         
         $search_result = $conn->prepare($search);
-        $search_result->bindParam(':query', %{$query}%);
+        $search_result->bindParam(':query', %$query%);
         $conn->execute();
         $results = $conn->fetchAll();
         return json_encode($results, JSON_FORCE_OBJECT);
