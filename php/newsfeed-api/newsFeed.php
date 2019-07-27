@@ -51,7 +51,7 @@
         
         //prepare statement
         $sql = "INSERT INTO `posts_table` (user_id, title, content, genre, date_posted, time_read, post_image, post_type, allow_comments)
-        VALUES(:user_id, :title, :post, :genre, :'date', :time_read, :post_image, :post_type, :allow_comments)";
+        VALUES(:user_id, :title, :post, :genre, :date_posted, :time_read, :post_image, :post_type, :allow_comments)";
         $conn->prepare($sql);
         $conn->bindParam(':user_id', $user_id); //From session ID
         $conn->bindParam(':title', $title);
@@ -97,7 +97,7 @@
 
     function set_blog_post_test(){
         //connect to database
-        $conn = connect_test();
+        $conn = connect();
         
         //prepare statement
         $sql = "INSERT INTO post_table (content, date_posted, post_type)
@@ -118,8 +118,17 @@
         $stmt->execute();
         echo "New post created successfully.";
         $last_id = $conn->lastInsertId();
+        //pull last 3 posts and return as an array
+        get_last_post();
         close_connection();
         return json_encode($last_id);
+    }
+
+    function get_last_post(){
+        //$conn = connect();
+        $sql = "SELECT content FROM post_table ORDER BY post_id DESC LIMIT 1";
+        $last_post_content = $conn->query($sql);
+        return json_encode($last_post_content);
     }
 
     // function save_blog_post($user_id){
@@ -127,7 +136,14 @@
     //     $sql = "INSERT INTO saved_items (saved_items_id, blogs_id, user_id, content, genre, date_posted, post_type)
     //     VALUES(:user_id, :content, :genre, :date_posted, :post_type)";
     // }
-
+    function set_image($user_id){
+        $conn = connect();
+        $sql = "INSERT INTO post_table (user_id, post_image) VALUES(:user_id, :post_image)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':user_id', $user_id);
+        $stmt->bindParam()
+    }
+    
     function get_title($user_id, $post_id){
         $conn = connect();
         $sql = "SELECT title FROM `posts_table` WHERE user_id=$user_id AND post_id=$post_id";
@@ -193,6 +209,8 @@
         $conn = connect();
         $sql = "SELECT content FROM `posts_table` WHERE user_id=$user_id AND post_id=$post_id";
         $user_blog = $conn->query($sql);
+
+        //pull last three. Look up filtering. Can filter out last three.
         close_connection();
         return json_encode($user_blog);
     }
