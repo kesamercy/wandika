@@ -33,9 +33,9 @@ body {
   background-color: var(--green_font_color);
   height: 30vh;
   position: absolute;
-  top: 33%;
-  width: 70%;
-  left: 13%;
+    top: 10%;
+    width: 43%;
+    left: 3%;
 }
 
 .green-column {
