@@ -119,9 +119,9 @@
         echo "New post created successfully.";
         $last_id = $conn->lastInsertId();
         //pull last 3 posts and return as an array
-        get_last_post();
+        $last_post = get_last_post();
         close_connection();
-        return json_encode($last_id);
+        return $last_post;
     }
 
     function get_last_post(){
