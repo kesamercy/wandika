@@ -1,0 +1,176 @@
+:root {
+  --green_font_color: #0AA2A4;
+  --std_black_color: #2C323D;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 300;
+  color: white;
+}
+
+.logoSection img {
+  float: left;
+  position: relative;
+  top: 2%;
+  width: 150px;
+  height: 130px;
+}
+
+.newsFeedPageWrapper {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.orange-column {
+  /*background-color: orange;*/
+  height: 30vh;
+}
+
+.green-column {
+  /*background-color: green;*/
+  height: 70vh;
+}
+
+.sideNavContainer {
+  background-color: var(--std_black_color);
+  height: 100vh;
+  width: 25%;
+}
+
+.uploadImage img{
+  position: absolute;
+  left: 85%;
+  top: 8%;
+  width: 70px;
+  height: 70px;
+}
+
+.username {
+  position: absolute;
+  top: 20%;
+  left: 82%;
+}
+
+.sidebar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  /*color: #818181;*/
+  display: block;
+}
+
+.sidebar {
+  position: absolute;
+  top: 45%;
+  left: 80%;
+  overflow-x: hidden;
+}
+
+.fa {
+  margin: 0 20px 0 0;
+}
+
+
+
+
+
+.statusBar object{
+  position: absolute;
+  top: 90%
+  left: 20%;
+
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid var(--green_font_color);
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid var(--green_font_color);
+  background: var(--green_font_color);
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.searchBar{
+  width: 30%;
+  position: absolute;
+  top: 12%;
+  left: 58%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

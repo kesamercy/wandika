@@ -1,0 +1,38 @@
+:root {
+  --green_font_color: #0AA2A4;
+  --std_black_color: #2C323D;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 300;
+  color: var(--green_font_color);
+}
+.statusPage {
+  background-color: var(--green_font_color);
+  display: flex;
+  justify-content: center;
+  width: 60%;
+  height: 25vh;
+  position: relative;
+  left: 20%;
+  top: 30%
+}
+.statusInputWrapper {
+
+
+}
+/*form {
+  position: relative;
+  left: 10%;
+  top: 10%;
+}
+*/
+.submitButton {
+  background-color: #e7e7e7;
+  color: black;
+  border-radius: 13px;
+  height: 30px;
+  border: 2px solid var(--green_font_color);
+  border-color: var(--std_black_color);
+}

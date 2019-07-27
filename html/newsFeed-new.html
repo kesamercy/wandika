@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="..\css\newsfeed-new.css?version=1">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>News Feed Page</title>
+</head>
+<body>
+  <div class="newsFeedPageWrapper">
+
+    <div class="logoSection">
+      <img src="..\Images\official_logo.png" class="logo" onclick="window.location.href='welcome-page.html'" alt="">
+      <!-- the logo styling shoul go to the css and not in the tag -->
+    </div>
+
+    <div class="searchBar">
+      <div class="search">
+        <input type="text" class="searchTerm" placeholder="What are you looking for?">
+        <button type="submit" class="searchButton">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="sideNavContainer">
+
+     <div class='header row'>
+      <div class='column'>
+        <div class='orange-column'>
+
+          <div class="uploadImage">
+            <img src="..\Images\profileIcon.png" class="d-inline-block align-top" alt="">
+          </div>
+
+          <div class="username">
+            <h2>Mercy Nekesa</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class='navLinks row'>
+      <div class='column'>
+        <div class='green-column'>
+
+          <div class="sidebar">
+            <a href="#home"><i class="fa fa-fw fa-home"></i> Home</a><br><br>
+            <a href="#services"><i class="fa fa-fw fa-wrench"></i> Services</a> <br><br>
+            <a href="#clients"><i class="fa fa-fw fa-user"></i> Clients</a><br><br>
+            <a href="#contact"><i class="fa fa-fw fa-envelope"></i> Contact</a><br><br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="../js/newsFeed.js"></script>
+  <script>
+    $(document).ready(function() {
+      loadModal('#inputForStatus');
+
+
+    });
+  </script>
+
+
+
+</body>
+</html>
