@@ -141,7 +141,7 @@
         $sql = "INSERT INTO post_table (user_id, post_image) VALUES(:user_id, :post_image)";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':user_id', $user_id);
-        $stmt->bindParam()
+        $stmt->bindParam();
     }
     
     function get_title($user_id, $post_id){
