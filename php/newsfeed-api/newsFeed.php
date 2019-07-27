@@ -100,7 +100,7 @@
         $conn = connect();
         
         //prepare statement
-        $sql = "INSERT INTO post_table (content, date_posted, post_type)
+        $sql = "INSERT INTO posts_table (content, date_posted, post_type)
         VALUES(:content, :date_posted, :post_type)";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':content', $written_post); //from text box
@@ -126,7 +126,7 @@
 
     function get_last_post(){
         //$conn = connect();
-        $sql = "SELECT content FROM post_table ORDER BY post_id DESC LIMIT 1";
+        $sql = "SELECT content FROM posts_table ORDER BY post_id DESC LIMIT 1";
         $last_post_content = $conn->query($sql);
         return json_encode($last_post_content);
     }
