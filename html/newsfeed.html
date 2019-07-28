@@ -7,6 +7,9 @@
   <link rel="stylesheet" type="text/css" href="..\css\style.css?version=1">
 
   <title>News Feed</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.serializeJSON/2.9.0/jquery.serializejson.min.js"></script>
+  <script src="poc.js"></script>
 
 </head>
 <body>
@@ -27,7 +30,7 @@
   <div class="postBlogInner">
     <input class="textbox" name="blog-post" type="text" placeholder="Start typing your post here...">
     <button class="button-type1 button1" type="submit" name="writerTip">Post as Writer's Tip</button>
-    <button class="button-type1 button2" type="submit" name="blog" id="postBlog" onclick="startAjax();">Post as Blog</button>
+    <button class="button-type1 button2" type="submit" name="blog" onclick="startAjax({'action':'blog-post'});">Post as Blog</button>
   </div>
 </div>
 
@@ -109,29 +112,19 @@ window.onclick = function(event) {
     tags.style.display = "none";
   }
 }
-/*var myJSON={"content":"Lorem ipsum dolor sit amet, sapien etiam, nunc amet dolor ac odio mauris justo.  Luctus arcu, urna praesent at id quisque ac. Arcu es massa vestibulum malesuada, integer vivamus elit eu mauris eus, cum eros quis aliquam wisi.", "name":"Stuti"};
-        var myJSONstringified=JSON.stringify(myJSON);
-        console.log(myJSON);
-        const testButton=document.getElementById('postBlog');
-        testButton.addEventListener('click', loadJSON);
-        /*const output=document.querySelector('#output');
-        output.innerHTML=*
-        function loadJSON(){
-           document.getElementById("spaceForBlog").innerHTML = myJSON.content;
 
-        };*/
-        function startAjax(data){
+function startAjax(data){
           var form=data;
           $.ajax({
-               url: 'data.php',
-               type: 'GET',
+               url: '../php/newsfeed-api/data.php',
+               type: 'POST',
                dataType: 'json',
                contentType: 'application/json; charset=UTF-8',
-              // data: JSON.stringify(form),
+                data: JSON.stringify(form),
                 success: function(msg){
                 //alert( "Data Saved: " + msg );
                 console.log(msg);
-                document.getElementById("myDIV").innerHTML = msg[0].email;
+                document.getElementById("spaceForBlog").innerHTML = msg[0].email;
 
                 },
                error : function(request,error){
