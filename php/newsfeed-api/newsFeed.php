@@ -8,7 +8,7 @@
     header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
     // pull the input, which should be in the form of a JSON object
     //$json_params = file_get_contents('php://input');
-   
+    $conn = null;
     // if(!isset($_POST['functionname'])){
     //      $aResult['error'] = 'No function name!'; 
     //     }
@@ -97,10 +97,10 @@
 
     function set_blog_post_test(){
         //connect to database
-        $conn = connect();
+        $conn = connect_test();
         
         //prepare statement
-        $sql = "INSERT INTO posts_table (content, date_posted, post_type)
+        $sql = "INSERT INTO post_table (content, date_posted, post_type)
         VALUES(:content, :date_posted, :post_type)";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':content', $written_post); //from text box
@@ -125,8 +125,8 @@
     }
 
     function get_last_post(){
-        //$conn = connect();
-        $sql = "SELECT content FROM posts_table ORDER BY post_id DESC LIMIT 1";
+        $conn = connect_test();
+        $sql = "SELECT content FROM post_table ORDER BY post_id DESC LIMIT 1";
         $last_post_content = $conn->query($sql);
         return json_encode($last_post_content);
     }
@@ -141,7 +141,7 @@
         $sql = "INSERT INTO post_table (user_id, post_image) VALUES(:user_id, :post_image)";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':user_id', $user_id);
-        $stmt->bindParam()
+        $stmt->bindParam();
     }
     
     function get_title($user_id, $post_id){
