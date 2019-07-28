@@ -26,19 +26,19 @@
   <img src="..\Images\feather-filled-shape.png" class="feather2" align="middle"  alt="">
   <div class="postBlogInner">
     <input class="textbox" name="blog-post" type="text" placeholder="Start typing your post here...">
-    <button class="button-type1 button1" type="submit" name="writerTip" onclick="displayPost()">Post as Writer's Tip</button>
-    <button class="button-type1 button2" type="submit" name="blog" onclick="displayBlog()">Post as Blog</button>
+    <button class="button-type1 button1" type="submit" name="writerTip">Post as Writer's Tip</button>
+    <button class="button-type1 button2" type="submit" name="blog" id="postBlog" onclick="startAjax();">Post as Blog</button>
   </div>
 </div>
 
 <div class="blogAndPostGrid" id="blogAndPostDisplay" >
-  <div class="blogContainer" id="blogDisplay" style="display:none;"> 
+  <div class="blogContainer" id="blogDisplay"> 
     <div class="smallElements">
       <img src="..\Images\username.jpeg" class="userlogo" alt="">
       <p class="username"><b>username</b></p>
       <p class="timeToRead"><b>5 min read</b></p>
       <p class="postedAt"><b>Posted 2 hours ago</b></p>
-      <div class="blogSpace"><p>Lorem ipsum dolor sit amet, sapien etiam, nunc amet dolor ac odio mauris justo.  Luctus arcu, urna praesent at id quisque ac. Arcu es massa vestibulum malesuada, integer vivamus elit eu mauris eus, cum eros quis aliquam wisi.</p></div>
+      <div class="blogSpace" id="spaceForBlog"></div>
       <img src="..\Images\sunset.jpeg" class="blogPicture" alt="">
     </div>
     <div class="bottomElements">
@@ -51,7 +51,7 @@
     </div>
 </div>
 
-<div class="postContainer" id="postDisplay" style="display:none;">
+<div class="postContainer" id="postDisplay">
     <div class="smallElements"> 
      <img src="..\Images\username.jpeg" class="userlogo" alt="">
      <p class="username2"><b>username</b></p>
@@ -109,14 +109,36 @@ window.onclick = function(event) {
     tags.style.display = "none";
   }
 }
+/*var myJSON={"content":"Lorem ipsum dolor sit amet, sapien etiam, nunc amet dolor ac odio mauris justo.  Luctus arcu, urna praesent at id quisque ac. Arcu es massa vestibulum malesuada, integer vivamus elit eu mauris eus, cum eros quis aliquam wisi.", "name":"Stuti"};
+        var myJSONstringified=JSON.stringify(myJSON);
+        console.log(myJSON);
+        const testButton=document.getElementById('postBlog');
+        testButton.addEventListener('click', loadJSON);
+        /*const output=document.querySelector('#output');
+        output.innerHTML=*
+        function loadJSON(){
+           document.getElementById("spaceForBlog").innerHTML = myJSON.content;
 
-function displayBlog(){
-document.getElementById("blogDisplay").style.display="block";
-}
+        };*/
+        function startAjax(data){
+          var form=data;
+          $.ajax({
+               url: 'data.php',
+               type: 'GET',
+               dataType: 'json',
+               contentType: 'application/json; charset=UTF-8',
+              // data: JSON.stringify(form),
+                success: function(msg){
+                //alert( "Data Saved: " + msg );
+                console.log(msg);
+                document.getElementById("myDIV").innerHTML = msg[0].email;
 
-function displayPost(){
-  document.getElementById("postDisplay").style.display="block";
-}
+                },
+               error : function(request,error){
+                alert("Request: "+JSON.stringify(request));
+               }
+         });
+        };
 </script>
 
 
