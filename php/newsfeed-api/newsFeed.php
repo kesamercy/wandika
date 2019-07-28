@@ -26,7 +26,7 @@
 
             $action = $_POST['action'];
                 switch($action) {
-                    case 'blog-post': echo "set blog post test"; set_blog_post_test(); break;
+                    case 'blog-post': set_blog_post_test(); break;
                     case 'tip-post': echo "set tag post"; set_tip_test(); break;
                     default: echo "No such function";
                 }
@@ -52,29 +52,21 @@
         //prepare statement
         $sql = "INSERT INTO `posts_table` (user_id, title, content, genre, date_posted, time_read, post_image, post_type, allow_comments)
         VALUES(:user_id, :title, :post, :genre, :date_posted, :time_read, :post_image, :post_type, :allow_comments)";
-        $conn->prepare($sql);
-        $conn->bindParam(':user_id', $user_id); //From session ID
-        $conn->bindParam(':title', $title);
-        $conn->bindParam(':content', $written_post); //from text box
-        $conn->bindParam(':genre', $genre);
-        $conn->bindParam(':date_posted', $date); //dont worry about this. From php date function
-        $conn->bindParam(':time_read', $time_to_read);
-        $conn->bindParam(':post_image', $post_image);
-        $conn->bindParam(':post_type', $type_of_post);
-        $conn->bindParam(':allow_comments', $allow_comments);
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':user_id', $user_id); //From session ID
+        $stmt->bindParam(':title', $title);
+        $stmt->bindParam(':content', $written_post); //from text box
+        $stmt->bindParam(':genre', $genre);
+        $stmt->bindParam(':date_posted', $date); //dont worry about this. From php date function
+        $stmt->bindParam(':time_read', $time_to_read);
+        $stmt->bindParam(':post_image', $post_image);
+        $stmt->bindParam(':post_type', $type_of_post);
+        $stmt->bindParam(':allow_comments', $allow_comments);
         
         //collect data
         $user = $conn->query("SELECT user_id FROM user WHERE user_id==$user_id");
         $written_post = $_POST['blog-post'];
         $blog_title = $_POST['News Feed'];
-        $allowedImages = array(IMAGETYPE_PNG, IMAGETYPE_JPEG);
-        $detectedImage = exif_imagetype($_FILES['blobImage']['pic_name']);
-        $error = !in_array($detectedImage, $allowedImages);
-        if(!$error){
-            $post_image = $_FILES['blobImage'];
-        }else{
-            $post_image = NULL;
-        }
         $genre = $_POST['genre'];
         
         //insert date into date field using php DATE
@@ -88,7 +80,7 @@
         
         $allow_comments = ((isset($comments) && $comments=='Allow') ? true : false);
         //insert into table posts            
-        $conn->exec();
+        $stmt->execute();
         $last_id = $conn->lastInsertId();
         echo "New post created successfully. Last inserted ID is: " . $last_id;
         close_connection();
@@ -97,10 +89,10 @@
 
     function set_blog_post_test(){
         //connect to database
-        $conn = connect_test();
+        $conn = connect();
         
         //prepare statement
-        $sql = "INSERT INTO post_table (content, date_posted, post_type)
+        $sql = "INSERT INTO posts_table (content, date_posted, post_type)
         VALUES(:content, :date_posted, :post_type)";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':content', $written_post); //from text box
@@ -112,23 +104,23 @@
       
         //insert date into date field using php DATE
         $date = date('l jS \of F Y h:i:s A');
-
-        $type_of_post = "Blog";
-              
+        $type_of_post = "Blog";   
         $stmt->execute();
-        echo "New post created successfully.";
+        //echo "New post created successfully.\n";
         $last_id = $conn->lastInsertId();
         //pull last 3 posts and return as an array
-        $last_post = get_last_post();
+        $last_post = get_last_post($last_id, $conn);
+        //echo "The last post was". json_encode($last_post);
         close_connection();
-        return $last_post;
+        return json_encode($last_post);
     }
 
-    function get_last_post(){
-        $conn = connect_test();
-        $sql = "SELECT content FROM post_table ORDER BY post_id DESC LIMIT 1";
+    function get_last_post($last_id, $conn){
+        //$conn = connect_test();
+        $sql = "SELECT content FROM posts_table WHERE post_id = $last_id";
         $last_post_content = $conn->query($sql);
-        return json_encode($last_post_content);
+        $ret_content = $last_post_content->fetch();
+        return $ret_content;
     }
 
     // function save_blog_post($user_id){
