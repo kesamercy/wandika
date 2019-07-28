@@ -71,7 +71,7 @@
         
         //insert date into date field using php DATE
         $date = date('l jS \of F Y h:i:s A');
-        
+        $post_image = null;
         //retrieve the estimated time to read from time_to_read form and insert into time_to_read column.
         //javascript needs to return a string.
         $time_to_read = $_POST['timeToRead'];
@@ -121,6 +121,16 @@
         $last_post_content = $conn->query($sql);
         $ret_content = $last_post_content->fetch();
         return $ret_content;
+    }
+
+    function on_load_posts(){
+        $conn = connect();
+        
+        $sql = "SELECT content FROM posts_table WHERE post_id BETWEEN MAX(post_id)-3  AND MAX(post_id)";
+        $last_three_posts = $conn->query($sql);
+        $ret_content = $last_three_posts->fetchAll();
+        close_connection();
+        return json_encode($ret_content);
     }
 
     // function save_blog_post($user_id){
