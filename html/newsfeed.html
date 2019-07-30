@@ -7,6 +7,9 @@
   <link rel="stylesheet" type="text/css" href="..\css\style.css?version=1">
 
   <title>News Feed</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.serializeJSON/2.9.0/jquery.serializejson.min.js"></script>
+  <script src="../js/poc.js"></script>
 
 </head>
 <body>
@@ -27,18 +30,18 @@
   <div class="postBlogInner">
     <input class="textbox" name="blog-post" type="text" placeholder="Start typing your post here...">
     <button class="button-type1 button1" type="submit" name="writerTip">Post as Writer's Tip</button>
-    <button class="button-type1 button2" type="submit" name="blog">Post as Blog</button>
+    <button class="button-type1 button2" type="submit" name="blog" onclick="startAjax({'action':'blog-post'}, loadUser);">Post as Blog</button>
   </div>
 </div>
 
-<div class="blogAndPostGrid">
-  <div class="blogContainer"> 
+<div class="blogAndPostGrid" id="blogAndPostDisplay" >
+  <div class="blogContainer" id="blogDisplay"> 
     <div class="smallElements">
       <img src="..\Images\username.jpeg" class="userlogo" alt="">
       <p class="username"><b>username</b></p>
       <p class="timeToRead"><b>5 min read</b></p>
       <p class="postedAt"><b>Posted 2 hours ago</b></p>
-      <div class="blogSpace"><p>Lorem ipsum dolor sit amet, sapien etiam, nunc amet dolor ac odio mauris justo.  Luctus arcu, urna praesent at id quisque ac. Arcu es massa vestibulum malesuada, integer vivamus elit eu mauris eus, cum eros quis aliquam wisi.</p></div>
+      <div class="blogSpace" id="spaceForBlog"></div>
       <img src="..\Images\sunset.jpeg" class="blogPicture" alt="">
     </div>
     <div class="bottomElements">
@@ -51,7 +54,7 @@
     </div>
 </div>
 
-<div class="postContainer">
+<div class="postContainer" id="postDisplay">
     <div class="smallElements"> 
      <img src="..\Images\username.jpeg" class="userlogo" alt="">
      <p class="username2"><b>username</b></p>
@@ -75,14 +78,13 @@
 
 <!--code for displaying tags-->
 
-<div id="tagDisplay" class="innerContent">
+<div id="tagDisplay" class="innerContent" style="display:none;">
   <span class="close">&times;</span>
   <p class="tagElements">I struggled to relate with this content.</p>
   <p class="tagElements">I related to this content</p>
   <p class="tagElements">This will benefit from additional time and work. Good start</p>
   <p class="tagElements">You are brave for being vulnerable.</p>
 </div>
-
 <!--javascript-->
 <script>
   // Get the tags
@@ -103,6 +105,9 @@ window.onclick = function(event) {
   if (event.target == tags) {
     tags.style.display = "none";
   }
+}
+function loadUser(maindta){
+   document.getElementById("spaceForBlog").innerHTML = maindta[0].email;
 }
 </script>
 
