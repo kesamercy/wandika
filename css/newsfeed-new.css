@@ -1,5 +1,5 @@
 :root {
-  --green_font_color: #0AA2A4;
+  --green_font_color: #2a5161;
   --std_black_color: #2C323D;
 }
 
@@ -9,21 +9,23 @@ body {
   color: white;
 }
 
-
-
 .logoSection img {
   float: left;
   position: relative;
-  top: 2%;
-  width: 150px;
-  height: 130px;
+  top: 7%;
+  left: 45%;
+  width: 100px;
+  height: 100px;
 }
 
 .newsFeedPageWrapper {
-  background-color: white;
-  display: flex;
-  justify-content: space-between;
+ background: #0F2027;  /* fallback for old browsers */
+ background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+ display: flex;
+ justify-content: space-between;
+ height: 100vh;
 }
 
 .row {
@@ -41,27 +43,30 @@ body {
 }
 
 .orange-column {
-  /*background-color: orange;*/
+  background-color: pink;
   height: 30vh;
 }
 
 .green-column {
-  /*background-color: green;*/
+  /*background-color: yellow;*/
   height: 70vh;
 }
 
-.sideNavContainer {
-  background-color: var(--std_black_color);
-  height: 100vh;
-  width: 25%;
+.topNavBar {
+  height: 10vh;
+  width: 80%;
+  position: absolute;
+  /*top: %;*/
+  left: 10%;
 }
-img {
+
+/*img {
   width: 50px;
   height: 50px;
   position: relative;
   top: 70%;
 }
-
+*/
 .uploadImage img{
   position: absolute;
   left: 85%;
@@ -76,37 +81,44 @@ img {
   left: 82%;
 }
 
-.sidebar a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 18px;
-  color: white;
-  /*color: #818181;*/
+/*nav links styling*/
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: absolute;
+}
+
+li {
+  float: left;
+}
+
+li a {
   display: block;
+  padding: 90px;
+  color: white;
+  text-decoration: none;
+  font-weight: 400px;
 }
 
-.sidebar {
-  position: absolute;
-  top: 45%;
-  left: 80%;
-  overflow-x: hidden;
+a:link {
+  text-decoration: none;
 }
 
-.fa {
-  margin: 0 20px 0 0;
+a:visited {
+  text-decoration: none;
 }
 
-
-
-
-
-.statusBar object{
-  position: absolute;
-  top: 90%
-  left: 20%;
-
+a:hover {
+  text-decoration: underline;
 }
 
+a:active {
+  text-decoration: underline;
+}
+
+/*styling for the search bar*/
 .search {
   width: 100%;
   position: relative;
@@ -142,22 +154,29 @@ img {
 
 /*Resize the wrap to see the search bar change!*/
 .searchBar{
-  width: 30%;
+  width: 20%;
   position: absolute;
-  top: 12%;
-  left: 58%;
+  top: 14%;
+  left: 88%;
   transform: translate(-50%, -50%);
 }
 
+/*styling for the ink and globe icons on the page*/
+.globe img {
+  height: 35px;
+  width: 35px;
+  position: absolute;
+  left: 5%;
+  top: 78%;
+}
 
-
-
-
-
-
-
-
-
+.ink {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  left: 5.5%;
+  top: 84.5%;
+}
 
 
 

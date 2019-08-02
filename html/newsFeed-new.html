@@ -9,36 +9,9 @@
   <title>News Feed Page</title>
 </head>
 <body>
-
-  <!-- possible styles...
-  chanage color and icon on scroll -->
   <div class="newsFeedPageWrapper">
-
-   <!--  <img src="https://img.icons8.com/wired/64/000000/globe-earth.png"> -->
-
-    <!-- globage image -->
-
-    <!-- link below is to credit the author -->
-
-    <!-- <a href="https://icons8.com/icon/48402/globe-earth">Globe Earth icon by Icons8</a> -->
-
-
-<!-- activity history  -->
-
-    <!-- <img src="https://img.icons8.com/ios/50/000000/activity-history.png">
- -->
-    <!-- credit for the icon
-    <a href="https://icons8.com/icon/58761/activity-history">Activity History icon by Icons8</a> -->
-
-    <!-- <img src="https://img.icons8.com/wired/64/000000/quill-with-ink.png">
- -->
-    <!-- ink icon and the link to credit
-
-    <a href="https://icons8.com/icon/49632/quill-with-ink">Quill With Ink icon by Icons8</a> -->
-
     <div class="logoSection">
-      <img src="..\Images\official_logo.png" class="logo" onclick="window.location.href='welcome-page.html'" alt="">
-      <!-- the logo styling shoul go to the css and not in the tag -->
+      <img src="..\Images\newlogo.png" class="logo" onclick="window.location.href='welcome-page.html'" alt="">
     </div>
 
     <div class="searchBar">
@@ -50,50 +23,46 @@
       </div>
     </div>
 
-    <div class="sideNavContainer">
-
-     <div class='header row'>
-      <div class='column'>
-        <div class='orange-column'>
-
-          <div class="uploadImage">
-            <img src="..\Images\profileIcon.png" class="d-inline-block align-top" alt="">
-          </div>
-
-          <div class="username">
-            <h2>Mercy Nekesa</h2>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class='navLinks row'>
-      <div class='column'>
-        <div class='green-column'>
-
-          <div class="sidebar">
-            <a href="#home"><i class="fa fa-fw fa-home"></i> Home</a><br><br>
-            <a href="#services"><i class="fa fa-fw fa-wrench"></i> Services</a> <br><br>
-            <a href="#clients"><i class="fa fa-fw fa-user"></i> Clients</a><br><br>
-            <a href="#contact"><i class="fa fa-fw fa-envelope"></i> Contact</a><br><br>
+    <div class="topNavBar">
+      <div class='navLinks row'>
+        <div class='column'>
+          <div class='green-column'>
+            <div class="sidebar">
+              <ul>
+                <li><a href="#home">Community</a></li>
+                <li><a href="#news">Personal Page</a></li>
+                <li><a href="#about">Home</a></li>
+                <li><a href="#contact">Settings</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    </div>
+    <div class="ink">
+     <img src="..\Images\blueinkwhite.png" class="ink" onclick="window.location.href='welcome-page.html'" alt="">
+   </div>
 
+   <div class="globe">
+    <img src="..\Images\globe-icon-white.png" class="globe" onclick="window.location.href='welcome-page.html'" alt="">
   </div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="../js/newsFeed.js"></script>
-  <script>
-    $(document).ready(function() {
-      loadModal('#inputForStatus');
 
 
-    });
-  </script>
+
+
+</div> <!-- ending tag for the newsfeed page wrapper -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="../js/newsFeed.js"></script>
+<script>
+  $(document).ready(function() {
+    loadModal('#inputForStatus');
+
+
+  });
+</script>
 
 
   <!-- things to do
