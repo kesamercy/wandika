@@ -8,18 +8,44 @@
   <title>Status bar</title>
 </head>
 <body>
-  <div class="statusPage">
+  <div class="blogInputFieldPageWrapper">
 
-   <div class="statusInputWrapper">
+    <div class='postInputFieldContainer row'>
+      <div class='column'>
 
-    <!-- <form class="inputField" action="/action_page.php">
-      <textarea  name="message" rows="8" cols="115">Start typing your post here...</textarea>
-      <br>
-      <input class="submitButton" type="submit" value="Post As Blog">
-      <input class="submitButton" type="submit" value="Post As Writer's Tip">
-    </form> -->
-    
-  </div>
+        <form action="/action_page.php">
+          <div class="form-group" orange-column >
+            <input type="text" class="form-control" id="blogTitle" placeholder="Enter Blog Title" name="title">
+          </div>
+          <div class="form-group" blue-column>
+            <input type="text" class="form-control" id="blogContent" placeholder="Enter blogPost" name="blogContent">
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" name="remember"> Enable Comments</label>
+          </div>
+          <div class="wrapper">
+            <div class="file-upload">
+              <label for="file-upload">Upload Image</label>
+              
+              <input type="file" />
+              <i class="fa fa-arrow-up"></i>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-default">Post Blog</button>
+        </form>
+
+
+      </div>
+    </div>
+
+
+<!-- things to add here
+1. the upload image icon
+2. post blog button
+3. the input for the title --- round input filed
+4. the input for the post box input field  -->
+
+
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
