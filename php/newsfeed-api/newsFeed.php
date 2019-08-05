@@ -65,7 +65,7 @@
         $stmt->bindParam(':genre', $genre);
         $stmt->bindParam(':date_posted', $date); //dont worry about this. From php date function
         $stmt->bindParam(':time_read', $time_to_read);
-        $stmt->bindParam(':post_image', $post_image);
+        $stmt->bindParam(':post_image', $post_image_title);
         $stmt->bindParam(':post_type', $type_of_post);
         $stmt->bindParam(':allow_comments', $allow_comments);
         
@@ -77,7 +77,12 @@
         
         //insert date into date field using php DATE
         $date = date('l jS \of F Y h:i:s A');
-        $post_image = $_POST['image-title'];
+
+        
+        $post_image_title = $_POST['image-title'];
+        if($post_image != NULL){
+            upload_picture();
+        }
 
         //retrieve the estimated time to read from time_to_read form and insert into time_to_read column.
         //javascript needs to return a string.
@@ -149,7 +154,9 @@
         if($posts_count == 0){
             return null;
         }
-        if($posts_count >= 1 && $posts_count <= 3){
+        $min_posts_in_database = 1;
+        $amount_of_posts_before_pulling_more_than_2 = 3;
+        if($posts_count >= $min_posts_in_database && $posts_count <= $amount_of_posts_before_pulling_more_than_2){
             $last_posts = $conn->query($sql);
             $ret_content = $last_three_posts->fetchAll();
             close_connection();
@@ -161,7 +168,8 @@
     
 
     function get_last_three_posts($conn){
-        $sql = "SELECT content FROM posts_table WHERE post_id BETWEEN MAX(post_id)-3 AND MAX(post_id)";
+        $number_of_posts = 3;
+        $sql = "SELECT content FROM posts_table WHERE post_id BETWEEN MAX(post_id)-$number_of_posts AND MAX(post_id)";
         $last_posts = $conn->query($sql);
         $ret_content = $last_three_posts->fetchAll();
         close_connection();
@@ -378,6 +386,51 @@
         $blog = $conn->query($sql); //grabs all content from result
         close_connection();
         echo json_encode($blog);
+    }
+
+    function upload_picture(){
+        $target_dir = "./uploads/";
+        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        // Check if image file is a actual image or fake image
+        if(isset($_POST["upload"])) {
+            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+            if($check !== false) {
+                echo "File is an image - " . $check["mime"] . ".";
+                $uploadOk = 1;
+            } else {
+                echo "File is not an image.";
+                $uploadOk = 0;
+            }
+        }   
+        // Check if file already exists
+        if (file_exists($target_file)) {
+            echo "Sorry, file already exists.";
+            $uploadOk = 0;
+        }
+        // Check file size
+        $file_size_max = 5000000;
+        if ($_FILES["fileToUpload"]["size"] > $file_size_max) {
+            echo "Sorry, your file is too large.";
+            $uploadOk = 0;
+        }
+        // Allow certain file formats
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            $uploadOk = 0;
+        }
+        // Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            echo "Sorry, your file was not uploaded.";
+        // if everything is ok, try to upload file
+        } else {
+            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+            }
+        }
     }
 
       /* function set_tip($user_id){
