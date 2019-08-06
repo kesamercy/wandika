@@ -10,18 +10,16 @@
     $json_params = file_get_contents('php://input');
     $decoded_params = json_decode($json_params, TRUE);
     $conn = null;
-    $post_id = null;
-    $user_id = "";
-    $content = "";
+    $post_id = null;   
+    $content = null;
     if(array_key_exists('post_id', $decoded_params)){
         $post_id = $decoded_params['post_id'];
-    }
-    if(array_key_exists('user_id', $decoded_params)){
-        $post_id = $decoded_params['user_id'];
     }
     if(array_key_exists('content', $decoded_params)){
         $post_id = $decoded_params['content'];
     }
+
+    $_SESSION['user_id'] = 99999;
 
     if(isset($_POST['action']) && !empty($_POST['action'])) {
 
@@ -57,7 +55,7 @@
         
         //prepare statement
         $sql = "INSERT INTO `posts_table` (user_id, title, content, genre, date_posted, time_read, post_image, post_type, allow_comments)
-        VALUES(:user_id, :title, :post, :genre, :date_posted, :time_read, :post_image, :post_type, :allow_comments)";
+        VALUES(:user_id, :title, :content, :genre, :date_posted, :time_read, :post_image, :post_type, :allow_comments)";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':user_id', $user_id); //From session ID
         $stmt->bindParam(':title', $title);
@@ -70,9 +68,9 @@
         $stmt->bindParam(':allow_comments', $allow_comments);
         
         //collect data
-        $user = $_SESSION['username'];
+        $user_id = $_SESSION['user_id'];
         $written_post = $_POST['blog-post'];
-        $blog_title = $_POST['blog-title'];
+        $title = $_POST['blog-title'];
         $genre = $_POST['genre'];
         
         //insert date into date field using php DATE
@@ -80,8 +78,8 @@
 
         
         $post_image_title = $_POST['image-title'];
-        if($post_image != NULL){
-            upload_picture();
+        if($post_image_title != NULL){
+            //upload_picture();
         }
 
         //retrieve the estimated time to read from time_to_read form and insert into time_to_read column.
@@ -90,7 +88,8 @@
 
         $type_of_post = "Blog";
         
-        $allow_comments = ((isset($comments) && $comments=='Allow') ? true : false);
+        //$allow_comments = ((isset($comments) && $comments=='Allow') ? true : false);
+        $allow_comments = true;
         //insert into table posts            
         $stmt->execute();
         $last_id = $conn->lastInsertId();
@@ -151,14 +150,16 @@
 
     function get_last_posts_after_setting($conn){
         $posts_count = $conn->query("SELECT COUNT(*) FROM posts_table");
+        $posts_count = $posts_count->fetch();
         if($posts_count == 0){
             return null;
         }
         $min_posts_in_database = 1;
         $amount_of_posts_before_pulling_more_than_2 = 3;
         if($posts_count >= $min_posts_in_database && $posts_count <= $amount_of_posts_before_pulling_more_than_2){
+            $sql = "SELECT * FROM posts_table";
             $last_posts = $conn->query($sql);
-            $ret_content = $last_three_posts->fetchAll();
+            $ret_content = $last_posts->fetchAll();
             close_connection();
             echo json_encode($ret_content);
         }else{
@@ -168,9 +169,13 @@
     
 
     function get_last_three_posts($conn){
-        $number_of_posts = 3;
-        $sql = "SELECT content FROM posts_table WHERE post_id BETWEEN MAX(post_id)-$number_of_posts AND MAX(post_id)";
-        $last_posts = $conn->query($sql);
+        $number_of_additional_posts = 2;
+        $find_max_sql = "SELECT MAX(post_id) FROM posts_table";
+        $max = $conn->query($find_max_sql);
+        $max_id = $max->fetch();
+        $start_of_post_range = $max_id[0] - $number_of_additional_posts;
+        $sql = "SELECT * FROM posts_table WHERE post_id BETWEEN $start_of_post_range AND $max_id[0]";
+        $last_three_posts = $conn->query($sql);
         $ret_content = $last_three_posts->fetchAll();
         close_connection();
         echo json_encode($ret_content);
