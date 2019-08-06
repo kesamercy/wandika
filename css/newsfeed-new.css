@@ -56,7 +56,6 @@ body {
   height: 10vh;
   width: 80%;
   position: absolute;
-  /*top: %;*/
   left: 10%;
 }
 
@@ -182,15 +181,7 @@ a:active {
 
 /*styling for the blog post*/
 
-.blogPostWrapper {
- background: #0F2027;  /* fallback for old browsers */
- background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
- background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
- display: flex;
- justify-content: space-between;
- height: 100vh;
-}
+/**/
 
 .row {
   display: flex;
@@ -211,7 +202,7 @@ a:active {
   height: 60vh;
   width: 50%;
   position: absolute;
-  top: 35%;
+  top: 65%;
   left: 25%;
   font-family: Helvetica Neue;
   font-weight: 200;
@@ -336,6 +327,8 @@ article {
   color: black;
 }
 
+
+/*styling for the status bar input*/
 
 
 
