@@ -58,7 +58,7 @@ body {
 .green-column {
   background-color: white;
   height: 70vh;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .aboutMeSection {
@@ -75,9 +75,29 @@ body {
   height: 32vh;
   background-color: white;
   top: 60%;
+  
 }
 
+#about-title{
+  position: relative;
+  left: 10%;
+  width: 80%;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
 
+#about-content{
+  position: relative;
+  left: 10%;
+  box-sizing: content-box;
+  flex-wrap: wrap;
+  overflow: hidden;
+  width: 80%;
+  height: 50%;
+  padding: 0;
+  text-align: left;
+  
+}
 
 #profileBlogs {
   background-color: white;
