@@ -329,6 +329,36 @@ article {
   color: black;
 }
 
+.secondBlogPost {
+
+  background-color: rgb(120, 177, 28);
+  height: 60vh;
+  width: 50%;
+  position: absolute;
+  top: 120%;
+  left: 25%;
+  font-family: Helvetica Neue;
+  font-weight: 200;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: black;
+
+}
+
+.thirdBlogPost {
+  background-color: rgb(177, 162, 28);
+  height: 60vh;
+  width: 50%;
+  position: absolute;
+  top: 200%;
+  left: 25%;
+  font-family: Helvetica Neue;
+  font-weight: 200;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: black;
+
+}
 
 /*styling for the status bar input*/
 
