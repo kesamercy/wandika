@@ -344,6 +344,18 @@ article {
   color: black;
 
 }
+#feedBack {
+  height: 150px;
+  width: 500px;
+  background-color: black;
+  display: none;
+  color: black;
+  position: absolute;
+  top: 100%;
+  left: 40%;
+  overflow: scroll;
+
+}
 
 .thirdBlogPost {
   background-color: rgb(177, 162, 28);
