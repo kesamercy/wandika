@@ -44,26 +44,6 @@ body {
 
 }
 
-.orange-column {
-  background-color: orange;
-  position: absolute;
-  width: 85%;
-  left: 8%;
-  height: 20%;
-  top: 15%;
-  z-index: 1;
-}
-
-.blue-column{
-  background-color: blue;
-  position: absolute;
-  height: 60%;
-  width: 85%;
-  overflow: auto;
-  left:8%;
-  top: 20%;
-}
-
 input[type=text] {
 
   width: 100%;
@@ -94,7 +74,7 @@ input[id=blogContent] {
   top: 83%;
 }
 
-button {
+.postBlogButton {
   position: absolute;
   left: 90%;
   top: 83%;
