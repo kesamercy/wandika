@@ -48,10 +48,10 @@
         <div class='maincolumn'>
   
           <form action="/action_page.php">
-            <div class="form-group" orange-column >
+            <div class="form-group " >
               <input type="text" class="form-control" id="blogTitle" placeholder="Enter Blog Title" name="title">
             </div>
-            <div class="form-group" blue-column>
+            <div class="form-group">
               <input type="text" class="form-control" id="blogContent" placeholder="Enter blogPost" name="blogContent">
             </div>
             <div class="checkbox">
@@ -60,18 +60,29 @@
             <div class="wrapper">
               <div class="file-upload">
                 <label for="file-upload">Upload Image</label>
-  
                 <input type="file" />
                 <i class="fa fa-arrow-up"></i>
               </div>
             </div>
-            <button type="submit" class="btn btn-default">Post Blog</button>
+            <div class="box selectGenre">
+              <select class="options">
+                <option>Genre List</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+                <option>Option 4</option>
+                <option>Option 5</option>
+              </select>
+            </div>
+            <input class="submitButtons postAsBlogButton" type="submit" value="Post As Blog">
+    
           </form>
   
   
         </div>
       </div>
     </div>
+
+    
 
 <!-- problem is the div elements aren't in the wrapper
 test how to get the div to grow and strech as the elements are added -->
@@ -118,7 +129,7 @@ test how to get the div to grow and strech as the elements are added -->
                   <option>Option 5</option>
                 </select>
               </div>
-              <input class="submitButtons postAsBlogButton" type="submit" value="Post As Blog">
+              <input class="submitButtons feedBackButton" type="submit" value="Feedback to Writer">
               <input class="submitButtons saveBlogButton" type="submit" value="Save Blog">
             </div>
 
@@ -132,6 +143,9 @@ test how to get the div to grow and strech as the elements are added -->
       </div>
 
     </div>
+
+
+    
 
 
     <div class="ink">
