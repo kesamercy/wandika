@@ -40,11 +40,13 @@
                 case 'set-tag': set_tag($post_id, $user_id); break;
                 case 'get-tags': get_tags($post_id); break;
                 case 'upload': upload_picture(); break;
+                case 'save-blog': save_blog_post($user_id, $post_id); break;
+                case 'set-comment': set_comment($user_id, $post_id); break;
                 case 'get-allow-comments': get_allow_comments($post_id); break;
                 case 'change-comment': change_allow_comments($post_id); break;
                 case 'search': search_user(); break;
                 case 'random': post_randomizer(); break;
-                case 'time-ago': time_ago(); break;
+                case 'time-ago': time_ago($post_id); break;
                 default: echo "No such function";
             }
         
@@ -114,40 +116,6 @@
         close_connection();
     }
 
-    function set_blog_post_test(){
-        //connect to database
-        $conn = connect();
-        
-        //prepare statement
-        $sql = "INSERT INTO posts_table (content, date_posted, post_type)
-        VALUES(:content, :date_posted, :post_type)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':content', $written_post); //from text box
-        $stmt->bindParam(':date_posted', $date); //dont worry about this. From php date function
-        $stmt->bindParam(':post_type', $type_of_post);
-        //collect data
-
-        $written_post = $_POST['blog-post'];
-      
-        //insert date into date field using php DATE
-        $date = date('l jS \of F Y h:i:s A');
-        $type_of_post = "Blog";   
-        $stmt->execute();
-        //echo "New post created successfully.\n";
-        $last_id = $conn->lastInsertId();
-        //pull last 3 posts and return as an array
-        $last_post = get_last_post_test($last_id, $conn);
-        close_connection();
-        echo json_encode($last_post);
-    }
-
-    function get_last_post_test($last_id, $conn){
-        //$conn = connect_test();
-        $sql = "SELECT content FROM posts_table WHERE post_id = $last_id";
-        $last_post_content = $conn->query($sql);
-        $ret_content = $last_post_content->fetch();
-        return $ret_content;
-    }
 
     //use on load to get the most current three posts from the database
     function on_load_posts(){
@@ -160,13 +128,18 @@
         if($posts_count >= 1 && $posts_count <= 3){
             $last_posts = $conn->query($sql);
             $ret_content = $last_posts->fetchAll();
+            $sql = "SELECT post_id FROM posts_table BETWEEN 1 AND MAX(post_id)";
+            $post_ids = $conn->query($sql);
+            $post_ids = $post_ids->fetchAll();
             close_connection();
             echo json_encode($ret_content);
+            echo json_encode(time_ago($post_ids));
+            echo json_encode(get_tags($post_ids));
         }else{
             get_last_three_posts($conn);
         }    
     }
-
+    
     //retrieves posts. Will retrieve 3 if 3 or more exists in the table. Used within the set_blog_post() function
     //returns json object
     function get_last_posts_after_setting($conn){
@@ -197,9 +170,20 @@
         $start_of_post_range = $max_id[0] - $number_of_additional_posts;
         $sql = "SELECT * FROM posts_table WHERE post_id BETWEEN $start_of_post_range AND $max_id[0]";
         $last_three_posts = $conn->query($sql);
+        //need to get IDS and put in array
+        //need to get IDS and put in array
+        $post_ids = array();
+        for($i=$start_of_post_range; $i<=$max_id[0]; ++$i){
+            push_array($post_ids, $i);
+        }
+        
+        $sql = "SELECT post_id FROM posts_table WHERE post_id BETWEEN $start_of_post_range AND $max_id[0]";
+        
         $ret_content = $last_three_posts->fetchAll();
         close_connection();
         echo json_encode($ret_content);
+        get_tags($post_ids);
+        time_ago($post_ids);
     }
 
     //pulls most recent $num posts from server.
@@ -289,17 +273,6 @@
         echo json_encode($user_blog->fetch());
     }
 
-    function get_blog_post_test(){
-        //match user name
-        $conn = connect();
-        $sql = "SELECT content FROM `posts_table` WHERE user_id=$user_id AND post_id=$post_id";
-        $user_blog = $conn->query($sql);
-
-        //pull last three. Look up filtering. Can filter out last three.
-        close_connection();
-        return json_encode($user_blog);
-    }
-
     function get_allow_comments($post_id){
         $conn = connect();
         $sql = "SELECT allow_comments FROM `posts_table` WHERE post_id=$post_id";
@@ -352,12 +325,14 @@
         close_connection();
     }
 
-    function get_tags($post_id){
+    function get_tags($post_id){ //requires array
         $conn = connect();
-        $sql = "SELECT * FROM tags WHERE post_id = $post_id";
-        $tags = $conn->query($sql);
+        foreach($post_id as $value){
+            $sql = "SELECT * FROM tags WHERE post_id = $post_id";
+            $tags = $conn->query($sql);
+            echo json_encode($tags->fetchAll());
+        }
         close_connection();
-        echo json_encode($tags->fetchAll());
     }
 
     function set_comment($user_id, $post_id){
@@ -480,41 +455,45 @@
 
     function time_ago ($post_id) {
         $conn = connect();
-        $sql = "SELECT time_posted FROM posts_table WHERE post_id=32";
-        $database_time = $conn->query($sql);
-        $oldTime = $database_time->fetch();
-        $compareTime = $oldTime[0];
-        $currentTime = date('U');
-        $timeCalc = $currentTime - $compareTime;
-        if ($timeCalc >= (60*60*24*30*12*2)){
-            $timeCalc = intval($timeCalc/60/60/24/30/12) . " years ago";
-        }else if ($timeCalc >= (60*60*24*30*12)){
-            $timeCalc = intval($timeCalc/60/60/24/30/12) . " year ago";
-        }else if ($timeCalc >= (60*60*24*30*2)){
-            $timeCalc = intval($timeCalc/60/60/24/30) . " months ago";
-        }else if ($timeCalc >= (60*60*24*30)){
-            $timeCalc = intval($timeCalc/60/60/24/30) . " month ago";
-        }else if ($timeCalc >= (60*60*24*2)){
-            $timeCalc = intval($timeCalc/60/60/24) . " days ago";
-        }else if ($timeCalc >= (60*60*24)){
-            $timeCalc = " Yesterday";
-        }else if ($timeCalc >= (60*60*2)){
-            $timeCalc = intval($timeCalc/60/60) . " hours ago";
-        }else if ($timeCalc >= (60*60)){
-            $timeCalc = intval($timeCalc/60/60) . " hour ago";
-        }else if ($timeCalc >= 60*2){
-            $timeCalc = intval($timeCalc/60) . " minutes ago";
-        }else if ($timeCalc >= 60){
-            $timeCalc = intval($timeCalc/60) . " minute ago";
-        }else if ($timeCalc > 0){
-            $timeCalc .= " seconds ago";
+        foreach($post_id as $value){
+            $sql = "SELECT time_posted FROM posts_table WHERE post_id=32";
+            $database_time = $conn->query($sql);
+            $oldTime = $database_time->fetch();
+            $compareTime = $oldTime[0];
+            $currentTime = date('U');
+            $timeCalc = $currentTime - $compareTime;
+            if ($timeCalc >= (60*60*24*30*12*2)){
+                $timeCalc = intval($timeCalc/60/60/24/30/12) . " years ago";
+            }else if ($timeCalc >= (60*60*24*30*12)){
+                $timeCalc = intval($timeCalc/60/60/24/30/12) . " year ago";
+            }else if ($timeCalc >= (60*60*24*30*2)){
+                $timeCalc = intval($timeCalc/60/60/24/30) . " months ago";
+            }else if ($timeCalc >= (60*60*24*30)){
+                $timeCalc = intval($timeCalc/60/60/24/30) . " month ago";
+            }else if ($timeCalc >= (60*60*24*2)){
+                $timeCalc = intval($timeCalc/60/60/24) . " days ago";
+            }else if ($timeCalc >= (60*60*24)){
+                $timeCalc = " Yesterday";
+            }else if ($timeCalc >= (60*60*2)){
+                $timeCalc = intval($timeCalc/60/60) . " hours ago";
+            }else if ($timeCalc >= (60*60)){
+                $timeCalc = intval($timeCalc/60/60) . " hour ago";
+            }else if ($timeCalc >= 60*2){
+                $timeCalc = intval($timeCalc/60) . " minutes ago";
+            }else if ($timeCalc >= 60){
+                $timeCalc = intval($timeCalc/60) . " minute ago";
+            }else if ($timeCalc > 0){
+                $timeCalc .= " seconds ago";
+            }
+            $time_ago = array();
+            array_push($time_ago, $timeCalc);
         }
         
         close_connection();
-        echo json_encode($timeCalc);
+        echo json_encode($time_ago);
         } 
 
-      /* function set_tip($user_id){
+    /* function set_tip($user_id){
         //open connection
         $conn = connect();
         //prepared statement
@@ -536,9 +515,9 @@
         $conn->execute();
 
         close_connection();
-    } */
-
-    /* function set_tip_test(){
+    }
+    
+    function set_tip_test(){
         //open connection
         $conn = connect();
         //prepared statement
@@ -556,23 +535,23 @@
         $conn->execute();
 
         close_connection();
-    } */
-
-
-  /*   function delete_tip($user_id, $tip_id){
+    }
+    
+    function delete_tip($user_id, $tip_id){
         $conn = connect();
         $postdel = "DELETE FROM ``posts_table`` WHERE `tips_id` = $tip_id AND `user_id` = $user_id";
         $conn->exec($postdel);
         close_connection();
-    } */
-
-       /* function increase_recommend_comment($feedback_id){
+    } 
+    
+    function increase_recommend_comment($feedback_id){
         $conn = connect();
         $sql = "UPDATE feedback SET recommend_count = recommend_count + 1 WHERE feedback_id = $feedback_id";
         close_connection();
-    } */
-
-    /* function promote_comment($feedback_id){
+    } 
+    
+    
+    function promote_comment($feedback_id){
         $conn = connect();
         $recommendations = "SELECT FROM feedback `recommendations` WHERE `feedback_id` = $feedback_id";
         $views = "SELECT FROM feedback `views` WHERE `feedback_id` = $feedback_id";
@@ -585,5 +564,50 @@
         }
         close_connection();
         
-    } */
+    } 
+     function get_blog_post_test(){
+        //match user name
+        $conn = connect();
+        $sql = "SELECT content FROM `posts_table` WHERE user_id=$user_id AND post_id=$post_id";
+        $user_blog = $conn->query($sql);
+
+        //pull last three. Look up filtering. Can filter out last three.
+        close_connection();
+        return json_encode($user_blog);
+    }
+    
+    function set_blog_post_test(){
+        //connect to database
+        $conn = connect();
+        
+        //prepare statement
+        $sql = "INSERT INTO posts_table (content, date_posted, post_type)
+        VALUES(:content, :date_posted, :post_type)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':content', $written_post); //from text box
+        $stmt->bindParam(':date_posted', $date); //dont worry about this. From php date function
+        $stmt->bindParam(':post_type', $type_of_post);
+        //collect data
+
+        $written_post = $_POST['blog-post'];
+      
+        //insert date into date field using php DATE
+        $date = date('l jS \of F Y h:i:s A');
+        $type_of_post = "Blog";   
+        $stmt->execute();
+        //echo "New post created successfully.\n";
+        $last_id = $conn->lastInsertId();
+        //pull last 3 posts and return as an array
+        $last_post = get_last_post_test($last_id, $conn);
+        close_connection();
+        echo json_encode($last_post);
+    }
+
+    function get_last_post_test($last_id, $conn){
+        //$conn = connect_test();
+        $sql = "SELECT content FROM posts_table WHERE post_id = $last_id";
+        $last_post_content = $conn->query($sql);
+        $ret_content = $last_post_content->fetch();
+        return $ret_content;
+    }*/
 ?>
