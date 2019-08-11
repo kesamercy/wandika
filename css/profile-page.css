@@ -49,6 +49,23 @@ body {
   color: white;
 }
 
+#logo{
+  position: absolute;
+  display: block;
+  right: 50px;
+  bottom: 90%;
+  height: 60px;
+  width: 60px;
+}
+
+#profile-quote{
+  position: absolute;
+  display: block;
+  top: 50%;
+  right: 150px;
+  font-size: 20px;
+  color: white;
+}
 .username h1{
   position: absolute;
   display: block;
@@ -100,6 +117,15 @@ body {
   left: 10%;
   width: 50%;
   flex-wrap: wrap;
+  overflow: hidden;
+}
+
+#profile-image{
+  display: flex;
+  position: absolute;
+  height: 300px;
+  width: 150px;
+  margin: 55px;
   overflow: hidden;
 }
 
@@ -283,6 +309,13 @@ a:hover {
   height: 100%;
 }
 
+#user_image{
+  display: inline-block;
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  top: 30%;
+}
 .page {
   position: relative;
   top: 33%;
@@ -424,7 +457,7 @@ a:hover {
   text-transform: uppercase;
 }
 .pcss3t .typography p {
-  margin: 20px 0 0 0;
+  margin: 20px 0 0 75px;
   padding: 0;
   line-height: 20px;
   text-align: left;
