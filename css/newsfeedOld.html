@@ -51,45 +51,35 @@
         <div class='maincolumn'>
   
           
-            <div class="form-group " >
+            <div class="form-group" orange-column >
               <input type="text" class="form-control" id="blogTitle" placeholder="Enter Blog Title" name="title">
             </div>
-            <div class="form-group">
-              <input type="text" class="form-control2" id="blogContent" placeholder="Enter blogPost" name="blogContent" onkeyup="calcRT(this)">
-              <p hidden id="readingTime"></p>
+            <div class="form-group" blue-column>
+              <input type="text" class="form-control2" id="blogContent" placeholder="Enter blogPost" name="blogContent">
             </div>
             <div class="checkbox">
-<!--               <label><input type="checkbox" name="remember"> Enable Comments</label>
- -->           <input type="checkbox" id="comments" name="comments" checked>
+              <input type="checkbox" id="comments" name="comments" value=0 checked>
               <label for="comments">Enable Comments</label>
-              </div>
+            </div>
             <div class="wrapper">
               <div class="file-upload">
                 <label for="file-upload">Upload Image</label>
+  
                 <input type="file" />
                 <i class="fa fa-arrow-up"></i>
               </div>
             </div>
-            <div class="box selectGenre">
-              <select class="genreOptions">
-                <option>Cultural</option>
-                <option>Spiritual</option>
-                <option>Relationships</option>
-                <option>Health</option>
-                <option>Option 5</option>
-              </select>
-            </div>
-            <input class="submitButtons postAsBlogButton" type="submit" onclick="startAjax('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php',{'action':'blog-post'}, loadUser);" value="Post As Blog">
-          </div>
+            <button type="submit" class="btn btn-default" onclick="startAjax('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php',{'action':'blog-post'}, loadUser);">Post Blog</button>
+  
+  
+        </div>
       </div>
     </div>
-
-    
 
 <!-- problem is the div elements aren't in the wrapper
 test how to get the div to grow and strech as the elements are added -->
 
-    <div class="blogPostWrapper">
+<div class="blogPostWrapper">
       <!-- <iframe src='https://gfycat.com/ifr/DistortedCompetentAzurevasesponge' frameborder='0' scrolling='no' allowfullscreen width='640' height='404'></iframe><p> <a href="https://gfycat.com/distortedcompetentazurevasesponge">via Gfycat</a></p> -->
       <div class='postContainer row'>
         <div class='column'>
@@ -106,12 +96,13 @@ test how to get the div to grow and strech as the elements are added -->
                 <div class='postDetails blue-column'>
                   <h1 id="title1">Blog Title</h1>
                   <p hidden id="hidden1"></p>
-
                   <div class='row'>
                     <div class='column'>
                       <div class='blogContentFromUser blue-column'>
-<!--                         <img src="..\Images\sunset.jpeg" class="blogPicture" alt="">
- -->                        <article id="spaceForBlog1"></article>
+<!--                         <img src="..spaceForBlog1\Images\sunset.jpeg" class="blogPicture" alt="">
+ -->                      <article id="spaceForBlog1"></article>
+                          
+                          </div>
                       </div>
                     </div>
                   </div>
@@ -122,7 +113,7 @@ test how to get the div to grow and strech as the elements are added -->
 
             <div class="buttons">
               <div class="box">
-                <select class="options1">
+                <select class="options">
                   <option>Option 1</option>
                   <option>Option 2</option>
                   <option>Option 3</option>
@@ -130,11 +121,10 @@ test how to get the div to grow and strech as the elements are added -->
                   <option>Option 5</option>
                 </select>
               </div>
-              <input class="submitButtons feedBackButton" type="submit" value="Feedback to Writer" >
-              <input class="submitButtons saveBlogButton" type="submit" value="Save Blog" onclick="saveBlog('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php',{'action':'save-blog','postid':$('#hidden1').text()});">
-
+              <input class="submitButtons postAsBlogButton" type="submit" value="Post As Blog">
+              <input class="submitButtons saveBlogButton" type="submit" value="Save Blog">
             </div>
-            
+
             <div class="genre"> <p id="genre1"></p></div>
 
 
@@ -143,18 +133,14 @@ test how to get the div to grow and strech as the elements are added -->
         </div>
 
       </div>
+</div>
 
-    </div>
-
-
-
-
-    <div class="blogPostWrapper" id="blogDisplay2" style="display:none;">
+<div class="blogPostWrapper testing" id="blogDisplay2" style="display:none;">
       <!-- <iframe src='https://gfycat.com/ifr/DistortedCompetentAzurevasesponge' frameborder='0' scrolling='no' allowfullscreen width='640' height='404'></iframe><p> <a href="https://gfycat.com/distortedcompetentazurevasesponge">via Gfycat</a></p> -->
       <div class='postContainer row'>
         <div class='column'>
 
-          <div class='secondBlogPost orange-column'>
+          <div class='postContnet orange-column'>
 
             <img src="..\Images\profile-icon.png" class="blogProfileImage" onclick="window.location.href='welcome-page.html'" alt="">
 
@@ -165,11 +151,10 @@ test how to get the div to grow and strech as the elements are added -->
               <div class='column'>
                 <div class='postDetails blue-column'>
                   <h1 id="title2">Blog Title</h1>
-                  <p hidden id="hidden2"></p>
-
-                  <div class='row'>
-                    <div class='column'>
-                      <div class='blogContentFromUser blue-column'>
+                   <p hidden id="hidden2"></p>
+                    <div class='row'>
+                      <div class='column'>
+                       <div class='blogContentFromUser blue-column'>
 <!--                         <img src="..\Images\sunset.jpeg" class="blogPicture" alt="">
  -->                        <article id="spaceForBlog2"></article>
                       </div>
@@ -182,7 +167,7 @@ test how to get the div to grow and strech as the elements are added -->
 
             <div class="buttons">
               <div class="box">
-                <select class="options2">
+                <select class="options">
                   <option>Option 1</option>
                   <option>Option 2</option>
                   <option>Option 3</option>
@@ -190,27 +175,26 @@ test how to get the div to grow and strech as the elements are added -->
                   <option>Option 5</option>
                 </select>
               </div>
-              <input onclick="showInputForFeedBackButton()" class="submitButtons feedBackButton" type="submit" value="Feedback to Writer">
-              <div id="feedBack">
-                <input name="feedback" type="text" placeholder="Please give your feedback..">
-              </div>
-              <input class="submitButtons saveBlogButton" type="submit" value="Save Blog" onclick="saveBlog('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php',{'action':'save-blog','postid':$('#hidden2').text()});">
+              <input class="submitButtons postAsBlogButton" type="submit" value="Post As Blog">
+              <input class="submitButtons saveBlogButton" type="submit" value="Save Blog">
             </div>
-              <div class="genre"><p id="genre2"></p></div>
-              <p hidden id="checkComment"></p>
-              <input name="commentSection"  class="commentSection" id="commentSection" type="text" placeholder="Please leave your comment..">
+
+            <div class="genre"><p id="genre2"></p></div>
+
+
+
           </div>
         </div>
+
       </div>
-    </div>
+</div>
 
-
-    <div class="blogPostWrapper " id="blogDisplay3" style="display:none;">
+<div class="blogPostWrapper testing2" id="blogDisplay3" style="display:none;">
       <!-- <iframe src='https://gfycat.com/ifr/DistortedCompetentAzurevasesponge' frameborder='0' scrolling='no' allowfullscreen width='640' height='404'></iframe><p> <a href="https://gfycat.com/distortedcompetentazurevasesponge">via Gfycat</a></p> -->
       <div class='postContainer row'>
         <div class='column'>
 
-          <div class='thirdBlogPost orange-column'>
+          <div class='postContnet orange-column'>
 
             <img src="..\Images\profile-icon.png" class="blogProfileImage" onclick="window.location.href='welcome-page.html'" alt="">
 
@@ -221,7 +205,7 @@ test how to get the div to grow and strech as the elements are added -->
               <div class='column'>
                 <div class='postDetails blue-column'>
                   <h1 id="title3">Blog Title</h1>
-                  <p hidden id="hidden3"></p>
+                    <p hidden id="hidden3"></p>
 
                   <div class='row'>
                     <div class='column'>
@@ -238,7 +222,7 @@ test how to get the div to grow and strech as the elements are added -->
 
             <div class="buttons">
               <div class="box">
-                <select class="options3">
+                <select class="options">
                   <option>Option 1</option>
                   <option>Option 2</option>
                   <option>Option 3</option>
@@ -246,8 +230,8 @@ test how to get the div to grow and strech as the elements are added -->
                   <option>Option 5</option>
                 </select>
               </div>
-              <input class="submitButtons feedBackButton" type="submit" value="Feedback to Writer">
-              <input class="submitButtons saveBlogButton" type="submit" value="Save Blog" onclick="saveBlog('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php',{'action':'save-blog','postid':$('#hidden3').text()});">
+              <input class="submitButtons postAsBlogButton" type="submit" value="Post As Blog">
+              <input class="submitButtons saveBlogButton" type="submit" value="Save Blog">
             </div>
 
             <div class="genre"><p id="genre3"></p></div>
@@ -258,8 +242,8 @@ test how to get the div to grow and strech as the elements are added -->
         </div>
 
       </div>
+</div>
 
-    </div>
     <div class="ink">
      <img src="..\Images\blueinkwhite.png" class="ink" onclick="window.location.href='welcome-page.html'" alt="">
    </div>
@@ -273,47 +257,16 @@ test how to get the div to grow and strech as the elements are added -->
 
 </div> <!-- ending tag for the newsfeed page wrapper -->
 
+
 <script>
-//for getting data on the onload of the page.
-  var posts=['', '', '']
-  window.onload = function() {
-  startAjaxOnLoad('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php',{'action':'on-load'}, loadUser);
-};
-//for setting tags.
-$(document).ready(function(){
-     $(".options1").change(function(){
-      setTags('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php',{'action':'set-tag','postid':$('#hidden1').text(), 'tag':$('.options1').val()});
-     });
-   });
-$(document).ready(function(){
-     $(".options2").change(function(){
-      setTags('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php',{'action':'set-tag','postid':$('#hidden2').text(), 'tag':$('.options2').val()});
-     });
-   });
-$(document).ready(function(){
-     $(".options3").change(function(){
-      setTags('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php',{'action':'set-tag','postid':$('#hidden3').text(), 'tag':$('.options3').val()});
-     });
-   });
-//set commemts for green blog post-- need to add for the rst two as well
-$(document).ready(function(){
-     $("#commentSection").change(function(){
-      setComment('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php',{'action':'set-comment','postid':$('#hidden2').text(), 'feedback':$('.commentSection').val()});
-     });
-   });
-//referred this code from - codepen.io/balasubramanim/pen/xypRMP-- for calculating time to read;
-window.calcRT = ev => {
-const wordsPerMinute = 200; // Average case.
-let result;
-let textLength = ev.value.split(" ").length; // Split by words
-if(textLength > 0){
-  let value = Math.ceil(textLength / wordsPerMinute);
-  result = `~${value} min read`;
-  }
- document.getElementById("readingTime").innerText = result;
-};
-//load user details
-function loadUser(maindta){
+  // $(document).ready(function() {
+  //   loadModal('#inputForStatus');
+
+
+  // });
+ function loadUser(maindta){
+ //console.log("length of the array::"+maindta.length);
+
  if(maindta.length>1 && maindta.length<=2){
     document.getElementById("blogDisplay2").style.display = "block";
     
@@ -330,7 +283,7 @@ function loadUser(maindta){
     document.getElementById("timeToRead1").innerHTML = "<span class='content'>"+ maindta[2]["time_read"]; +"</span>";
     document.getElementById("datePosted1").innerHTML = "<span class='content'>"+ maindta[2]["date_posted"]; +"</span>";
     document.getElementById("genre1").innerHTML = "<span class='content'>"+ maindta[2]["genre"]; +"</span>";
-    document.getElementById("hidden1").innerHTML="<span class='content'>"+maindta[2]["post_id"]+"</span>";
+    document.getElementById("hidden1").innerHTML=maindta[2]["post_id"];
 
 
     document.getElementById("spaceForBlog2").innerHTML = "<span class='content'>"+ maindta[1]["content"]; +"</span>";
@@ -339,17 +292,6 @@ function loadUser(maindta){
     document.getElementById("datePosted2").innerHTML = "<span class='content'>"+ maindta[1]["date_posted"]; +"</span>";
     document.getElementById("genre2").innerHTML = "<span class='content'>"+ maindta[1]["genre"]; +"</span>";
     document.getElementById("hidden2").innerHTML=maindta[1]["post_id"];
-    document.getElementById("checkComment").innerHTML="<span class='content'>"+maindta[1]["allow_comments"]; +"</span>";
-    //currently comment functionality just for the middle post.
-    var text = $('#checkComment').text();
-    console.log("text value::"+text);
-    if(text==0){
-      document.getElementById("commentSection").style.display='none'; 
-    }
-    else{
-        document.getElementById("commentSection").style.display='block'; 
-      }
-
 
 
 
@@ -375,6 +317,7 @@ else{
 
 
   <!-- things to do
+
   1. relabel the names here to mathc the stuff on the page
   2. reduce the size of the side bar container
   3. reduce the size of the side bar icons and test
