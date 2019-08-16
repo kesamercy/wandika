@@ -1,16 +1,25 @@
 :root {
-  --green_font_color: #0AA2A4;
+  --green_font_color: #2a5161;;
   --std_black_color: #2C323D;
 }
 
 body {
   font: 100% Verdana, sans-serif;
-  color: var(--green_font_color); }
+  color: var(--green_font_color); 
+background-color: black}
 
 /* styling for the page title content */
 h1.wandika {
   font-weight: bold;
   font-size: 130px; }
+
+  .logoSection img {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    width: 100px;
+    height: 100px;
+  }
 
 .top_word {
   position: relative;
