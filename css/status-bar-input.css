@@ -8,14 +8,24 @@ body {
   font-weight: 300;
 }
 
-.row {
+.blogInputFieldPageWrapper {
+  background: #0F2027;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  display: flex;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+
+.mainrow {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
 }
 
-.column {
+.maincolumn {
   display: flex;
   flex-direction: column;
   flex-basis: 100%;
@@ -26,39 +36,12 @@ body {
   background-color: white;
   display: flex;
   justify-content: center;
-  width: 60%;
-  height: 40%;
-  position: relative;
-  left: 20%;
-  top: 30%
-}
-.blogInputFieldPageWrapper {
-  background: #0F2027;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  display: flex;
-  justify-content: space-between;
-  height: 100vh;
-}
-
-.orange-column {
-  background-color: orange;
-  position: absolute;
-  width: 85%;
-  left: 8%;
-  height: 20%;
-  top: 15%;
-  z-index: 1;
-}
-
-.blue-column{
-  background-color: blue;
-  position: absolute;
-  height: 60%;
-  width: 85%;
-  overflow: auto;
-  left:8%;
+  width: 50%;
   top: 20%;
+  left: 25%;
+  height: 23%;
+  position: relative;
+
 }
 
 input[type=text] {
@@ -74,7 +57,7 @@ input[type=text] {
 }
 
 input[id=blogContent] {
-  height: 15vh;
+  height: 10vh;
 }
 .submitButton {
   background-color: #e7e7e7;
@@ -83,4 +66,16 @@ input[id=blogContent] {
   height: 30px;
   border: 2px solid var(--green_font_color);
   border-color: var(--std_black_color);
+}
+
+.file-upload {
+  position: absolute;
+  left: 40%;
+  top: 83%;
+}
+
+.postBlogButton {
+  position: absolute;
+  left: 90%;
+  top: 83%;
 }
