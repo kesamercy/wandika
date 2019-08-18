@@ -1,4 +1,9 @@
 <?php
+    if (!isset($_SESSION)) 
+    {
+     session_start();
+    }
+
     require 'database.php';
     require 'validity.php';
     date_default_timezone_set('America/New_York');
@@ -21,7 +26,7 @@
     if(is_array($decoded_params) && array_key_exists('content', $decoded_params)){
         $post_id = $decoded_params['content'];
     }
-    $_SESSION['user_id'] = 99999;
+    //$_SESSION['user_id'] = 99999;
     if(isset($_POST['action']) && !empty($_POST['action'])) {
         $action = $_POST['action'];
     if(isset($_POST['postid']) && !empty($_POST['postid'])) {
@@ -30,7 +35,7 @@
     // if(isset($_POST['tag']) && !empty($_POST['tag'])) {
     //    $tag = $_POST['tag'];
     // }
-    $user_id=99999;
+//$user_id=99999;
             switch($action) {
                 case 'on-load': on_load_posts(); break;
                 case 'blog-post': set_blog_post(); break;
@@ -88,7 +93,7 @@
         $stmt->bindParam(':allow_comments', $allow_comments);
         
         //collect data
-        $user_id = $_SESSION['user_id'];
+        $user_id = $_SESSION['u_id'];
         $written_post = $_POST['blog-post'];
         $title = $_POST['blog-title'];
         $genre = $_POST['genre'];
@@ -170,6 +175,7 @@
             return null;
         }
         if($posts_total[0] >= 1 && $posts_total[0] <= 3){
+            $sql = "SELECT * FROM posts_table" ;
             $last_posts = $conn->query($sql);
             $ret_content = $last_posts->fetchAll();
             $sql = "SELECT post_id FROM posts_table BETWEEN 1 AND MAX(post_id)";
