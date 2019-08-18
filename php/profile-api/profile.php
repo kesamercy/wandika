@@ -47,6 +47,9 @@
                 case 'search': search_user(); break;
                 case 'random': post_randomizer(); break;
                 case 'time-ago': time_ago($post_id); break;
+                case 'get-saved-posts': get_saved_posts($user_id); break;
+                case 'get-past-posts': get_past_posts($user_id); break;
+                case 'get-user-info': get_user_info($user_id); break;
                 default: echo "No such function";
             }
         
@@ -91,15 +94,15 @@
         $date = date('l jS \of F Y h:i:s A');
         $time = date('U');
         
-        if(isset($_FILES['file-to-upload'])){
-            $success = upload_picture();
-            if($success != 0){
-                $post_image_title = basename($_FILES['file-to-upload']['name']);
-            }
-            else{
-            $post_image_title = null;
-            }
-        }
+        // if(isset($_FILES['file-to-upload'])){
+        //     $success = upload_picture();
+        //     if($success != 0){
+        //         $post_image_title = basename($_FILES['file-to-upload']['name']);
+        //     }
+        //     else{
+        //     $post_image_title = null;
+        //     }
+        // }
 
         //retrieve the estimated time to read from time_to_read form and insert into time_to_read column.
         //javascript needs to return a string.
@@ -177,7 +180,7 @@
             push_array($post_ids, $i);
         }
         
-        $sql = "SELECT post_id FROM posts_table WHERE post_id BETWEEN $start_of_post_range AND $max_id[0]";
+        //$sql = "SELECT post_id FROM posts_table WHERE post_id BETWEEN $start_of_post_range AND $max_id[0]";
         
         $ret_content = $last_three_posts->fetchAll();
         close_connection();
@@ -491,7 +494,49 @@
         
         close_connection();
         echo json_encode($time_ago);
-        } 
+        }
+
+    function get_saved_posts($user_id){ 
+        $conn = connect();
+        $sql = "SELECT post_id FROM saved_items WHERE user_id=$user_id";
+        $post_ids = array();
+        $collected_ids = $conn->query($sql)->fetchAll();
+        foreach($collected_ids as $value){
+            array_push($post_ids, $value);
+        }
+        $returned_posts = array();
+        foreach($post_ids as $value){
+            $sql = "SELECT * FROM posts_table WHERE post_id = $value";
+            $post = $conn->query($sql)->fetch();
+            array_push($returned_posts, $post[0]);
+        }
+        echo json_encode($returned_posts);
+        get_tags($post_ids);
+        time_ago($post_ids);
+        close_connection();
+    }
+
+    function get_past_posts($user_id){
+        $conn = connect();
+        $sql = "SELECT * FROM posts_table WHERE user_id=$user_id";
+        $posts = $conn->query($sql)->fetchAll();
+        $post_ids = array();
+        $sql = "SELECT post_id FROM posts_table WHERE user_id=$user_id";
+        $post_ids = $conn->query($sql)->fetchAll();
+        echo json_encode($posts);
+        get_tags($post_ids);
+        time_ago($post_ids);
+        close_connection();        
+    }
+
+    function get_user_info($user_id){
+        $conn = connection();
+        $sql = "SELECT username, country, first_name, last_name, DOB, bio, profile_quote
+                FROM user WHERE user_id=$user_id";
+        $user_info = $conn->query($sql)->fetchAll();
+        json_encode($user_info);
+        close_connection();
+    }
 
     /* function set_tip($user_id){
         //open connection
