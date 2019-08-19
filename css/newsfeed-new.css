@@ -9,6 +9,13 @@ body {
     color: white;
 }
 
+.logOut a {
+    color: white;
+    position: absolute;
+    right: 2%;
+    top: 3%;
+}
+
 .logoSection img {
     float: left;
     position: relative;
@@ -339,12 +346,12 @@ article {
 }
 
 .secondBlogPost {
-    background-color: rgb(120, 177, 28);
+    background-color: white;
     height: 60vh;
     width: 50%;
     position: absolute;
-    top: 120%;
-    left: 25%;
+    /* top: 120%;
+    left: 25%; */
     font-family: Helvetica Neue;
     font-weight: 200;
     font-size: 10px;
