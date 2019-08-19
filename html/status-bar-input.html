@@ -1,68 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" type="text/css" href="..\css\blog-post.css?version=1">
-  <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>Blog Post Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="..\css\status-bar-input.css?version=1">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Blog Post Page</title>
 </head>
+
 <body>
 
-  <div class="blogInputFieldPageWrapper">
+    <div class="blogInputFieldPageWrapper">
 
-    <div class='postInputFieldContainer mainrow'>
-      <div class='maincolumn'>
+        <div class='postInputFieldContainer mainrow'>
+            <div class='maincolumn'>
 
-        <form action="/action_page.php">
-          <div class="form-group " >
-            <input type="text" class="form-control" id="blogTitle" placeholder="Enter Blog Title" name="title">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" id="blogContent" placeholder="Enter blogPost" name="blogContent">
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" name="remember"> Enable Comments</label>
-          </div>
-          <div class="wrapper">
-            <div class="file-upload">
-              <label for="file-upload">Upload Image</label>
+                <form action="/action_page.php">
+                    <div class="form-group ">
+                        <input type="text" class="form-control" id="blogTitle" placeholder="Enter Blog Title" name="title">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="blogContent" placeholder="Enter blogPost" name="blogContent">
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="remember"> Enable Comments</label>
+                    </div>
 
-              <input type="file" />
-              <i class="fa fa-arrow-up"></i>
+                    <div class="box selectGenre">
+                        <select class="options">
+                        <option>Select Genre</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                        <option>Option 4</option>
+                        <option>Option 5</option>
+                    </select>
+                    </div>
+                    <input class="submitButtons postAsBlogButton" type="submit" value="Post As Blog">
+
+                </form>
+
+
             </div>
-            <input class="submitButtons postAsBlogButton" type="submit" value="Post As Blog">
-            <input class="submitButtons saveBlogButton" type="submit" value="Save Blog">
-          </div>
-
-          <button class="postBlogButton" type="submit" class="btn btn-default">Post Blog</button>
-        </form>
-
-          <div class="genre"> <p>Genre</p></div>
-
-
-
         </div>
-      </div>
-
     </div>
 
-  </div>
-
-  <!-- use the drop down boxes in the browser to implement the tags -->
-  <!-- you must add the part for the see more for the page  -->
-  <!-- add the part for the image on the design -->
-  <!-- have the image as the bakcground and set the opacity high enough so that
+    <!-- use the drop down boxes in the browser to implement the tags -->
+    <!-- you must add the part for the see more for the page  -->
+    <!-- add the part for the image on the design -->
+    <!-- have the image as the bakcground and set the opacity high enough so that
   the text is always white and it can be seen. the opacity will be the same for the
   image so the text color shold not be different / problem -->
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="../js/blog-post.js"></script>
-  <script>
-    $(document).ready(function() {
-    });
-  </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../js/blog-post.js"></script>
+    <script>
+        $(document).ready(function() {});
+    </script>
 
 </body>
+
 </html>

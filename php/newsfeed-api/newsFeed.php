@@ -39,6 +39,7 @@
     // if(isset($_POST['tag']) && !empty($_POST['tag'])) {
     //    $tag = $_POST['tag'];
     // }
+
    $user_id=$_SESSION['u_id'];
 
             switch($action) {
