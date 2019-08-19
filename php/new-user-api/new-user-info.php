@@ -14,7 +14,7 @@ if(isset($_POST['submit'])){
 
 
  if(empty($uid) || empty($first) || empty($last) || empty($dob) || empty($countryCode)){
-    header("Location: ../../html/new-user.html?info=empty");
+    header("Location: new-user.php?new-user=empty");
 	exit();
  }else{
  	 //using prepared statements
@@ -30,8 +30,9 @@ if(isset($_POST['submit'])){
     		while($row=mysqli_fetch_assoc($result)){
     			$data[] = $row;
     		}
+        //error handling
             if(0==count($data)){
-    		    header("Location: ../../html/new-user.html?new-user=userdoesnotexist");
+    		    header("Location: new-user.php?new-user=userdoesnotexist");
     		    exit();
             }else{
                if(!preg_match("/^[a-zA-Z]*$/", $first) || !preg_match("/^[a-zA-Z]*$/", $last)){
@@ -40,7 +41,7 @@ if(isset($_POST['submit'])){
            }else{
     	         list($m, $d, $y) = explode('/', $dob);
     	         if(!checkdate($m, $d, $y)){
-    		     header("Location: ../../html/new-user.html?new-user=invalidDOB");
+    		     header("Location: new-user.php?new-user=invalidDOB");
 	             exit();
     	     }else{
     		      //using prepared statements
@@ -61,7 +62,7 @@ if(isset($_POST['submit'])){
       }
     }
 else{
-	header("Location: ../../html/new-user.html");
+	header("Location: new-user.php?new-user=error");
 	exit();
 }
 

@@ -40,7 +40,7 @@
     //    $tag = $_POST['tag'];
     // }
 
-//$user_id=99999;
+   $user_id=$_SESSION['u_id'];
 
             switch($action) {
                 case 'on-load': on_load_posts(); break;
@@ -259,7 +259,7 @@
         $ret_content = $last_three_posts->fetchAll();
         close_connection();
         echo json_encode($ret_content);
-       // get_tags($post_ids);
+        //get_tags($post_ids);
        // time_ago($post_ids);
     }
 

@@ -29,20 +29,38 @@
             <a href="./forgot-password.html"> Log Out</a>
         </div>
 
-        <div class="topNavBar">
-            <div class='navLinks row'>
-                <div class='column'>
-                    <div class='green-column'>
-                        <div class="sidebar">
-                            <ul>
-                                <li><a href="#home">Community</a></li>
-                                <li><a href="#news">Personal Page</a></li>
-                                <li><a href="#about">Home</a></li>
-                                <li><a href="#contact">Settings</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+
+      <div class='postInputFieldContainer mainrow'>
+        <div class='maincolumn'>
+  
+          
+            <div class="form-group " >
+              <input type="text" class="form-control" id="blogTitle" placeholder="Enter Blog Title" name="title">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control2" id="blogContent" placeholder="Enter blogPost" name="blogContent" onkeyup="calcRT(this)">
+              <p hidden id="readingTime"></p>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="comments" name="comments" checked>
+              <label for="comments">Enable Comments</label>
+              </div>
+            <div class="wrapper">
+              <!-- <div class="file-upload">
+                <label for="file-upload">Upload Image</label>
+                <input type="file" />
+                <i class="fa fa-arrow-up"></i>
+              </div> -->
+            </div>
+            <div class="box selectGenre">
+              <select class="genreOptions">
+                <option>Cultural</option>
+                <option>Spiritual</option>
+                <option>Relationships</option>
+                <option>Health</option>
+                <option>Option 5</option>
+              </select>
+
             </div>
         </div>
 
