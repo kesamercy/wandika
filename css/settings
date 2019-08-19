@@ -35,11 +35,10 @@ form{
   
 }
 
-#change_password, #username, #first_name, 
+#change_password, #first_name, 
 #last_name, #email, #country,
 #country_code,
-#submit{
-
+#submit-button{
   position: relative;
   left: 37%;
 }
@@ -111,8 +110,3 @@ input[type=submit]:hover{
   text-align: center;
   text-decoration: none;
 }
-.error{
-  color:red;
-  text-align:center;
-  }
-

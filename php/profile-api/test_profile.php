@@ -1,9 +1,4 @@
 <?php
-    if (!isset($_SESSION)) 
-    {
-     session_start();
-    }
-
     require 'database.php';
     require 'validity.php';
     date_default_timezone_set('America/New_York');
@@ -12,35 +7,24 @@
     header('Access-Control-Allow-Origin: *');
     header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
     // pull the input, which should be in the form of a JSON object
-
-    //echo json_encode($_POST);
     $json_params = file_get_contents('php://input');
     $decoded_params = json_decode($json_params, TRUE);
     $conn = null;
     $post_id = null;   
     $content = null;
     $num = null;
-
-    if(is_array($decoded_params) && array_key_exists('post_id', $decoded_params)){
+    if(array_key_exists('post_id', $decoded_params)){
         $post_id = $decoded_params['post_id'];
     }
-    if(is_array($decoded_params) && array_key_exists('content', $decoded_params)){
+    if(array_key_exists('content', $decoded_params)){
         $post_id = $decoded_params['content'];
     }
 
-    //$_SESSION['user_id'] = 99999;
-
+    $_SESSION['user_id'] = 99999;
 
     if(isset($_POST['action']) && !empty($_POST['action'])) {
-        $action = $_POST['action'];
-    if(isset($_POST['postid']) && !empty($_POST['postid'])) {
-       $post_id = $_POST['postid'];
-    }
-    // if(isset($_POST['tag']) && !empty($_POST['tag'])) {
-    //    $tag = $_POST['tag'];
-    // }
-   $user_id=$_SESSION['u_id'];
 
+        $action = $_POST['action'];
             switch($action) {
                 case 'on-load': on_load_posts(); break;
                 case 'blog-post': set_blog_post(); break;
@@ -57,23 +41,22 @@
                 case 'get-tags': get_tags($post_id); break;
                 case 'upload': upload_picture(); break;
                 case 'save-blog': save_blog_post($user_id, $post_id); break;
-
-
+                case 'set-comment': set_comment($user_id, $post_id); break;
                 case 'get-allow-comments': get_allow_comments($post_id); break;
                 case 'change-comment': change_allow_comments($post_id); break;
                 case 'search': search_user(); break;
                 case 'random': post_randomizer(); break;
                 case 'time-ago': time_ago($post_id); break;
-
-                case 'set-comment': set_comment($user_id, $post_id); break;
-
-
+                case 'get-saved-posts': get_saved_posts($user_id); break;
+                case 'get-past-posts': get_past_posts($user_id); break;
+                case 'get-user-info': get_user_info($user_id); break;
                 default: echo "No such function";
             }
         
     }
             
      
+
    
     /**
      * Function that accepts a written post from an html form and associates it with the specified user_id.
@@ -102,101 +85,50 @@
         $stmt->bindParam(':allow_comments', $allow_comments);
         
         //collect data
-
-
-        $user_id = $_SESSION['u_id'];
-
+        $user_id = $_SESSION['user_id'];
         $written_post = $_POST['blog-post'];
         $title = $_POST['blog-title'];
         $genre = $_POST['genre'];
         
         //insert date into date field using php DATE
         $date = date('l jS \of F Y h:i:s A');
-
-        //$time = date('U');
-        $time = "1 second ago";
-        $commentVal= $_POST['comments'];
-
-        if(isset($_FILES['file-to-upload'])){
-            $success = upload_picture();
-            if($success != 0){
-                $post_image_title = basename($_FILES['file-to-upload']['name']);
-            }
-            else{
-            $post_image_title = null;
-            }
-        }
-
-
+        $time = date('U');
+        
+        // if(isset($_FILES['file-to-upload'])){
+        //     $success = upload_picture();
+        //     if($success != 0){
+        //         $post_image_title = basename($_FILES['file-to-upload']['name']);
+        //     }
+        //     else{
+        //     $post_image_title = null;
+        //     }
+        // }
 
         //retrieve the estimated time to read from time_to_read form and insert into time_to_read column.
         //javascript needs to return a string.
         $time_to_read = $_POST['timeToRead'];
+
         $type_of_post = "Blog";
         
         //$allow_comments = ((isset($_POST['comments']) && $comments=='Allow') ? true : false);
-
-        if ($commentVal==="true")
-          {
-            $allow_comments = true;
-          } else {
-             $allow_comments = false;
-           }
-
-        //$allow_comments=$_POST['comments'];
-       // $allow_comments = true;
         $allow_comments = true;
-
         //insert into table posts            
         $stmt->execute();
         $last_id = $conn->lastInsertId();
         get_last_posts_after_setting($conn);
         close_connection();
     }
-    function set_blog_post_test(){
-        //connect to database
-        $conn = connect();
-        
-        //prepare statement
-        $sql = "INSERT INTO posts_table (content, date_posted, post_type)
-        VALUES(:content, :date_posted, :post_type)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':content', $written_post); //from text box
-        $stmt->bindParam(':date_posted', $date); //dont worry about this. From php date function
-        $stmt->bindParam(':post_type', $type_of_post);
-        //collect data
-        $written_post = $_POST['blog-post'];
-      
-        //insert date into date field using php DATE
-        $date = date('l jS \of F Y h:i:s A');
-        $type_of_post = "Blog";   
-        $stmt->execute();
-        //echo "New post created successfully.\n";
-        $last_id = $conn->lastInsertId();
-        //pull last 3 posts and return as an array
-        $last_post = get_last_post_test($last_id, $conn);
-        close_connection();
-        echo json_encode($last_post);
-    }
-    function get_last_post_test($last_id, $conn){
-        //$conn = connect_test();
-        $sql = "SELECT content FROM posts_table WHERE post_id = $last_id";
-        $last_post_content = $conn->query($sql);
-        $ret_content = $last_post_content->fetch();
-        return $ret_content;
-    }
+
+
     //use on load to get the most current three posts from the database
     function on_load_posts(){
         $conn = connect();
-        $posts_count = $conn->prepare("SELECT COUNT(*) FROM posts_table");
-        $posts_count->execute();
+        $posts_count = $conn->query("SELECT COUNT(*) FROM posts_table");
         $posts_total = $posts_count->fetch();
-        if($posts_total[0] == 0){
-
+        if($posts_count[0] == 0){
             return null;
         }
-        if($posts_total[0] >= 1 && $posts_total[0] <= 3){
-           $sql = "SELECT * FROM posts_table" ;
+        if($posts_count >= 1 && $posts_count <= 3){
             $last_posts = $conn->query($sql);
             $ret_content = $last_posts->fetchAll();
             $sql = "SELECT post_id FROM posts_table BETWEEN 1 AND MAX(post_id)";
@@ -204,15 +136,13 @@
             $post_ids = $post_ids->fetchAll();
             close_connection();
             echo json_encode($ret_content);
-
-            //echo json_encode(time_ago($post_ids));
-            //echo json_encode(get_tags($post_ids));
+            echo json_encode(time_ago($post_ids));
+            echo json_encode(get_tags($post_ids));
         }else{
             get_last_three_posts($conn);
         }    
-
     }
-
+    
     //retrieves posts. Will retrieve 3 if 3 or more exists in the table. Used within the set_blog_post() function
     //returns json object
     function get_last_posts_after_setting($conn){
@@ -247,19 +177,16 @@
         //need to get IDS and put in array
         $post_ids = array();
         for($i=$start_of_post_range; $i<=$max_id[0]; ++$i){
-
-            array_push($post_ids, $i);
+            push_array($post_ids, $i);
         }
         
-        
-
-        $sql = "SELECT post_id FROM posts_table WHERE post_id BETWEEN $start_of_post_range AND $max_id[0]";
+        //$sql = "SELECT post_id FROM posts_table WHERE post_id BETWEEN $start_of_post_range AND $max_id[0]";
         
         $ret_content = $last_three_posts->fetchAll();
         close_connection();
         echo json_encode($ret_content);
-        //get_tags($post_ids);
-       // time_ago($post_ids);
+        get_tags($post_ids);
+        time_ago($post_ids);
     }
 
     //pulls most recent $num posts from server.
@@ -281,14 +208,13 @@
     function save_blog_post($user_id, $post_id){
         $conn = connect();
         $sql = "INSERT INTO saved_items (post_id, user_id)
-        VALUES($post_id, $user_id)";
-
+        VALUES($user_id, $post_id)";
         $conn->query($sql);
         close_connection();
     }
     
    
-
+    
     function get_title($post_id){
         $conn = connect();
         $sql = "SELECT title FROM posts_table WHERE post_id=$post_id";
@@ -349,18 +275,6 @@
         close_connection();
         echo json_encode($user_blog->fetch());
     }
-    function get_blog_post_test(){
-        //match user name
-
-        $conn = connect();
-        $sql = "SELECT * FROM `posts_table` WHERE post_id=$post_id";
-        $user_blog = $conn->query($sql);
-        //pull last three. Look up filtering. Can filter out last three.
-
-        close_connection();
-        echo json_encode($user_blog->fetch());
-    }
-
 
     function get_allow_comments($post_id){
         $conn = connect();
@@ -369,6 +283,7 @@
         close_connection();
         echo json_encode($allowcomments->fetch()[0]);
     }
+
     function change_allow_comments($post_id){
         $conn = connect();
         $allowed_comments = "SELECT allow_comments FROM posts_table WHERE post_id=$post_id";
@@ -398,24 +313,18 @@
         close_connection();
         echo json_encode($count->fetch()[0]);
     }
+
     function set_tag($post_id, $user_id){
         $conn = connect();
         $tag = $_POST['tag'];
-
-        //echo $tag;
-        // $sql = $conn->prepare("SELECT * FROM tags WHERE post_id = '$post_id' AND content = '$tag'");
-        // $sql->execute();
-        // $fetch = $sql->fetch(PDO::FETCH_ASSOC);
-        $sql = "SELECT * FROM tags WHERE post_id = '$post_id' AND content = '$tag'";
-        $result=$conn->query($sql);
-        if($result->fetchColumn() > 0){
-            $update = "UPDATE tags SET count = count + 1 WHERE post_id = '$post_id' AND content = '$tag'";
+        $sql = "SELECT * FROM tags WHERE post_id = $post_id AND content = $tag";
+        if($conn->exec($sql) > 0){
+            $update = "UPDATE tags SET count = count + 1 WHERE post_id = $post_id AND content = $tag";
             $conn->query($update);
         }else{
-            $insert ="INSERT INTO tags (count, content, post_id, user_id) VALUES(1, '$tag', '$post_id', '$user_id')";
+            $insert ="INSERT INTO tags (count, content, post_id, user_id) VALUES(1, $tag, $post_id, $user_id)";
             $conn->query($insert);
-        }
-        echo json_encode($_POST);      
+        }       
         close_connection();
     }
 
@@ -428,23 +337,24 @@
         }
         close_connection();
     }
+
     function set_comment($user_id, $post_id){
         //open connection
         $conn = connect();
-        $feedback_content = $_POST['feedback'];
         //prepared statement
         $sql = "INSERT INTO feedback (user_id, content, post_id)
         VALUES(:user_id, :content, :post_id)";
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':user_id', $user_id);
-        $stmt->bindParam(':content', $feedback_content);
-        $stmt->bindParam(':post_id', $post_id);
+        $stmt->bindParam(`:user_id`, $user_id);
+        $stmt->bindParam(`:content`, $feedback_content);
+        $stmt->bindParam(`:post_id`, $post_id);
         //fill in variables
-       // $feedback_content = $_POST['feedback'];
+        $feedback_content = $_POST['feedback'];
         //execute statement
         $stmt->execute();
         close_connection();
     }
+
     /*
      * Function that returns a bool if a comment should be flagged for moderation.
      */
@@ -458,6 +368,7 @@
         close_connection();
         return $disable;
     }
+
     /**
      * Function to increase the flag_count on a comment.
      */
@@ -467,6 +378,7 @@
         $conn->exec($sql);
         close_connection();
     }
+
     function search_user(){
         $conn = connect();
         $search = "SELECT * FROM user WHERE username LIKE :query";
@@ -478,6 +390,7 @@
         $results = $conn->fetchAll();
         echo json_encode($results, JSON_FORCE_OBJECT);        
     }
+
     /**
      * Function that randomizes a post to be returned as a .json object.
      * This returns the content as a .json object.
@@ -542,11 +455,11 @@
             }
         }
     }
+
     function time_ago ($post_id) {
         $conn = connect();
         foreach($post_id as $value){
-            $sql = "SELECT time_posted FROM posts_table WHERE post_id='$post_id'";
-
+            $sql = "SELECT time_posted FROM posts_table WHERE post_id=$post_id";
             $database_time = $conn->query($sql);
             $oldTime = $database_time->fetch();
             $compareTime = $oldTime[0];
@@ -581,9 +494,51 @@
         
         close_connection();
         echo json_encode($time_ago);
-        } 
-      /* function set_tip($user_id){
+        }
 
+    function get_saved_posts($user_id){ 
+        $conn = connect();
+        $sql = "SELECT post_id FROM saved_items WHERE user_id=$user_id";
+        $post_ids = array();
+        $collected_ids = $conn->query($sql)->fetchAll();
+        foreach($collected_ids as $value){
+            array_push($post_ids, $value);
+        }
+        $returned_posts = array();
+        foreach($post_ids as $value){
+            $sql = "SELECT * FROM posts_table WHERE post_id = $value";
+            $post = $conn->query($sql)->fetch();
+            array_push($returned_posts, $post[0]);
+        }
+        echo json_encode($returned_posts);
+        get_tags($post_ids);
+        time_ago($post_ids);
+        close_connection();
+    }
+
+    function get_past_posts($user_id){
+        $conn = connect();
+        $sql = "SELECT * FROM posts_table WHERE user_id=$user_id";
+        $posts = $conn->query($sql)->fetchAll();
+        $post_ids = array();
+        $sql = "SELECT post_id FROM posts_table WHERE user_id=$user_id";
+        $post_ids = $conn->query($sql)->fetchAll();
+        echo json_encode($posts);
+        get_tags($post_ids);
+        time_ago($post_ids);
+        close_connection();        
+    }
+
+    function get_user_info($user_id){
+        $conn = connection();
+        $sql = "SELECT username, country, first_name, last_name, DOB, bio, profile_quote
+                FROM user WHERE user_id=$user_id";
+        $user_info = $conn->query($sql)->fetchAll();
+        json_encode($user_info);
+        close_connection();
+    }
+
+    /* function set_tip($user_id){
         //open connection
         $conn = connect();
         //prepared statement
@@ -603,10 +558,11 @@
         
         //execute prepared statement
         $conn->execute();
-        close_connection();
-    } */
-    /* function set_tip_test(){
 
+        close_connection();
+    }
+    
+    function set_tip_test(){
         //open connection
         $conn = connect();
         //prepared statement
@@ -622,22 +578,25 @@
         $post_type = "Tip";       
         //execute prepared statement
         $conn->execute();
-        close_connection();
-    } */
-  /*   function delete_tip($user_id, $tip_id){
 
+        close_connection();
+    }
+    
+    function delete_tip($user_id, $tip_id){
         $conn = connect();
         $postdel = "DELETE FROM ``posts_table`` WHERE `tips_id` = $tip_id AND `user_id` = $user_id";
         $conn->exec($postdel);
         close_connection();
-    } */
-       /* function increase_recommend_comment($feedback_id){
+    } 
+    
+    function increase_recommend_comment($feedback_id){
         $conn = connect();
         $sql = "UPDATE feedback SET recommend_count = recommend_count + 1 WHERE feedback_id = $feedback_id";
         close_connection();
-    } */
-    /* function promote_comment($feedback_id){
-
+    } 
+    
+    
+    function promote_comment($feedback_id){
         $conn = connect();
         $recommendations = "SELECT FROM feedback `recommendations` WHERE `feedback_id` = $feedback_id";
         $views = "SELECT FROM feedback `views` WHERE `feedback_id` = $feedback_id";
@@ -650,6 +609,50 @@
         }
         close_connection();
         
-    } */
-?>
+    } 
+     function get_blog_post_test(){
+        //match user name
+        $conn = connect();
+        $sql = "SELECT content FROM `posts_table` WHERE user_id=$user_id AND post_id=$post_id";
+        $user_blog = $conn->query($sql);
 
+        //pull last three. Look up filtering. Can filter out last three.
+        close_connection();
+        return json_encode($user_blog);
+    }
+    
+    function set_blog_post_test(){
+        //connect to database
+        $conn = connect();
+        
+        //prepare statement
+        $sql = "INSERT INTO posts_table (content, date_posted, post_type)
+        VALUES(:content, :date_posted, :post_type)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':content', $written_post); //from text box
+        $stmt->bindParam(':date_posted', $date); //dont worry about this. From php date function
+        $stmt->bindParam(':post_type', $type_of_post);
+        //collect data
+
+        $written_post = $_POST['blog-post'];
+      
+        //insert date into date field using php DATE
+        $date = date('l jS \of F Y h:i:s A');
+        $type_of_post = "Blog";   
+        $stmt->execute();
+        //echo "New post created successfully.\n";
+        $last_id = $conn->lastInsertId();
+        //pull last 3 posts and return as an array
+        $last_post = get_last_post_test($last_id, $conn);
+        close_connection();
+        echo json_encode($last_post);
+    }
+
+    function get_last_post_test($last_id, $conn){
+        //$conn = connect_test();
+        $sql = "SELECT content FROM posts_table WHERE post_id = $last_id";
+        $last_post_content = $conn->query($sql);
+        $ret_content = $last_post_content->fetch();
+        return $ret_content;
+    }*/
+?>

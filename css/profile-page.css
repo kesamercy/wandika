@@ -3,19 +3,29 @@
   --std_black_color: #2C323D;
 }
 
+
 body {
   font-family: 'Quicksand', sans-serif;
   font-weight: 300;
   color: var(--std_black_color);
   margin: 0;
   padding: 0;
+  height: 85%;
 }
 
-
-.profilePageWrapper {
-  margin: 15px;
-  background-color: var(--green_font_color);
+.cardify{
+  background: #0F2027;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   height: 100vh;
+  overflow: hidden;
+}
+.profilePageWrapper {
+  margin: 30px;
+  background-color: var(--green_font_color);
+  height: 50vh;
+  box-shadow: 10px 15px 5px 5px;
+  
 }
 
 .row {
@@ -24,10 +34,11 @@ body {
   flex-wrap: wrap;
   width: 100%;
   position: relative;
-  top: 30%;
+  top: 15%;
 }
 
 .column {
+  position: 10%;
   display: flex;
   flex-direction: column;
   flex-basis: 100%;
@@ -38,16 +49,40 @@ body {
   color: white;
 }
 
+#logo{
+  position: absolute;
+  display: block;
+  right: 50px;
+  bottom: 90%;
+  height: 60px;
+  width: 60px;
+}
+
+#profile-quote{
+  position: absolute;
+  display: block;
+  top: 50%;
+  right: 150px;
+  font-size: 20px;
+  color: white;
+}
 .username h1{
   position: absolute;
+  display: block;
+  left: 21%;
+  width: 35%;
+  height: 20%;
   bottom: 30%;
   right: 55%;
 }
 
-.country p {
+.country p{
   position: absolute;
-  bottom: 40%;
-  right: 65%;
+  display: block;
+  top: 50%;
+  left: 20%;
+  height: 20%;
+  right: 55%;
 }
 
 .blue-column {
@@ -57,46 +92,176 @@ body {
 
 .green-column {
   background-color: white;
-  height: 70vh;
-  overflow: scroll;
+  height: 95vh;
+  position: relative;
 }
 
 .aboutMeSection {
   background-color: var(--green_font_color);
-  position: relative;
-  bottom: 75%;
+  position: absolute;
+  bottom: 35%;
   width: 20%;
-  left: 5%;
-  height: 80vh;
-  box-shadow: 5px 10px 25px 5px;
+  left: 7.5%;
+  height:60%;
+  box-shadow: 5px 15px 25px 5px;
 }
 
 .aboutMeContent {
-  height: 32vh;
+  height: 40%;
   background-color: white;
   top: 60%;
 }
 
+#about-title{
+  position: relative;
+  left: 10%;
+  width: 50%;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
 
+#profile-image{
+  display: flex;
+  position: absolute;
+  height: 300px;
+  width: 150px;
+  margin: 55px;
+  overflow: hidden;
+}
+
+#about-content{
+  position: relative;
+  left: 10%;
+  overflow: hidden;
+  width: 85%;
+  height: 50%;
+  padding: 0;
+  text-align: left;
+}
 
 #profileBlogs {
   background-color: white;
 }
 
 .statusContainer {
-  background-color: white;
-  position: relative;
-  bottom: 38%;
-  left: 35%;
-  width: 63%;
-  height: 18vh;
+  background: white;
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  bottom: 55%;
+  left: 30%;
+  width: 65%;
+  height: 25%;
   box-shadow: 5px 5px 5px 5px;
 }
 
-.status {
+
+#checkbox, #upload, #file{
+  color: black;
+}
+
+.blogInputFieldPageWrapper {
+  
+  display: flex;
+  height: 50%;
+  width: 100%;
+  
+}
+
+.mainrow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.maincolumn {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.postInputFieldContainer {
+  display: flex;
+  justify-content: center;
+  width: 95%;
+  top: 2%;
+  left: 2%;
+  height: 100%;
+  position: relative;
+}
+
+.orange-column {
+  background-color: orange;
+  position: absolute;
+  width: 85%;
+  left: 8%;
+  height: 20%;
+  top: 15%;
+  z-index: 1;
+}
+
+.blue-column{
+  background-color: blue;
+  position: absolute;
+  height: 60%;
+  width: 85%;
+  overflow: auto;
+  left:8%;
+  top: 20%;
+}
+
+input[type=text] {
+
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 14px;
+  box-sizing: border-box;
 
 }
 
+input[type=textarea] {
+
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 14px;
+  box-sizing: border-box;
+
+}
+
+input[id=blogContent] {
+  height: 10vh;
+}
+
+.submitButton {
+  background-color: #e7e7e7;
+  color: black;
+  border-radius: 13px;
+  height: 30px;
+  border: 2px solid var(--green_font_color);
+  border-color: var(--std_black_color);
+}
+
+.file-upload {
+  color: white;
+  position: absolute;
+  left: 45%;
+}
+
+.checkbox{
+  position: relative;
+}
+button {
+  position: relative;
+  left: 90%;
+}
 
 
 
@@ -143,12 +308,19 @@ a:hover {
   width: 100%;
   height: 100%;
 }
+
+#user_image{
+  display: inline-block;
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  top: 30%;
+}
 .page {
   position: relative;
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 0 20px 40px;
-  top: 30%;
+  top: 33%;
+  width: 55vw;
+  right: 10%;
 }
 
 /**/
@@ -207,7 +379,6 @@ a:hover {
 }
 .pcss3t > ul > li {
   position: absolute;
-  width: 100%;
   overflow: auto;
   padding: 30px 40px 40px;
   box-sizing: border-box;
@@ -286,7 +457,7 @@ a:hover {
   text-transform: uppercase;
 }
 .pcss3t .typography p {
-  margin: 20px 0 0 0;
+  margin: 20px 0 0 75px;
   padding: 0;
   line-height: 20px;
   text-align: left;
