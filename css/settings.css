@@ -110,3 +110,8 @@ input[type=submit]:hover{
   text-align: center;
   text-decoration: none;
 }
+.error{
+  color:red;
+  text-align:center;
+  }
+

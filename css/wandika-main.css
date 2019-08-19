@@ -210,6 +210,8 @@ input[type=text] {
   box-sizing: border-box;
   text-align: center; }
 
+
+
 input[type=submit] {
   padding: 15px;
   background-color: #666666;
@@ -307,3 +309,8 @@ a:link {
 .google {
  position: relative;
   right: 4px; }
+  
+.error{
+  color:red;
+  text-align:center;
+  }

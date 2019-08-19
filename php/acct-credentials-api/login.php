@@ -29,6 +29,27 @@
           <input id="submit" name="submit" type="submit" value="Submit">
         </form>
       </div>
+      <?php
+            if(!isset($_GET['login'])){
+               exit();
+            }
+            else{
+              $loginCheck = $_GET['login'];
+
+              if($loginCheck == "empty"){
+                echo '<p class="error">Please fill all the fields!</p>';
+                exit();
+              }
+              elseif ($loginCheck=="nosuchuser") {
+                echo '<p class="error">This user does not exist!</p>';
+                exit();# code...
+              }
+              elseif ($loginCheck=="incorrectpass") {
+                echo '<p class="error">Incorrect password!</p>';
+                exit();# code...
+              }
+            }
+          ?>
       
    <div id="alt_login" >
         <p>Or Login Using: &nbsp&nbsp&nbsp&nbsp&nbsp

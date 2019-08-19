@@ -11,7 +11,7 @@ if(isset($_POST['submit'])){
 	//Error handlers
 	//Check if inputs are empty
 	if(empty($uid) || empty($pwd)){
-         header("Location: ../../html/login.html?login=empty");
+         header("Location: login.php?login=empty");
 	     exit();
 	}else{
 		 //using prepared statements
@@ -28,7 +28,7 @@ if(isset($_POST['submit'])){
     			$data[] = $row;
     		  }
               if(0==count($data)){
-    		    header("Location: ../../html/login.html?login=error");
+    		    header("Location: login.php?login=nosuchuser");
     		    exit();
               }else{
               	mysqli_stmt_bind_param($stmt, "s", $uid);
@@ -39,7 +39,7 @@ if(isset($_POST['submit'])){
 			     $hashedPwdCheck= password_verify($pwd, $row['password']); //matching the database password with the password entered by the user using inbuilt password_verify().
 			     //}
 		         if($hashedPwdCheck == false){
-		    	  header("Location: ../../html/login.html?login=error");
+		    	  header("Location: login.php?login=incorrectpass");
 	              exit();
 		         }elseif($hashedPwdCheck == true){
 		    	//Log in the user here
@@ -56,6 +56,6 @@ if(isset($_POST['submit'])){
 	    }
 	  }
 }else{
-	header("Location: ../../html/login.html?login=error");
+	header("Location: login.php?login=error");
 	exit();
 }
