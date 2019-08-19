@@ -363,6 +363,27 @@ input[id=feedBackInput] {
     left: 32%;
 }
 
+.feedBack_box {
+    position: absolute;
+    top: 94.5%;
+    left: 50%;
+    background-color: rgba(42, 81, 97, 0.9);
+    transform: translate(-50%, -50%);
+    color: black;
+    border-radius: 29px;
+}
+
+.feedBack_box select {
+    padding: 0.5em 1.5em;
+    width: 140px;
+    height: 40px;
+    background-color: white;
+    color: black;
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 13px;
+}
+
 
 /*styling for the status bar input*/
 
@@ -452,25 +473,4 @@ input[id=blogTitle] {
     position: absolute;
     left: 48%;
     top: 83%;
-}
-
-.feedBack_box {
-    position: absolute;
-    top: 94.5%;
-    left: 50%;
-    background-color: rgba(42, 81, 97, 0.9);
-    transform: translate(-50%, -50%);
-    color: black;
-    border-radius: 29px;
-}
-
-.feedBack_box select {
-    padding: 0.5em 1.5em;
-    width: 140px;
-    height: 40px;
-    background-color: white;
-    color: black;
-    height: 30px;
-    border: 2px solid black;
-    border-radius: 13px;
 }
