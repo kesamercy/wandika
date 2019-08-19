@@ -1,4 +1,5 @@
 <?php
+
  
 if(isset($_POST['submit'])){
 
@@ -10,6 +11,7 @@ if(isset($_POST['submit'])){
  $last= mysqli_real_escape_string($conn, $_POST['last_name']);
  $dob= mysqli_real_escape_string($conn, $_POST['dob']);
  $countryCode= mysqli_real_escape_string($conn, $_POST['country_code']);
+
 
  if(empty($uid) || empty($first) || empty($last) || empty($dob) || empty($countryCode)){
     header("Location: new-user.php?new-user=empty");
