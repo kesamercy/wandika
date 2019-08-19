@@ -19,7 +19,7 @@ body {
 .logoSection img {
     float: left;
     position: relative;
-    top: 7%;
+    top: 4%;
     left: 45%;
     width: 100px;
     height: 100px;
@@ -34,7 +34,7 @@ body {
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     display: flex;
     justify-content: space-between;
-    height: 100vh;
+    height: 200vh;
 }
 
 .row {
@@ -67,15 +67,6 @@ body {
     position: absolute;
     left: 10%;
 }
-
-
-/*img {
-  width: 50px;
-  height: 50px;
-  position: relative;
-  top: 70%;
-}
-*/
 
 .uploadImage img {
     position: absolute;
@@ -199,29 +190,12 @@ a:active {
 
 /*styling for the blog post*/
 
-
-/**/
-
-.row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-}
-
-.column {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
-    flex: 1;
-}
-
 .postContnet {
     background-color: white;
     height: 60vh;
     width: 50%;
     position: absolute;
-    top: 45%;
+    top: 60%;
     left: 25%;
     font-family: Helvetica Neue;
     font-weight: 200;
@@ -350,7 +324,7 @@ article {
     height: 60vh;
     width: 50%;
     position: absolute;
-    top: 120%;
+    top: 60%;
     left: 25%;
     font-family: Helvetica Neue;
     font-weight: 200;
@@ -360,15 +334,33 @@ article {
 }
 
 #feedBack {
-    height: 150px;
+    height: 300px;
     width: 500px;
-    background-color: black;
+    background-color: green;
     display: none;
     color: black;
     position: absolute;
     top: 100%;
     left: 40%;
     overflow: scroll;
+}
+
+.pastFeedbackPosted {
+    background-color: white;
+    height: 50%;
+    width: 90%;
+    position: absolute;
+    left: 5%;
+}
+
+input[id=feedBackInput] {
+    width: 60%;
+}
+
+.postFeedback {
+    position: absolute;
+    top: 80%;
+    left: 32%;
 }
 
 
@@ -460,4 +452,25 @@ input[id=blogTitle] {
     position: absolute;
     left: 48%;
     top: 83%;
+}
+
+.feedBack_box {
+    position: absolute;
+    top: 94.5%;
+    left: 50%;
+    background-color: rgba(42, 81, 97, 0.9);
+    transform: translate(-50%, -50%);
+    color: black;
+    border-radius: 29px;
+}
+
+.feedBack_box select {
+    padding: 0.5em 1.5em;
+    width: 140px;
+    height: 40px;
+    background-color: white;
+    color: black;
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 13px;
 }

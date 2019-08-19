@@ -8,30 +8,25 @@
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>News Feed Page</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.serializeJSON/2.9.0/jquery.serializejson.min.js"></script>
-    <script src="../js/poc.js"></script>
-
 </head>
 
 <body>
     <div class="newsFeedPageWrapper">
-
         <div class="logoSection">
             <img src="..\Images\newlogo.png" class="logo" onclick="window.location.href='welcome-page.html'" alt="">
-        </div>
-
-        <div class="logOut">
-            <a href="./welcome-page.html"> Log Out</a>
         </div>
 
         <div class="searchBar">
             <div class="search">
                 <input type="text" class="searchTerm" placeholder="What are you looking for?">
                 <button type="submit" class="searchButton">
-          <i class="fa fa-search"></i>
-        </button>
+                <i class="fa fa-search"></i>
+                </button>
             </div>
+        </div>
+
+        <div class="logOut">
+            <a href="./forgot-password.html"> Log Out</a>
         </div>
 
         <div class="topNavBar">
@@ -58,250 +53,6 @@
             <div class='postInputFieldContainer mainrow'>
                 <div class='maincolumn'>
 
-
-                    <div class="form-group ">
-                        <input type="text" class="form-control" id="blogTitle" placeholder="Enter Blog Title" name="title">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control2" id="blogContent" placeholder="Enter blogPost" name="blogContent" onkeyup="calcRT(this)">
-                        <p hidden id="readingTime"></p>
-                    </div>
-                    <div class="checkbox">
-                        <!--               <label><input type="checkbox" name="remember"> Enable Comments</label>
- --><input type="checkbox" id="comments" name="comments" checked>
-                        <label for="comments">Enable Comments</label>
-                    </div>
-                    <div class="wrapper">
-                        <div class="file-upload">
-                            <label for="file-upload">Upload Image</label>
-                            <input type="file" />
-                            <i class="fa fa-arrow-up"></i>
-                        </div>
-                    </div>
-                    <div class="box selectGenre">
-                        <select class="genreOptions">
-                <option>Cultural</option>
-                <option>Spiritual</option>
-                <option>Relationships</option>
-                <option>Health</option>
-                <option>Option 5</option>
-              </select>
-                    </div>
-                    <input class="submitButtons postAsBlogButton" type="submit" onclick="startAjax('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php',{'action':'blog-post'}, loadUser);" value="Post As Blog">
-                </div>
-            </div>
-        </div>
-
-
-
-        <!-- problem is the div elements aren't in the wrapper
-test how to get the div to grow and strech as the elements are added -->
-
-        <div class="blogPostWrapper">
-            <!-- <iframe src='https://gfycat.com/ifr/DistortedCompetentAzurevasesponge' frameborder='0' scrolling='no' allowfullscreen width='640' height='404'></iframe><p> <a href="https://gfycat.com/distortedcompetentazurevasesponge">via Gfycat</a></p> -->
-            <div class='postContainer row'>
-                <div class='column'>
-
-                    <div class='postContnet orange-column'>
-
-                        <img src="..\Images\profile-icon.png" class="blogProfileImage" onclick="window.location.href='welcome-page.html'" alt="">
-
-                        <div class="timeToRead" id="timeToRead1">
-                            <p>Time To Read</p>
-                        </div>
-                        <div class="datePosted" id="datePosted1">
-                            <p>Date Posted</p>
-                        </div>
-
-                        <div class='row'>
-                            <div class='column'>
-                                <div class='postDetails blue-column'>
-                                    <h1 id="title1">Blog Title</h1>
-                                    <p hidden id="hidden1"></p>
-
-                                    <div class='row'>
-                                        <div class='column'>
-                                            <div class='blogContentFromUser blue-column'>
-                                                <!--                         <img src="..\Images\sunset.jpeg" class="blogPicture" alt="">
- -->
-                                                <article id="spaceForBlog1"></article>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="buttons">
-                            <div class="box">
-                                <select class="options1">
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
-                  <option>Option 4</option>
-                  <option>Option 5</option>
-                </select>
-                            </div>
-                            <input class="submitButtons feedBackButton" type="submit" value="Feedback to Writer">
-                            <input class="submitButtons saveBlogButton" type="submit" value="Save Blog" onclick="saveBlog('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php',{'action':'save-blog','postid':$('#hidden1').text()});">
-
-                        </div>
-
-                        <div class="genre">
-                            <p id="genre1"></p>
-                        </div>
-
-
-
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-
-        <div class="blogPostWrapper" id="blogDisplay2" style="display:none;">
-            <!-- <iframe src='https://gfycat.com/ifr/DistortedCompetentAzurevasesponge' frameborder='0' scrolling='no' allowfullscreen width='640' height='404'></iframe><p> <a href="https://gfycat.com/distortedcompetentazurevasesponge">via Gfycat</a></p> -->
-            <div class='postContainer row'>
-                <div class='column'>
-
-                    <div class='secondBlogPost orange-column'>
-
-                        <img src="..\Images\profile-icon.png" class="blogProfileImage" onclick="window.location.href='welcome-page.html'" alt="">
-
-                        <div class="timeToRead" id="timeToRead2">
-                            <p>Time To Read</p>
-                        </div>
-                        <div class="datePosted" id="datePosted2">
-                            <p>Date Posted</p>
-                        </div>
-
-                        <div class='row'>
-                            <div class='column'>
-                                <div class='postDetails blue-column'>
-                                    <h1 id="title2">Blog Title</h1>
-                                    <p hidden id="hidden2"></p>
-
-                                    <div class='row'>
-                                        <div class='column'>
-                                            <div class='blogContentFromUser blue-column'>
-                                                <!--                         <img src="..\Images\sunset.jpeg" class="blogPicture" alt="">
- -->
-                                                <article id="spaceForBlog2"></article>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="buttons">
-                            <div class="box">
-                                <select class="options2">
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
-                  <option>Option 4</option>
-                  <option>Option 5</option>
-                </select>
-                            </div>
-                            <input onclick="showInputForFeedBackButton()" class="submitButtons feedBackButton" type="submit" value="Feedback to Writer">
-                            <div id="feedBack">
-                                <input name="feedback" type="text" placeholder="Please give your feedback..">
-                            </div>
-                            <input class="submitButtons saveBlogButton" type="submit" value="Save Blog" onclick="saveBlog('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php',{'action':'save-blog','postid':$('#hidden2').text()});">
-                        </div>
-                        <div class="genre">
-                            <p id="genre2"></p>
-                        </div>
-                        <p hidden id="checkComment"></p>
-                        <input name="commentSection" class="commentSection" id="commentSection" type="text" placeholder="Please leave your comment..">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="blogPostWrapper " id="blogDisplay3" style="display:none;">
-            <!-- <iframe src='https://gfycat.com/ifr/DistortedCompetentAzurevasesponge' frameborder='0' scrolling='no' allowfullscreen width='640' height='404'></iframe><p> <a href="https://gfycat.com/distortedcompetentazurevasesponge">via Gfycat</a></p> -->
-            <div class='postContainer row'>
-                <div class='column'>
-
-                    <div class='thirdBlogPost orange-column'>
-
-                        <img src="..\Images\profile-icon.png" class="blogProfileImage" onclick="window.location.href='welcome-page.html'" alt="">
-
-                        <div class="timeToRead" id="timeToRead3">
-                            <p>Time To Read</p>
-                        </div>
-                        <div class="datePosted" id="datePosted3">
-                            <p>Date Posted</p>
-                        </div>
-
-                        <div class='row'>
-                            <div class='column'>
-                                <div class='postDetails blue-column'>
-                                    <h1 id="title3">Blog Title</h1>
-                                    <p hidden id="hidden3"></p>
-
-                                    <div class='row'>
-                                        <div class='column'>
-                                            <div class='blogContentFromUser blue-column'>
-                                                <!--                         <img src="..\Images\sunset.jpeg" class="blogPicture" alt="">
- -->
-                                                <article id="spaceForBlog3"></article>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="buttons">
-                            <div class="box">
-                                <select class="options3">
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
-                  <option>Option 4</option>
-                  <option>Option 5</option>
-                </select>
-                            </div>
-                            <input class="submitButtons feedBackButton" type="submit" value="Feedback to Writer">
-                            <input class="submitButtons saveBlogButton" type="submit" value="Save Blog" onclick="saveBlog('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php',{'action':'save-blog','postid':$('#hidden3').text()});">
-                        </div>
-
-                        <div class="genre">
-                            <p id="genre3"></p>
-                        </div>
-
-
-
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-        <div class="ink">
-            <img src="..\Images\blueinkwhite.png" class="ink" onclick="window.location.href='welcome-page.html'" alt="">
-        </div>
-        <div class="globe">
-            <img src="..\Images\globe-icon-white.png" class="globe" onclick="window.location.href='welcome-page.html'" alt="">
-        </div>
-
-
-        <div class="blogInputFieldPageWrapper">
-
-            <div class='postInputFieldContainer mainrow'>
-                <div class='maincolumn'>
-
                     <form action="/action_page.php">
                         <div class="form-group ">
                             <input type="text" class="form-control" id="blogTitle" placeholder="Enter Blog Title" name="title">
@@ -315,142 +66,133 @@ test how to get the div to grow and strech as the elements are added -->
 
                         <div class="box selectGenre">
                             <select class="options">
-                <option>Select Genre</option>
-                <option>Option 2</option>
-                <option>Option 3</option>
-                <option>Option 4</option>
-                <option>Option 5</option>
-              </select>
+                                <option>Select Genre</option>
+                                <option>Option 2</option>
+                                <option>Option 3</option>
+                                <option>Option 4</option>
+                                <option>Option 5</option>
+                            </select>
                         </div>
                         <input class="submitButtons postAsBlogButton" type="submit" value="Post As Blog">
 
                     </form>
 
-                    <script>
-                        //for getting data on the onload of the page.
-                        var posts = ['', '', '']
-                        window.onload = function() {
-                            startAjaxOnLoad('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php', {
-                                'action': 'on-load'
-                            }, loadUser);
-                        };
-                        //for setting tags.
-                        $(document).ready(function() {
-                            $(".options1").change(function() {
-                                setTags('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php', {
-                                    'action': 'set-tag',
-                                    'postid': $('#hidden1').text(),
-                                    'tag': $('.options1').val()
-                                });
-                            });
-                        });
-                        $(document).ready(function() {
-                            $(".options2").change(function() {
-                                setTags('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php', {
-                                    'action': 'set-tag',
-                                    'postid': $('#hidden2').text(),
-                                    'tag': $('.options2').val()
-                                });
-                            });
-                        });
-                        $(document).ready(function() {
-                            $(".options3").change(function() {
-                                setTags('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php', {
-                                    'action': 'set-tag',
-                                    'postid': $('#hidden3').text(),
-                                    'tag': $('.options3').val()
-                                });
-                            });
-                        });
-                        //set commemts for green blog post-- need to add for the rst two as well
-                        $(document).ready(function() {
-                            $("#commentSection").change(function() {
-                                setComment('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php', {
-                                    'action': 'set-comment',
-                                    'postid': $('#hidden2').text(),
-                                    'feedback': $('.commentSection').val()
-                                });
-                            });
-                        });
-                        //referred this code from - codepen.io/balasubramanim/pen/xypRMP-- for calculating time to read;
-                        window.calcRT = ev => {
-                            const wordsPerMinute = 200; // Average case.
-                            let result;
-                            let textLength = ev.value.split(" ").length; // Split by words
-                            if (textLength > 0) {
-                                let value = Math.ceil(textLength / wordsPerMinute);
-                                result = `~${value} min read`;
-                            }
-                            document.getElementById("readingTime").innerText = result;
-                        };
-                        //load user details
-                        function loadUser(maindta) {
-                            if (maindta.length > 1 && maindta.length <= 2) {
-                                document.getElementById("blogDisplay2").style.display = "block";
 
-                                document.getElementById("spaceForBlog1").innerHTML = "<span class='content'>" + maindta[2]["content"]; + "</span>";
-                                document.getElementById("spaceForBlog2").innerHTML = "<span class='content'>" + maindta[1]["content"]; + "</span>";
-                            } else if (maindta.length > 1 && maindta.length <= 3) {
-                                document.getElementById("blogDisplay2").style.display = "block";
-                                document.getElementById("blogDisplay3").style.display = "block";
+                </div>
+            </div>
+        </div>
 
+        <div class="blogPostWrapper ">
+            <!-- <iframe src='https://gfycat.com/ifr/DistortedCompetentAzurevasesponge' frameborder='0' scrolling='no' allowfullscreen width='640' height='404'></iframe><p> <a href="https://gfycat.com/distortedcompetentazurevasesponge">via Gfycat</a></p> -->
+            <div class='postContainer row'>
+                <div class='column'>
 
-                                document.getElementById("spaceForBlog1").innerHTML = "<span class='content'>" + maindta[2]["content"]; + "</span>";
-                                document.getElementById("title1").innerHTML = "<span class='content'>" + maindta[2]["title"]; + "</span>";
-                                document.getElementById("timeToRead1").innerHTML = "<span class='content'>" + maindta[2]["time_read"]; + "</span>";
-                                document.getElementById("datePosted1").innerHTML = "<span class='content'>" + maindta[2]["date_posted"]; + "</span>";
-                                document.getElementById("genre1").innerHTML = "<span class='content'>" + maindta[2]["genre"]; + "</span>";
-                                document.getElementById("hidden1").innerHTML = "<span class='content'>" + maindta[2]["post_id"] + "</span>";
+                    <div class='secondBlogPost orange-column'>
+
+                        <img src="..\Images\profile-icon.png" class="blogProfileImage" onclick="window.location.href='welcome-page.html'" alt="">
+
+                        <div class="timeToRead">
+                            <p>Time To Read</p>
+                        </div>
+                        <div class="datePosted">
+                            <p>Date Posted</p>
+                        </div>
+
+                        <div class='row'>
+                            <div class='column'>
+                                <div class='postDetails blue-column'>
+                                    <h1>Blog Title</h1>
+
+                                    <div class='row'>
+                                        <div class='column'>
+                                            <div class='blogContentFromUser blue-column'>
+                                                <img src="..\Images\sunset.jpeg" class="blogPicture" alt="">
+                                                <article>
+                                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
+                                                    sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis
+                                                    pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus
+                                                    in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget
+                                                    dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                                                    Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante.
+                                                </article>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="buttons">
+                            <div class="feedBack_box">
+                                <select class="options">
+                                    <option>Select Tags</option>
+                                    <option>Option 2</option>
+                                    <option>Option 3</option>
+                                    <option>Option 4</option>
+                                    <option>Option 5</option>
+                                </select>
+                            </div>
+                            <input onclick="showInputForFeedBackButton()" class="submitButtons feedBackButton" type="submit" value="Feedback to Writer">
+                            <div id="feedBack">
+                                <input type="text" class="form-control" id="feedBackInput" placeholder="Type your feedback..." name="feedback">
+                                <div class="pastFeedbackPosted">
+                                    this is the secrion
+                                </div>
+                                <input class="submitButtons postFeedback" type="submit" value="Post">
+                            </div>
+                            <input class="submitButtons saveBlogButton" type="submit" value="Save Blog">
+                        </div>
+
+                        <div class="genre">
+                            <p>Genre</p>
+                        </div>
 
 
-                                document.getElementById("spaceForBlog2").innerHTML = "<span class='content'>" + maindta[1]["content"]; + "</span>";
-                                document.getElementById("title2").innerHTML = "<span class='content'>" + maindta[1]["title"]; + "</span>";
-                                document.getElementById("timeToRead2").innerHTML = "<span class='content'>" + maindta[1]["time_read"]; + "</span>";
-                                document.getElementById("datePosted2").innerHTML = "<span class='content'>" + maindta[1]["date_posted"]; + "</span>";
-                                document.getElementById("genre2").innerHTML = "<span class='content'>" + maindta[1]["genre"]; + "</span>";
-                                document.getElementById("hidden2").innerHTML = maindta[1]["post_id"];
-                                document.getElementById("checkComment").innerHTML = "<span class='content'>" + maindta[1]["allow_comments"]; + "</span>";
-                                //currently comment functionality just for the middle post.
-                                var text = $('#checkComment').text();
-                                console.log("text value::" + text);
-                                if (text == 0) {
-                                    document.getElementById("commentSection").style.display = 'none';
-                                } else {
-                                    document.getElementById("commentSection").style.display = 'block';
-                                }
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
 
 
 
 
-                                document.getElementById("spaceForBlog3").innerHTML = "<span class='content'>" + maindta[0]["content"]; + "</span>";
-                                document.getElementById("title3").innerHTML = "<span class='content'>" + maindta[0]["title"]; + "</span>";
-                                document.getElementById("timeToRead3").innerHTML = "<span class='content'>" + maindta[0]["time_read"]; + "</span>";
-                                document.getElementById("datePosted3").innerHTML = "<span class='content'>" + maindta[0]["date_posted"]; + "</span>";
-                                document.getElementById("genre3").innerHTML = "<span class='content'>" + maindta[0]["genre"]; + "</span>";
-                                document.getElementById("hidden3").innerHTML = maindta[1]["post_id"];
+
+
+        <div class="ink">
+            <img src="..\Images\blueinkwhite.png" class="ink" onclick="window.location.href='welcome-page.html'" alt="">
+        </div>
+        <div class="globe">
+            <img src="..\Images\globe-icon-white.png" class="globe" onclick="window.location.href='welcome-page.html'" alt="">
+        </div>
 
 
 
 
-                            } else {
-                                document.getElementById("spaceForBlog1").innerHTML = "<span class='content'>" + maindta[2]["content"]; + "</span>";
-                            }
+
+    </div>
+    <!-- ending tag for the newsfeed page wrapper -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../js/newsFeed.js"></script>
+    <script>
+        $(document).ready(function() {
+            loadModal('#inputForStatus');
+        });
+    </script>
 
 
-
-                        }
-                    </script>
-
-
-                    <!-- things to do
-
+    <!-- things to do
   1. relabel the names here to mathc the stuff on the page
   2. reduce the size of the side bar container
   3. reduce the size of the side bar icons and test
   4. think of how to modify the side bar container
   5. as you think of what to do with the white background  -->
 
-                    <!-- on click of see more, let the page expand and occupy the whole page. every other page is pushed down. on click, show only....  -->
+    <!-- on click of see more, let the page expand and occupy the whole page. every other page is pushed down. on click, show only....  -->
 
 
 
