@@ -3,11 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" type="text/css" href="..\css\status-bar-input.css?version=1">
+  <link rel="stylesheet" type="text/css" href="..\css\blog-post.css?version=1">
   <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
-  <title>Status bar</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Blog Post Page</title>
 </head>
 <body>
+
   <div class="blogInputFieldPageWrapper">
 
     <div class='postInputFieldContainer mainrow'>
@@ -30,32 +32,37 @@
               <input type="file" />
               <i class="fa fa-arrow-up"></i>
             </div>
+            <input class="submitButtons postAsBlogButton" type="submit" value="Post As Blog">
+            <input class="submitButtons saveBlogButton" type="submit" value="Save Blog">
           </div>
+
           <button class="postBlogButton" type="submit" class="btn btn-default">Post Blog</button>
         </form>
 
+          <div class="genre"> <p>Genre</p></div>
 
+
+
+        </div>
       </div>
+
     </div>
 
+  </div>
 
-<!-- things to add here
-1. the upload image icon
-2. post blog button
-3. the input for the title --- round input filed
-4. the input for the post box input field  -->
+  <!-- use the drop down boxes in the browser to implement the tags -->
+  <!-- you must add the part for the see more for the page  -->
+  <!-- add the part for the image on the design -->
+  <!-- have the image as the bakcground and set the opacity high enough so that
+  the text is always white and it can be seen. the opacity will be the same for the
+  image so the text color shold not be different / problem -->
 
-
-</div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="../js/status-bar-input.js"></script>
-<script>
-  $(document).ready(function() {
-
-  });
-</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="../js/blog-post.js"></script>
+  <script>
+    $(document).ready(function() {
+    });
+  </script>
 
 </body>
-
 </html>

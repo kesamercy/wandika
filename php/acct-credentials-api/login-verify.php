@@ -14,34 +14,47 @@ if(isset($_POST['submit'])){
          header("Location: ../../html/login.html?login=empty");
 	     exit();
 	}else{
-		$sql= "SELECT * FROM user WHERE username='$uid' OR email='$uid'";
-		$result=mysqli_query($conn, $sql);
-		$resultCheck= mysqli_num_rows($result);
-		if($resultCheck<1){
-			$message = "Please enter the UserName and/or Password.\\nTry again.";
-            echo "<script type='text/javascript'>alert('$message');</script>";
-			header("Location: ../../html/login.html?login=error");
-			
-	        exit();
-		}else{
-			if($row = mysqli_fetch_assoc($result))
-			//De-hashing the password
-			$hashedPwdCheck= password_verify($pwd, $row['password']); //matching the database password with the password entered by the user using inbuilt password_verify().
-		    if($hashedPwdCheck == false){
-		    	header("Location: ../../html/login.html?login=error");
-	            exit();
-		    } elseif($hashedPwdCheck == true){
+		 //using prepared statements
+		$sql= "SELECT * FROM user WHERE username=?";
+		$stmt = mysqli_stmt_init($conn);
+		if(!mysqli_stmt_prepare($stmt, $sql)){
+    			echo "SQL error!";
+        }else{
+        	$data = Array();
+    		mysqli_stmt_bind_param($stmt, "s", $uid);
+    		mysqli_stmt_execute($stmt);
+    		$result=mysqli_stmt_get_result($stmt);
+    		while($row=mysqli_fetch_assoc($result)){
+    			$data[] = $row;
+    		  }
+              if(0==count($data)){
+    		    header("Location: ../../html/login.html?login=error");
+    		    exit();
+              }else{
+              	mysqli_stmt_bind_param($stmt, "s", $uid);
+    		    mysqli_stmt_execute($stmt);
+    		    $result=mysqli_stmt_get_result($stmt);
+    		    while($row=mysqli_fetch_assoc($result)){
+    		      //De-hashing the password
+			     $hashedPwdCheck= password_verify($pwd, $row['password']); //matching the database password with the password entered by the user using inbuilt password_verify().
+			     //}
+		         if($hashedPwdCheck == false){
+		    	  header("Location: ../../html/login.html?login=error");
+	              exit();
+		         }elseif($hashedPwdCheck == true){
 		    	//Log in the user here
 		    	$_SESSION['u_id'] = $row['user_id'];
 		    	$_SESSION['u_uid'] = $row['username'];
 		    	$_SESSION['u_email'] = $row['email'];
 		    	$_SESSION['u_pwd'] = $row['password'];
 		    	$_SESSION['u_cntry'] = $row['country'];
-		    	header("Location: ../../html/newsfeed.html?login=success");
+		    	header("Location: ../../html/newsFeed-new.html?login=success");
 	            exit();
-		    }
-		}
-	}
+		      }
+		     } 
+		   }
+	    }
+	  }
 }else{
 	header("Location: ../../html/login.html?login=error");
 	exit();

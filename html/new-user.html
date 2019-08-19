@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -8,19 +9,20 @@
 </head>
 <body>
     <div class="new-user-content">
-        <span onclick="closeModal()" class="close">&times;</span>
+        <!--<span onclick="closeModal()" class="close">&times;</span>-->
+        <span class="acct_close">&times;</span>
         <div id="new_user_card">
             <div id="new_user">
                 <h1>New User Information</h1>
                 <hr class="new_user_info"> </hr>
-                <form action="includes/profile.php" method="POST"> <!--TODO: php file for the profile page-->
+                <form action="../php/new-user-api/new-user-info.php" method="POST"> <!--TODO: php file for the profile page-->
+             <input id="username" name="username" type="text" placeholder="Username" required minlength="3" maxlength="15">
+                    <br>
                     <input id="first_name" name="first_name" type="text" placeholder="First Name" required minlength="2" maxlength="20">
                     <br>
                     <input id="last_name" name="last_name" type="text" placeholder="Last Name" required minlength="2" maxlength="30">
                     <br>
                     <input id="dob" name="dob" type="text" placeholder="Date of Birth mm/dd/yyyy" required>
-                    <br>
-                    <input id="country" name="country" type="text" placeholder="Country" required minlength="3" maxlength="15">
                     <br>
                     <input id="country_code" name="country_code" type="text" placeholder="County Code" required minlength="2" maxlength="3">
                     <br>

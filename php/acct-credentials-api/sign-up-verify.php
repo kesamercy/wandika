@@ -3,6 +3,7 @@
 if(isset($_POST['submit'])){
 
  include_once 'main-db-connection.php';
+ //echo json_encode($_POST);
 
  $uid= mysqli_real_escape_string($conn, $_POST['username']);
  $email= mysqli_real_escape_string($conn, $_POST['email']);
@@ -27,26 +28,43 @@ if(isset($_POST['submit'])){
            header("Location: ../../html/create-account.html?signup=email");
 	       exit();
     	}else{
+            //using prepared statements
     		//check if the username has been taken.
-    		$sql= "SELECT * FROM user WHERE username='$uid'";
-    		$result=mysqli_query($conn, $sql);
-    		$resultCheck=mysqli_num_rows($result);
-    		if($resultCheck > 0){
-    			header("Location: ../../html/create-account.html?signup=usertaken");
-	            exit();
-    		}else{
-    			//Hashing Password
-    			$hashedPwd=password_hash($pwd, PASSWORD_DEFAULT);
-    			//Insert the user into the database
-    			$sql="INSERT INTO user (username, email, password, country) VALUES ('$uid', '$email', '$hashedPwd', '$country');";
-    			mysqli_query($conn, $sql);
-    			header("Location: ../../html/login.html?signup=success");
-	            exit();
-    		}
+            $sql= "SELECT * FROM user WHERE username=?";
+    		$stmt = mysqli_stmt_init($conn);
+            if(!mysqli_stmt_prepare($stmt, $sql)){
+                echo "SQL error!";
+           }else{
+            $data = Array();
+            //using prepared statements
+            mysqli_stmt_bind_param($stmt, "s", $uid);
+            mysqli_stmt_execute($stmt);
+            $result=mysqli_stmt_get_result($stmt);
+            while($row=mysqli_fetch_assoc($result)){
+                $data[] = $row;
+              }
+              if(0<count($data)){
+                header("Location: ../../html/create-account.html?signup=usertaken");
+                exit();
+              }else{
+                //Hashing Password
+                $hashedPwd=password_hash($pwd, PASSWORD_DEFAULT);
+                //Insert the user into the database
+                $sql="INSERT INTO user (username, email, password, country) VALUES (?, ?, ?, ?);";
+                $stmt = mysqli_stmt_init($conn);
+                if(!mysqli_stmt_prepare($stmt, $sql)){
+                    echo "SQL error!";
+                }else{
+                mysqli_stmt_bind_param($stmt, "ssss", $uid, $email, $hashedPwd, $country);
+                mysqli_stmt_execute($stmt);
+                header("Location: ../../html/new-user.html?signup=success");
+                exit();
+              }
+          }
     	}
+      }
     }
- }
-
+  }
 }
 else{
 	header("Location: ../../html/create-account.html");

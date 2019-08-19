@@ -35,10 +35,11 @@ form{
   
 }
 
-#change_password, #first_name, 
+#change_password, #username, #first_name, 
 #last_name, #email, #country,
 #country_code,
-#submit-button{
+#submit{
+
   position: relative;
   left: 37%;
 }

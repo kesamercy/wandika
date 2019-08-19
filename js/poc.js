@@ -1,26 +1,99 @@
-function startAjax(data, callback){
+function startAjax(urlbase, data, callback){
           var form=data;
+          //data["blog-post"] = "buffalo";
+          var post = $('.form-control2').val();
+          var comment = $('input[name="comments"]').prop('checked');
+          var readTime=$('#readingTime').text();
+          console.log("lets see!"+readTime);
+          data["blog-post"] = post;
+          data["blog-title"]= $('.form-control').val();
+          data["comments"]= comment;
+          data["genre"]=$('.genreOptions').val();
+          data["timeToRead"]=readTime;
+          data["username"]="stuti";
+          console.log("sending data "  + JSON.stringify(data));
           $.ajax({
-               url: '../php/newsfeed-api/data.php',
-               type: "POST",
+               url: urlbase,
+               type: 'POST',
                dataType: 'json',
-               contentType: 'application/json; charset=UTF-8',
-               data: JSON.stringify(form),
-               //console.log(data);
-                success: function(msg){
+               data: form,
+               success: function(maindta){
+                console.log("received data" + JSON.stringify(maindta));
                 if (callback) {
-                    callback(msg);
-                  } else {
-                     $("#display").html("<pre>" + JSON.stringify(msg, null, 2) + "</pre>");
-                  }
-                console.log(msg);
-              },
-               error : function(request,error){
-                alert("Request: "+JSON.stringify(request));
+                    callback(maindta);
+                    } else {
+                    $("#display").html("<pre>" + JSON.stringify(maindta, null, 2) + "</pre>");
+                     }
+                   },
+               error: function(request, error){
+                console.log("request sent" + JSON.stringify(request));
                }
-         });
+             });
           return false;
-        };
+    }
+
+    function startAjaxOnLoad(urlbase, data, callback){
+          var form=data;
+          //data["blog-post"] = "buffalo";
+         console.log("sending data "  + JSON.stringify(data));
+          $.ajax({
+               url: urlbase,
+               type: 'POST',
+               dataType: 'json',
+               data: form,
+               success: function(maindta){
+                console.log("received data" + JSON.stringify(maindta));
+                if (callback) {
+                    callback(maindta);
+                    } else {
+                    $("#display").html("<pre>" + JSON.stringify(maindta, null, 2) + "</pre>");
+                     }
+                   },
+               error: function(request, error){
+                console.log("request sent" + JSON.stringify(request));
+               }
+             });
+          return false;
+    }
+
+
+    function saveBlog(urlbase, data){
+          var form=data;
+          //data["blog-post"] = "buffalo";
+         console.log("sending data "  + JSON.stringify(data));
+          $.ajax({
+               url: urlbase,
+               type: 'POST',
+               dataType: 'json',
+               data: form,
+              });
+          return false;
+    }
+
+    function setTags(urlbase, data){
+      var form=data;
+      console.log("sending data "  + JSON.stringify(data));
+          $.ajax({
+               url: urlbase,
+               type: 'POST',
+               dataType: 'json',
+               data: form,
+              });
+          return false;
+    }
+    
+    function setComment(urlbase, data){
+      var form=data;
+      console.log("sending data "  + JSON.stringify(data));
+          $.ajax({
+               url: urlbase,
+               type: 'POST',
+               dataType: 'json',
+               data: form,
+              });
+          return false;
+    }
+  
 
 // make a get request.  This assumes that the URL already contains the parameters necessary for the call.
 // If you include a callback, it will get called with the response from the API, and if you don't it just

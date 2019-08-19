@@ -350,8 +350,8 @@ article {
     height: 60vh;
     width: 50%;
     position: absolute;
-    /* top: 120%;
-    left: 25%; */
+    top: 120%;
+    left: 25%;
     font-family: Helvetica Neue;
     font-weight: 200;
     font-size: 10px;
