@@ -12,116 +12,96 @@
 
 <body>
     <div class='profilePageWrapper'>
+        <div class="contentArea">
 
-        <div class='header row'>
-            <div class='header column'>
-
-                <!-- put this element at the head of the about me page -->
-
-                <!-- you can try to gray it out and see how it looks that way toos -->
-                <img src="https://img.icons8.com/carbon-copy/100/000000/hand-with-pen.png" width="100" height="100">
-
-                <!-- link below is to be embeded on the page -->
-
-                <!-- <a href="https://icons8.com/icon/121316/hand-with-pen">Hand With Pen icon by Icons8</a> -->
-
-
-                <div class='username'>
-                    <h1>Mercy Nekesa</h1>
-                </div>
-                <div class="country">
-                    <p>Kampala, Uganda</p>
+            <div class='header row'>
+                <div class='column'>
+                    <div class="handImage">
+                        <img src="https://img.icons8.com/carbon-copy/100/000000/hand-with-pen.png" width="100" height="100">
+                    </div>
+                    <div class='username'>
+                        <h1>Mercy Nekesa</h1>
+                    </div>
+                    <div class="country">
+                        <p>Kampala, Uganda</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
 
-        <div class='content row'>
-            <div class='column'>
-                <div class='content-background'>
-                    <!-- Some Text in Row 2, Column One -->
-                </div>
-            </div>
-        </div>
+            <div class="blogInputFieldPageWrapper">
+                <div class='postInputFieldContainer mainrow'>
+                    <div class='maincolumn'>
 
-        <!-- find the missing tag for the div element and then
-      add the status bar holder to the page -->
+                        <form action="/action_page.php">
+                            <div class="form-group ">
+                                <input type="text" class="form-control" id="blogTitle" placeholder="Enter Blog Title" name="title">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="blogContent" placeholder="Enter blogPost" name="blogContent">
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="remember"> Enable Comments</label>
+                            </div>
 
-        <!-- relabel the contianer names  -->
-
-        <div class="blogInputFieldPageWrapper">
-
-            <div class='postInputFieldContainer mainrow'>
-                <div class='maincolumn'>
-
-                    <form action="/action_page.php">
-                        <div class="form-group ">
-                            <input type="text" class="form-control" id="blogTitle" placeholder="Enter Blog Title" name="title">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="blogContent" placeholder="Enter blogPost" name="blogContent">
-                        </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" name="remember"> Enable Comments</label>
-                        </div>
-
-                        <div class="box selectGenre">
-                            <select class="options">
+                            <div class="box selectGenre">
+                                <select class="options">
                           <option>Select Genre</option>
                           <option>Option 2</option>
                           <option>Option 3</option>
                           <option>Option 4</option>
                           <option>Option 5</option>
                       </select>
+                            </div>
+                            <input class="submitButtons postAsBlogButton" type="submit" value="Post As Blog">
+
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="tabSection">
+
+                <div class="wrapper">
+                    <div class="tabs">
+                        <div class="tab">
+                            <input type="radio" name="css-tabs" id="tab-1" checked class="tab-switch">
+                            <label for="tab-1" class="tab-label">Past Blogs</label>
+                            <div class="tab-content">My father had a small estate in Nottinghamshire: I was the third of five sons. He sent me to Emanuel College in Cambridge at fourteen years old, where I resided three years, and applied myself close to my studies; but the charge
+                                of maintaining me, although I had a very scanty allowance, being too great for a narrow fortune, I was bound apprentice to Mr. James Bates, an eminent surgeon in London, with whom I continued four years. </div>
                         </div>
-                        <input class="submitButtons postAsBlogButton" type="submit" value="Post As Blog">
+                        <div class="tab">
+                            <input type="radio" name="css-tabs" id="tab-2" class="tab-switch">
+                            <label for="tab-2" class="tab-label">Saved Blogs</label>
+                            <div class="tab-content">My father now and then sending me small sums of money, I laid them out in learning navigation, and other parts of the mathematics, useful to those who intend to travel, as I always believed it would be, some time or other,
+                                my fortune to do. </div>
+                        </div>
 
-                    </form>
-
-
-                </div>
-            </div>
-        </div>
-
-        <div class="tabSection">
-
-            <div class="wrapper">
-                <div class="tabs">
-                    <div class="tab">
-                        <input type="radio" name="css-tabs" id="tab-1" checked class="tab-switch">
-                        <label for="tab-1" class="tab-label">Past Blogs</label>
-                        <div class="tab-content">My father had a small estate in Nottinghamshire: I was the third of five sons. He sent me to Emanuel College in Cambridge at fourteen years old, where I resided three years, and applied myself close to my studies; but the charge
-                            of maintaining me, although I had a very scanty allowance, being too great for a narrow fortune, I was bound apprentice to Mr. James Bates, an eminent surgeon in London, with whom I continued four years. </div>
                     </div>
-                    <div class="tab">
-                        <input type="radio" name="css-tabs" id="tab-2" class="tab-switch">
-                        <label for="tab-2" class="tab-label">Saved Blogs</label>
-                        <div class="tab-content">My father now and then sending me small sums of money, I laid them out in learning navigation, and other parts of the mathematics, useful to those who intend to travel, as I always believed it would be, some time or other, my fortune
-                            to do. </div>
-                    </div>
-
                 </div>
+
             </div>
 
-        </div>
 
 
-
-        <div class="aboutMeSection">
-            <div class='row aboutMeContent'>
-                <div class='column'>
+            <div class="aboutMeSection">
+                <div class='row aboutMeContent'>
                     <div class='column'>
-                        Some Text in Row 2, Column One
+                        <div class='column'>
+
+                            <h1>About Me</h1>
+                            <article>
+                                This is one of the most difficult and challenging things I've had to do.
+                            </article>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
-
-
     </div>
-
-    </div>
-
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

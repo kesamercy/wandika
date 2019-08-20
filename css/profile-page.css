@@ -17,6 +17,20 @@ body {
     height: 100vh;
 }
 
+.contentArea {
+    background-color: white;
+    width: 100%;
+    position: absolute;
+    top: 40%;
+    height: 100vh;
+}
+
+.handImage {
+    position: absolute;
+    left: -30%;
+    top: 5%;
+}
+
 .row {
     display: flex;
     flex-direction: row;
@@ -35,18 +49,21 @@ body {
 
 .header {
     color: white;
+    position: absolute;
+    top: -20%;
+    left: 30%;
 }
 
 .username h1 {
     position: absolute;
-    bottom: 30%;
-    right: 49%;
+    top: 30%;
+    right: 79%;
 }
 
 .country p {
     position: absolute;
     bottom: 13%;
-    right: 54%;
+    right: 84%;
 }
 
 .blue-column {
@@ -94,7 +111,7 @@ body {
     display: flex;
     justify-content: center;
     width: 50%;
-    bottom: 50%;
+    top: 2%;
     left: 40%;
     height: 30%;
     position: relative;
@@ -175,8 +192,8 @@ input[id=blogTitle] {
 
 .aboutMeSection {
     background-color: var(--green_font_color);
-    position: relative;
-    bottom: 65%;
+    position: absolute;
+    top: -15%;
     width: 30%;
     left: 5%;
     height: 80vh;
@@ -201,8 +218,8 @@ input[id=blogTitle] {
     width: 100%;
     margin: 0 auto;
     position: absolute;
-    left: 38%;
-    top: 70%;
+    left: 39%;
+    top: 35%;
 }
 
 .tabs {
