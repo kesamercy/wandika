@@ -9,7 +9,7 @@
 <body>
 <div class="logoSection">
     <div class="logoIcon">
-      <img src="..\Images\newlogo-green-color.png" class="logo" onclick="window.location.href='welcome-page.html'" alt="">
+      <img src="..\..\Images\newlogo-green-color.png" class="logo" onclick="window.location.href='welcome-page.html'" alt="">
     </div>
   </div>
 
