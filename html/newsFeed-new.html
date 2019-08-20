@@ -25,7 +25,9 @@
         </button>
       </div>
     </div>
-
+    <div class="logOut">
+            <a href="./forgot-password.html"> Log Out</a>
+    </div>
     <div class="topNavBar">
       <div class='navLinks row'>
         <div class='column'>
@@ -88,188 +90,17 @@
 
 <!-- problem is the div elements aren't in the wrapper
 test how to get the div to grow and strech as the elements are added -->
+<div class="blogPostWrapper" >
+      
 
-    <div class="blogPostWrapper">
-      <!-- <iframe src='https://gfycat.com/ifr/DistortedCompetentAzurevasesponge' frameborder='0' scrolling='no' allowfullscreen width='640' height='404'></iframe><p> <a href="https://gfycat.com/distortedcompetentazurevasesponge">via Gfycat</a></p> -->
-      <div class='postContainer row'>
-        <div class='column'>
+</div>
 
-          <div class='postContnet orange-column'>
-
-            <img src="..\Images\profile-icon.png" class="blogProfileImage" onclick="window.location.href='welcome-page.html'" alt="">
-
-            <div class="timeToRead" id="timeToRead1"> <p>Time To Read</p></div>
-            <div class="datePosted" id="datePosted1"> <p>Date Posted</p></div>
-
-            <div class='row'>
-              <div class='column'>
-                <div class='postDetails blue-column'>
-                  <h1 id="title1">Blog Title</h1>
-                  <p hidden id="hidden1"></p>
-
-                  <div class='row'>
-                    <div class='column'>
-                      <div class='blogContentFromUser blue-column'>
-<!--                         <img src="..\Images\sunset.jpeg" class="blogPicture" alt="">
- -->                        <article id="spaceForBlog1"></article>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="buttons">
-              <div class="box">
-                <select class="options1">
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
-                  <option>Option 4</option>
-                  <option>Option 5</option>
-                </select>
-              </div>
-              <input class="submitButtons feedBackButton" type="submit" value="Feedback to Writer" >
-              <input class="submitButtons saveBlogButton" type="submit" value="Save Blog" onclick="saveBlog('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php',{'action':'save-blog','postid':$('#hidden1').text()});">
-
-            </div>
-            
-            <div class="genre"> <p id="genre1"></p></div>
-
-
-
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-
-
-
-
-    <div class="blogPostWrapper" id="blogDisplay2" style="display:none;">
-      <!-- <iframe src='https://gfycat.com/ifr/DistortedCompetentAzurevasesponge' frameborder='0' scrolling='no' allowfullscreen width='640' height='404'></iframe><p> <a href="https://gfycat.com/distortedcompetentazurevasesponge">via Gfycat</a></p> -->
-      <div class='postContainer row'>
-        <div class='column'>
-
-          <div class='secondBlogPost orange-column'>
-
-            <img src="..\Images\profile-icon.png" class="blogProfileImage" onclick="window.location.href='welcome-page.html'" alt="">
-
-            <div class="timeToRead" id="timeToRead2"> <p>Time To Read</p></div>
-            <div class="datePosted" id="datePosted2"> <p>Date Posted</p></div>
-
-            <div class='row'>
-              <div class='column'>
-                <div class='postDetails blue-column'>
-                  <h1 id="title2">Blog Title</h1>
-                  <p hidden id="hidden2"></p>
-
-                  <div class='row'>
-                    <div class='column'>
-                      <div class='blogContentFromUser blue-column'>
-<!--                         <img src="..\Images\sunset.jpeg" class="blogPicture" alt="">
- -->                        <article id="spaceForBlog2"></article>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="buttons">
-              <div class="box">
-                <select class="options2">
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
-                  <option>Option 4</option>
-                  <option>Option 5</option>
-                </select>
-              </div>
-              <input onclick="showInputForFeedBackButton()" class="submitButtons feedBackButton" type="submit" value="Feedback to Writer">
-              <div id="feedBack">
-                <input name="feedback" type="text" placeholder="Please give your feedback..">
-              </div>
-              <input class="submitButtons saveBlogButton" type="submit" value="Save Blog" onclick="saveBlog('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php',{'action':'save-blog','postid':$('#hidden2').text()});">
-            </div>
-              <div class="genre"><p id="genre2"></p></div>
-              <p hidden id="checkComment"></p>
-              <input name="commentSection"  class="commentSection" id="commentSection" type="text" placeholder="Please leave your comment..">
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="blogPostWrapper " id="blogDisplay3" style="display:none;">
-      <!-- <iframe src='https://gfycat.com/ifr/DistortedCompetentAzurevasesponge' frameborder='0' scrolling='no' allowfullscreen width='640' height='404'></iframe><p> <a href="https://gfycat.com/distortedcompetentazurevasesponge">via Gfycat</a></p> -->
-      <div class='postContainer row'>
-        <div class='column'>
-
-          <div class='thirdBlogPost orange-column'>
-
-            <img src="..\Images\profile-icon.png" class="blogProfileImage" onclick="window.location.href='welcome-page.html'" alt="">
-
-            <div class="timeToRead" id="timeToRead3"> <p>Time To Read</p></div>
-            <div class="datePosted" id="datePosted3"> <p>Date Posted</p></div>
-
-            <div class='row'>
-              <div class='column'>
-                <div class='postDetails blue-column'>
-                  <h1 id="title3">Blog Title</h1>
-                  <p hidden id="hidden3"></p>
-
-                  <div class='row'>
-                    <div class='column'>
-                      <div class='blogContentFromUser blue-column'>
-<!--                         <img src="..\Images\sunset.jpeg" class="blogPicture" alt="">
- -->                        <article id="spaceForBlog3"></article>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="buttons">
-              <div class="box">
-                <select class="options3">
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
-                  <option>Option 4</option>
-                  <option>Option 5</option>
-                </select>
-              </div>
-              <input class="submitButtons feedBackButton" type="submit" value="Feedback to Writer">
-              <input class="submitButtons saveBlogButton" type="submit" value="Save Blog" onclick="saveBlog('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php',{'action':'save-blog','postid':$('#hidden3').text()});">
-            </div>
-
-            <div class="genre"><p id="genre3"></p></div>
-
-
-
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-    <div class="ink">
-     <img src="..\Images\blueinkwhite.png" class="ink" onclick="window.location.href='welcome-page.html'" alt="">
-   </div>
-   <div class="globe">
-    <img src="..\Images\globe-icon-white.png" class="globe" onclick="window.location.href='welcome-page.html'" alt="">
-  </div>
-
-
-
-
+<div class="ink">
+  <img src="..\Images\blueinkwhite.png" class="ink" onclick="window.location.href='welcome-page.html'" alt="">
+</div>
+<div class="globe">
+  <img src="..\Images\globe-icon-white.png" class="globe" onclick="window.location.href='welcome-page.html'" alt="">
+</div>
 
 </div> <!-- ending tag for the newsfeed page wrapper -->
 
@@ -281,20 +112,13 @@ test how to get the div to grow and strech as the elements are added -->
 };
 //for setting tags.
 $(document).ready(function(){
-     $(".options1").change(function(){
-      setTags('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php',{'action':'set-tag','postid':$('#hidden1').text(), 'tag':$('.options1').val()});
+   $(document).on('change', 'select', function() {
+    //debugger
+    var value=this.options[this.selectedIndex].value;
+      setTags('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php',{'action':'set-tag','postid':this.options[this.selectedIndex].dataset.postId, 'tag':value});
      });
    });
-$(document).ready(function(){
-     $(".options2").change(function(){
-      setTags('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php',{'action':'set-tag','postid':$('#hidden2').text(), 'tag':$('.options2').val()});
-     });
-   });
-$(document).ready(function(){
-     $(".options3").change(function(){
-      setTags('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php',{'action':'set-tag','postid':$('#hidden3').text(), 'tag':$('.options3').val()});
-     });
-   });
+
 //set commemts for green blog post-- need to add for the rst two as well
 $(document).ready(function(){
      $("#commentSection").change(function(){
@@ -314,63 +138,30 @@ if(textLength > 0){
 };
 //load user details
 function loadUser(maindta){
- if(maindta.length>1 && maindta.length<=2){
-    document.getElementById("blogDisplay2").style.display = "block";
-    
-     document.getElementById("spaceForBlog1").innerHTML = "<span class='content'>"+ maindta[2]["content"]; +"</span>";
-     document.getElementById("spaceForBlog2").innerHTML = "<span class='content'>"+ maindta[1]["content"]; +"</span>";
-}
- else if(maindta.length>1 && maindta.length<=3){
-    document.getElementById("blogDisplay2").style.display = "block";
-    document.getElementById("blogDisplay3").style.display = "block";
-    
+  //debugger
+  ids = $(".post_id");
+  blogIds = [];
 
-    document.getElementById("spaceForBlog1").innerHTML = "<span class='content'>"+ maindta[2]["content"]; +"</span>";
-    document.getElementById("title1").innerHTML = "<span class='content'>"+ maindta[2]["title"]; +"</span>";
-    document.getElementById("timeToRead1").innerHTML = "<span class='content'>"+ maindta[2]["time_read"]; +"</span>";
-    document.getElementById("datePosted1").innerHTML = "<span class='content'>"+ maindta[2]["date_posted"]; +"</span>";
-    document.getElementById("genre1").innerHTML = "<span class='content'>"+ maindta[2]["genre"]; +"</span>";
-    document.getElementById("hidden1").innerHTML="<span class='content'>"+maindta[2]["post_id"]+"</span>";
-
-
-    document.getElementById("spaceForBlog2").innerHTML = "<span class='content'>"+ maindta[1]["content"]; +"</span>";
-    document.getElementById("title2").innerHTML = "<span class='content'>"+ maindta[1]["title"]; +"</span>";
-    document.getElementById("timeToRead2").innerHTML = "<span class='content'>"+ maindta[1]["time_read"]; +"</span>";
-    document.getElementById("datePosted2").innerHTML = "<span class='content'>"+ maindta[1]["date_posted"]; +"</span>";
-    document.getElementById("genre2").innerHTML = "<span class='content'>"+ maindta[1]["genre"]; +"</span>";
-    document.getElementById("hidden2").innerHTML=maindta[1]["post_id"];
-    document.getElementById("checkComment").innerHTML="<span class='content'>"+maindta[1]["allow_comments"]; +"</span>";
-    //currently comment functionality just for the middle post.
+   for(let i=0;i<ids.length;i++){
+   blogIds.push(ids[i].innerText); 
+  }
+  for(var i=0; i<maindta.length; i++){
+  if(blogIds.indexOf(maindta[i]["post_id"])== -1){
+  $('.blogPostWrapper').append('<div class="postContainer row"><div class="column"><div class="postContnet orange-column"><div class="timeToRead" id="timeToRead1"><p><span class="content">'+ maindta[i]["time_read"] +'</span></p></div><div class="datePosted" id="datePosted1"> <p><span class="content">'+ maindta[i]["date_posted"] +'</span></p></div><div class="row"><div class="column"><div class="postDetails blue-column"><h1 id="title1"><span class="content">'+ maindta[i]["title"] +'</span></h1><p hidden id="hidden1"><span class="content post_id">'+ maindta[i]["post_id"] +'</span></p><div class="row"><div class="column"><div class="blogContentFromUser blue-column"><article id="spaceForBlog1"><span class="content">'+ maindta[i]['content'] +'</span></article></div></div></div></div></div></div><div class="buttons"><div class="box"><select class="options1"><option data-post-id='+ maindta[i]["post_id"] +' value="Option1">Option 1</option><option data-post-id='+ maindta[i]["post_id"] +' value="Option2">Option 2</option><option data-post-id='+ maindta[i]["post_id"] +' value="Option3">Option 3</option><option data-post-id='+ maindta[i]["post_id"] +' value="Option4">Option 4</option><option data-post-id='+ maindta[i]["post_id"] +' value="Option5">Option 5</option></select></div><input onclick=saveComment(this) class="submitButtons feedBackButton" data-post-feedback="feedBackInput-'+ maindta[i]["post_id"] +'"data-post-id='+ maindta[i]["post_id"] +'type="submit" value="Feedback to Writer"><div id="feedBack"><input type="text" class="form-control" id="feedBackInput-'+ maindta[i]["post_id"] +'" placeholder="Type your feedback..." name="feedback"></div><input class="submitButtons saveBlogButton" type="submit" value="Save Blog" data-post-id='+ maindta[i]["post_id"] +' onclick="saveBlog(this)"><p id="genre1"><span class="content">'+ maindta[i]["genre"] +'</span></p><p hidden id="checkComment"><span class="content">'+ maindta[i]["allow_comments"] +'</span></p></div></div></div></div>')
     var text = $('#checkComment').text();
     console.log("text value::"+text);
-    if(text==0){
-      document.getElementById("commentSection").style.display='none'; 
+   // debugger
+    if(maindta[i]["allow_comments"]=='0'){
+
+      document.getElementById("feedBackInput-"+ maindta[i]["post_id"]).classList.add('hide'); 
     }
-    else{
-        document.getElementById("commentSection").style.display='block'; 
-      }
-
-
-
-
-    document.getElementById("spaceForBlog3").innerHTML = "<span class='content'>"+ maindta[0]["content"]; +"</span>";
-    document.getElementById("title3").innerHTML = "<span class='content'>"+ maindta[0]["title"]; +"</span>";
-    document.getElementById("timeToRead3").innerHTML = "<span class='content'>"+ maindta[0]["time_read"]; +"</span>";
-    document.getElementById("datePosted3").innerHTML = "<span class='content'>"+ maindta[0]["date_posted"]; +"</span>";
-    document.getElementById("genre3").innerHTML = "<span class='content'>"+ maindta[0]["genre"]; +"</span>";
-    document.getElementById("hidden3").innerHTML=maindta[1]["post_id"];
-
-
-
-
-}
-else{
-     document.getElementById("spaceForBlog1").innerHTML = "<span class='content'>"+ maindta[2]["content"]; +"</span>";
-}
-
-
- 
+    
+   }
  }
+
+}
+
+
 </script>
 
 
