@@ -30,9 +30,26 @@
                     <input id="submit" name="submit" type="submit" value="Submit">
                 </form>
             </div>
-            
 
-            <?php
+            <div id="alt_login">
+                <p>Or Login Using: &nbsp&nbsp&nbsp&nbsp&nbsp
+                    <a href=""><img src="..\..\Images/facebook.png" alt="Login with Facebook"
+                            class="social_media_icons facebook" /></a>
+                    <a href=""><img src="..\..\Images/twitter.png" alt="Login with Twitter"
+                            class="social_media_icons twitter" /></a>
+                    <a href=""><img src="..\..\Images/google-plus.png" alt="Login with Google"
+                            class="social_media_icons google" /></a></p>
+            </div>
+
+            <div class="bottomNavLinks">
+                <a id="welcome_link" href="./welcome-page.html"> Welcome Page</a>
+                <a id="create_account_link" href="./create-account.html"> Create Account</a>
+            </div>
+        </div>
+    </div>
+
+    
+    <?php
             if(!isset($_GET['login'])){
                exit();
             }
@@ -53,23 +70,6 @@
               }
             }
           ?>
-
-            <div id="alt_login">
-                <p>Or Login Using: &nbsp&nbsp&nbsp&nbsp&nbsp
-                    <a href=""><img src="..\..\Images/facebook.png" alt="Login with Facebook"
-                            class="social_media_icons facebook" /></a>
-                    <a href=""><img src="..\..\Images/twitter.png" alt="Login with Twitter"
-                            class="social_media_icons twitter" /></a>
-                    <a href=""><img src="..\..\Images/google-plus.png" alt="Login with Google"
-                            class="social_media_icons google" /></a></p>
-            </div>
-
-            <div class="bottomNavLinks">
-                <a id="welcome_link" href="./welcome-page.html"> Welcome Page</a>
-                <a id="create_account_link" href="./create-account.html"> Create Account</a>
-            </div>
-        </div>
-    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="../../js/wandika-main.js"></script>
     <script>
