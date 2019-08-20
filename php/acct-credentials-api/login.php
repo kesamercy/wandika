@@ -13,22 +13,22 @@
 
   <div class="modal-content">
     <div id="login_card">
-      <div id="login">
-        <h1>Login</h1>
-        <hr class="login_line"> </hr>
-        <form action="login-verify.php" method="POST">
-          <input id="username" name="username" type="text" placeholder="Username" >
-          <br>
-          <input id="user_pass" name="user_pass" type="text" placeholder="Password" >
-          <br>
-          <div id="forgot">
-            <a href="./forgot_password.html">Forgot Password?</a>
-            <br>
-            <br>
-          </div>
-          <input id="submit" name="submit" type="submit" value="Submit">
-        </form>
-      </div>
+    <div id="login">
+                <h1>Login</h1>
+                <hr class="login_line"> </hr>
+                <form action="../php/acct-credentials-api/login-verify.php" method="POST">
+                    <input id="username" name="username" type="text" placeholder="Username">
+                    <br>
+                    <input id="user_pass" name="user_pass" type="text" placeholder="Password">
+                    <br>
+                    <div id="forgotPassword">
+                        <a href="./forgot-password.html">Forgot Password?</a>
+                        <br>
+                        <br>
+                    </div>
+                    <input id="submit" name="submit" type="submit" value="Submit">
+                </form>
+            </div>
       <?php
             if(!isset($_GET['login'])){
                exit();
@@ -53,9 +53,9 @@
       
    <div id="alt_login" >
         <p>Or Login Using: &nbsp&nbsp&nbsp&nbsp&nbsp
-          <a href=""><img src="../../Images/facebook.png" alt="Login with Facebook" class="social_media_icons facebook"/></a>
-          <a href=""><img src="../../Images/twitter.png" alt="Login with Twitter" class="social_media_icons twitter"/></a>
-          <a href=""><img src="../../Images/google-plus.png" alt="Login with Google" class="social_media_icons google"/></a></p>
+          <a href=""><img src="..\..\Images/facebook.png" alt="Login with Facebook" class="social_media_icons facebook"/></a>
+          <a href=""><img src="..\..\Images/twitter.png" alt="Login with Twitter" class="social_media_icons twitter"/></a>
+          <a href=""><img src="..\..\Images/google-plus.png" alt="Login with Google" class="social_media_icons google"/></a></p>
         </div>
       </div>
     </div>
