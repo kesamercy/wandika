@@ -57,18 +57,42 @@ function startAjax(urlbase, data, callback){
     }
 
 
-    function saveBlog(urlbase, data){
-          var form=data;
-          //data["blog-post"] = "buffalo";
-         console.log("sending data "  + JSON.stringify(data));
-          $.ajax({
-               url: urlbase,
-               type: 'POST',
-               dataType: 'json',
-               data: form,
-              });
-          return false;
-    }
+ function saveBlog(button){
+  //debugger
+  var url ="http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php";
+  var data={
+    "action":"save-blog",
+    "postid":button.dataset.postId,
+  }
+  $.ajax({
+  type: "POST",
+  url: url,
+  data: data,
+  success: function(){
+   console.log(button.dataset.postId);
+  }
+});
+}
+
+function saveComment(button) {
+var id = button.dataset.feedback;
+var feedback = document.getElementById(id).innerText;
+var url ="http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php";
+  var data={
+    "feedback":feedback,
+    "action":"set-comment",
+    "postid":button.dataset.postId,
+  }
+  $.ajax({
+  type: "POST",
+  url: url,
+  data: data,
+  success: function(){
+   console.log(button.dataset.postId);
+  }
+});
+
+}
 
     function setTags(urlbase, data){
       var form=data;
