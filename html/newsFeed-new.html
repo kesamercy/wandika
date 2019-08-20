@@ -12,10 +12,10 @@
   <script src="../js/poc.js"></script>
 </head>
 <body>
-  <div class="newsFeedPageWrapper">
-    <div class="logoSection">
+  <div class="headerElem">
+    <!-- <div class="logoSection">
       <img src="..\Images\newlogo.png" class="logo" onclick="window.location.href='welcome-page.html'" alt="">
-    </div>
+    </div> -->
 
     <div class="searchBar">
       <div class="search">
@@ -29,23 +29,21 @@
             <a href="./forgot-password.html"> Log Out</a>
     </div>
     <div class="topNavBar">
-      <div class='navLinks row'>
-        <div class='column'>
-          <div class='green-column'>
-            <div class="sidebar">
+      
               <ul>
                 <li><a href="#home">Community</a></li>
                 <li><a href="#news">Personal Page</a></li>
                 <li><a href="#about">Home</a></li>
                 <li><a href="#contact">Settings</a></li>
               </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+            
     </div>
-
-    <!-- blog input field  -->
+  </div>
+   <div class="logoSection">
+      <img src="..\Images\newlogo.png" class="logo" onclick="window.location.href='welcome-page.html'" alt="">
+    </div>
+  <div class="newsFeedPageWrapper">
+ <!-- blog input field  -->
 
     <div class="blogInputFieldPageWrapper">
 
@@ -81,7 +79,9 @@
                 <option>Option 5</option>
               </select>
             </div>
+            <div style="float:right; width:100%">
             <input class="submitButtons postAsBlogButton" type="submit" onclick="startAjax('http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php',{'action':'blog-post'}, loadUser);" value="Post As Blog">
+          </div>
           </div>
       </div>
     </div>
