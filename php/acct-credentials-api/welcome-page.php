@@ -7,12 +7,12 @@
   <title>Wandika Welcome Page</title>
 </head>
 <body>
-  <div class="logoSection">
-    <div class="logoIcon" id="left_side">
-      <img src="..\..\Images\official_logo.png" width="200" height="170" class="d-inline-block align-top" alt="">
+<div class="logoSection">
+    <div class="logoIcon">
+      <img src="..\Images\newlogo-green-color.png" class="logo" onclick="window.location.href='welcome-page.html'" alt="">
     </div>
   </div>
-<!--  -->
+
   <section class="titleSection" id="right_side">
     <div class="title_group">
       <h1 class="wandika top_word">Wandika</h1>
@@ -29,13 +29,13 @@
     <main id="left_side">
       <div class="content_details">
         <p>
-          Write about things you want to share with the world.
+          Write about experiences that have shaped your life.
 
-          Read blogs in your favorite genres.
+          Learn from people's experiences through the stories they share.
 
-          Recieve constructive feedback about your blogs from your community.
+          Connect with people globally through mutual expereinces.
 
-          See what other bloggers say has helped them improve their blogs.
+          Discover new things about other parts of the world through the stories people share.
         </p>
       </div>
     </main>
