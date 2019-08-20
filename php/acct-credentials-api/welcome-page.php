@@ -58,7 +58,7 @@
   <!-- chnage the names for the buttons to the login and create account names  -->
   <div class="container">
     <button class="signup button" onclick="window.location.href='create-account.php'" >Create Account</button>
-    <button class="log button"  onclick="window.location.href='login.php''" id="left_btn">Login</button>
+    <button class="log button"  onclick="window.location.href='login.php'" id="left_btn">Login</button>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
