@@ -81,4 +81,10 @@ CODE FOR GLASS BUTTONS
 
 
 
-
+STYLING FEATHER ANG GLOBE FOR THE PAGE DESGIN
+ <div class="ink">
+                <img src="..\Images\blueinkwhite.png" class="ink" onclick="window.location.href='welcome-page.html'" alt="">
+            </div>
+            <div class="globe">
+                <img src="..\Images\globe-icon-white.png" class="globe" onclick="window.location.href='welcome-page.html'" alt="">
+            </div>
