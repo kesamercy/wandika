@@ -28,6 +28,13 @@ body {
 }
 
 
+/* styling for the logo section */
+
+.logoSection {
+    width: 30%;
+}
+
+
 /* styling for the input field starts here.. input field is the place where the post is typed */
 
 ul {
@@ -46,6 +53,8 @@ li {
 li a {
     padding: 16px;
     text-align: center;
+    color: white;
+    text-decoration: none;
 }
 
 .blogInputFieldPageWrapper {
@@ -57,7 +66,7 @@ li a {
     background-color: white;
     display: flex;
     justify-content: center;
-    width: 90%;
+    width: 60%;
     height: 23%;
     color: black;
 }
@@ -128,7 +137,7 @@ input[id=blogContent] {
     background-color: white;
     color: black;
     height: 40%;
-    width: 98%;
+    width: 60%;
     color: black;
 }
 
