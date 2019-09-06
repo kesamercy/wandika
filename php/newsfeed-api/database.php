@@ -5,11 +5,10 @@ $connections = array();
 //Used to connect to the wandika database.
 //Based on code provided by Dr. Alan Hunt
 function connect(){
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "practice";
-
+    $servername = "webdev.cse.buffalo.edu";
+    $username = "wandika_user";
+    $password = "wandika19!";
+    $dbname = "wandika";
     global $connections;
 
     error_log("Connect to ".$dbname." as user ".$username, 0);
@@ -29,10 +28,10 @@ function connect(){
 }
 
 function connect_test(){
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "test";
+    $servername = "webdev.cse.buffalo.edu";
+    $username = "wandika_user";
+    $password = "wandika19!";
+    $dbname = "wandika";
     global $connections;
 
     error_log("Connect to ".$dbname." as user ".$username, 0);

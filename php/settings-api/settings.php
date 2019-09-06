@@ -8,7 +8,17 @@
   <title>User Settings</title>
 </head>
 <body>
-    <div>
+  <div>
+
+      <div class="topNavBar">
+      
+              <ul>
+                <li><a href="..\..\html\newsFeed-new.html">Community</a></li>
+                <li><a href="..\..\html\profile-page.html">Personal Page</a></li>
+                <li><a href="..\acct-credentials-api\welcome-page.php">Log Out</a></li>
+              </ul>
+            
+    </div>
         <!----span onclick="closeModal()" class="close">&times;</span-->
         <div id="settings-card">
             <div class="settings-page-content">

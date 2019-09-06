@@ -20,7 +20,7 @@
         $post_id = $decoded_params['content'];
     }
 
-    //$_SESSION['user_id'] = 99999;
+    $_SESSION['user_id'] = 99999;
 
     if(isset($_POST['action']) && !empty($_POST['action'])) {
 
@@ -47,8 +47,8 @@
                 case 'search': search_user(); break;
                 case 'random': post_randomizer(); break;
                 case 'time-ago': time_ago($post_id); break;
-                case 'get-saved-posts': get_saved_posts(13); break;
-                case 'get-past-posts': get_past_posts(13); break;
+                case 'get-saved-posts': get_saved_posts($user_id); break;
+                case 'get-past-posts': get_past_posts($user_id); break;
                 case 'get-user-info': get_user_info($user_id); break;
                 default: echo "No such function";
             }
@@ -136,8 +136,8 @@
             $post_ids = $post_ids->fetchAll();
             close_connection();
             echo json_encode($ret_content);
-            time_ago($post_ids);
-            get_tags($post_ids);
+            echo json_encode(time_ago($post_ids));
+            echo json_encode(get_tags($post_ids));
         }else{
             get_last_three_posts($conn);
         }    
@@ -331,9 +331,9 @@
     function get_tags($post_id){ //requires array
         $conn = connect();
         foreach($post_id as $value){
-            $sql = "SELECT * FROM tags WHERE post_id = $value";
+            $sql = "SELECT * FROM tags WHERE post_id = $post_id";
             $tags = $conn->query($sql);
-            echo "\nTags:".json_encode($tags->fetchAll());
+            echo json_encode($tags->fetchAll());
         }
         close_connection();
     }
@@ -458,9 +458,8 @@
 
     function time_ago ($post_id) {
         $conn = connect();
-        $time_ago = null;
         foreach($post_id as $value){
-            $sql = "SELECT time_posted FROM posts_table WHERE post_id=$value";
+            $sql = "SELECT time_posted FROM posts_table WHERE post_id=$post_id";
             $database_time = $conn->query($sql);
             $oldTime = $database_time->fetch();
             $compareTime = $oldTime[0];
@@ -494,7 +493,7 @@
         }
         
         close_connection();
-        echo "\nTime ago:".json_encode($time_ago);
+        echo json_encode($time_ago);
         }
 
     function get_saved_posts($user_id){ 
@@ -503,15 +502,13 @@
         $post_ids = array();
         $collected_ids = $conn->query($sql)->fetchAll();
         foreach($collected_ids as $value){
-            foreach($value as $output){           
-                array_push($post_ids, $output);
-            }
+            array_push($post_ids, $value);
         }
         $returned_posts = array();
         foreach($post_ids as $value){
             $sql = "SELECT * FROM posts_table WHERE post_id = $value";
             $post = $conn->query($sql)->fetch();
-            array_push($returned_posts, $post);
+            array_push($returned_posts, $post[0]);
         }
         echo json_encode($returned_posts);
         get_tags($post_ids);
@@ -525,12 +522,7 @@
         $posts = $conn->query($sql)->fetchAll();
         $post_ids = array();
         $sql = "SELECT post_id FROM posts_table WHERE user_id=$user_id";
-        $retrieved_ids = $conn->query($sql)->fetchAll();
-        foreach($retrieved_ids as $value){
-            foreach($value as $output){
-                array_push($post_ids, $output);
-            }
-        }
+        $post_ids = $conn->query($sql)->fetchAll();
         echo json_encode($posts);
         get_tags($post_ids);
         time_ago($post_ids);
@@ -538,7 +530,7 @@
     }
 
     function get_user_info($user_id){
-        $conn = connect();
+        $conn = connection();
         $sql = "SELECT username, country, first_name, last_name, DOB, bio, profile_quote
                 FROM user WHERE user_id=$user_id";
         $user_info = $conn->query($sql)->fetchAll();

@@ -59,7 +59,7 @@ function startAjax(urlbase, data, callback){
 
  function saveBlog(button){
   //debugger
-  var url ="http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php";
+  var url ="https://webdev.cse.buffalo.edu/wandika/final/wandika/php/newsfeed-api/newsFeed.php";
   var data={
     "action":"save-blog",
     "postid":button.dataset.postId,
@@ -77,7 +77,7 @@ function startAjax(urlbase, data, callback){
 function saveComment(button) {
 var id = button.dataset.feedback;
 var feedback = document.getElementById(id).innerText;
-var url ="http://localhost/latest/wandika/php/newsfeed-api/newsFeed.php";
+var url ="https://webdev.cse.buffalo.edu/wandika/final/wandika/php/newsfeed-api/newsFeed.php";
   var data={
     "feedback":feedback,
     "action":"set-comment",

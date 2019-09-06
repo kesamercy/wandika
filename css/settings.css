@@ -39,7 +39,6 @@ form{
 #last_name, #email, #country,
 #country_code,
 #submit{
-
   position: relative;
   left: 37%;
 }
@@ -50,6 +49,46 @@ form{
   margin: 50px;
   width: 90%;
   color: lightgrey;
+}
+
+/*nav links styling*/
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+ /* position: absolute;*/
+}
+
+li {
+  float: left;
+  position: relative;
+  left:24%;
+}
+
+li a {
+  display: block;
+  font-family: 'Quicksand', sans-serif;
+  padding: 90px;
+  color: white;
+  text-decoration: none;
+  font-weight: 400px;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
 }
 
 input[type=text]{
@@ -116,3 +155,9 @@ input[type=submit]:hover{
   text-align:center;
   }
 
+#logout-link{
+  position:relative;
+  left:90%;
+  color:white;
+  font-family: 'Quicksand', sans-serif;
+}

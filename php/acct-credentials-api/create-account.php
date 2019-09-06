@@ -51,9 +51,15 @@
             <br>
             <input id="submit"  name="submit" type="submit" value="Submit">
           </form>
-          <?php
-
-            if(!isset($_GET['signup'])){
+          <div class="bottomNavLinks">
+                <a id="welcome_link" href="welcome-page.php"> Welcome Page</a>
+                <a id="login_link" href="login.php"> Login</a>
+        </div>
+        </div>
+      </div>
+    </div>
+    <?php
+           if(!isset($_GET['signup'])){
                exit();
             }
             else{
@@ -77,9 +83,6 @@
               }
             }
           ?>
-        </div>
-      </div>
-    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="../../js/wandika-main.js"></script>
     <script>
