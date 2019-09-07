@@ -12,12 +12,13 @@
 
       <div class="topNavBar">
       
-              <ul>
-                <li><a href="..\..\html\newsFeed-new.html">Community</a></li>
-                <li><a href="..\..\html\profile-page.html">Personal Page</a></li>
-                <li><a href="..\acct-credentials-api\welcome-page.php">Log Out</a></li>
-              </ul>
-            
+        <ul>
+            <li><a href=".\newsFeed-new.html">Community</a></li>
+            <li><a href=".\profile-page.html">Profile</a></li>
+            <li><a href="..\php\settings-api\settings.php">Settings</a></li>
+            <li> <a href="..\php\acct-credentials-api\welcome-page.php"> Log Out</a></li>
+        </ul>
+    
     </div>
         <!----span onclick="closeModal()" class="close">&times;</span-->
         <div id="settings-card">
