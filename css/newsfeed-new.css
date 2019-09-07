@@ -17,14 +17,41 @@ body {
     height: 10vh;
 }
 
+.leftHeaderElems {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+/* styling for the logo section */
+
+.logoSection {
+    width: 15%;
+}
+
 .logoSection img {
     width: 100px;
     height: 100px;
 }
 
-.leftHeaderElems {
-    display: flex;
-    justify-content: flex-end;
+
+/* styling for the search bar */
+
+input[id=searchInput] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 14px;
+    box-sizing: border-box;
+}
+
+
+/* styling for the log out section */
+
+.logOut a {
+    text-decoration: none;
+    color: white;
 }
 
 
@@ -46,6 +73,8 @@ li {
 li a {
     padding: 16px;
     text-align: center;
+    color: white;
+    text-decoration: none;
 }
 
 .blogInputFieldPageWrapper {
@@ -57,7 +86,7 @@ li a {
     background-color: white;
     display: flex;
     justify-content: center;
-    width: 90%;
+    width: 60%;
     height: 23%;
     color: black;
 }
@@ -128,7 +157,7 @@ input[id=blogContent] {
     background-color: white;
     color: black;
     height: 40%;
-    width: 98%;
+    width: 60%;
     color: black;
 }
 
