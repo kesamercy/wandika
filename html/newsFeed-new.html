@@ -29,10 +29,6 @@
                     </div>
                 </div>
 
-                <div class="logOut">
-                    <a href="..\php\acct-credentials-api\welcome-page.php"> Log Out</a>
-                </div>
-
             </div>
 
 
@@ -42,6 +38,7 @@
                     <li><a href=".\newsFeed-new.html">Community</a></li>
                     <li><a href=".\profile-page.html">Profile</a></li>
                     <li><a href="..\php\settings-api\settings.php">Settings</a></li>
+                    <li> <a href="..\php\acct-credentials-api\welcome-page.php"> Log Out</a></li>
                 </ul>
 
             </div>
@@ -156,7 +153,7 @@ test how to get the div to grow and strech as the elements are added -->
             for (let i = 0; i < ids.length; i++) {
                 blogIds.push(ids[i].innerText);
             }
-            for (var i = maindta.length-1; i >= 0; i++) {
+            for (var i = maindta.length - 1; i >= 0; i++) {
                 if (blogIds.indexOf(maindta[i]["post_id"]) == -1) {
                     $('.blogPostWrapper').append(
                         '<div class="postContainer row"><div class="column"><div class="postContnet orange-column"><div class="timeToRead" id="timeToRead1"><p><span class="content">' + maindta[i]["time_read"] + '</span></p></div><div class="datePosted" id="datePosted1"> <p><span class="content">' + maindta[i]["date_posted"] + '</span></p></div><div class="row"><div class="column"><div class="postDetails blue-column"><h1 id="title1"><span class="content">' + maindta[i]["title"] + '</span></h1><p hidden id="hidden1"><span class="content post_id">' + maindta[i]["post_id"] + '</span></p><div class="row"><div class="column"><div class="blogContentFromUser blue-column"><article id="spaceForBlog1"><span class="content">' + maindta[i]['content'] + '</span></article></div></div></div></div></div></div><div class="buttons"><div class="box"><select class="options1"><option data-post-id=' + maindta[i]["post_id"] + ' value="Option1">Option 1</option><option data-post-id=' + maindta[i]["post_id"] + ' value="Option2">Option 2</option><option data-post-id=' + maindta[i]["post_id"] + ' value="Option3">Option 3</option><option data-post-id=' + maindta[i]["post_id"] + ' value="Option4">Option 4</option><option data-post-id=' + maindta[i]["post_id"] + ' value="Option5">Option 5</option></select></div><input onclick=saveComment(this) class="submitButtons feedBackButton" data-post-feedback="feedBackInput-' + maindta[i]["post_id"] + '"data-post-id=' + maindta[i]["post_id"] + 'type="submit" value="Feedback to Writer"><div id="feedBack"><input type="text" class="form-control" id="feedBackInput-' + maindta[i]["post_id"] + '" placeholder="Type your feedback..." name="feedback"></div><input class="submitButtons saveBlogButton" type="submit" value="Save Blog" data-post-id=' + maindta[i]["post_id"] + ' onclick="saveBlog(this)"><p id="genre1"><span class="content">' + maindta[i]["genre"] + '</span></p><p hidden id="checkComment"><span class="content">' + maindta[i]["allow_comments"] + '</span></p></div></div></div></div>')
@@ -178,4 +175,5 @@ test how to get the div to grow and strech as the elements are added -->
   5. as you think of what to do with the white background  -->
     <!-- on click of see more, let the page expand and occupy the whole page. every other page is pushed down. on click, show only....  -->
 </body>
+
 </html>

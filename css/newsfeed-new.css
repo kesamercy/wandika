@@ -47,14 +47,6 @@ input[id=searchInput] {
 }
 
 
-/* styling for the log out section */
-
-.logOut a {
-    text-decoration: none;
-    color: white;
-}
-
-
 /* styling for the input field starts here.. input field is the place where the post is typed */
 
 ul {
