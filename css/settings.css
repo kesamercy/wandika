@@ -72,10 +72,9 @@ li {
 li a {
     display: block;
     font-family: 'Quicksand', sans-serif;
-    padding: 90px;
+    padding: 16px;
     color: white;
     text-decoration: none;
-    font-weight: 400px;
 }
 
 a:link {
