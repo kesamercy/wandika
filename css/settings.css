@@ -10,6 +10,10 @@ body {
     color: white;
 }
 
+.topNavBar {
+    align-items: center;
+}
+
 h1 {
     text-align: center;
 }
