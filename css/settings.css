@@ -5,13 +5,13 @@
 
 body {
     background-color: #2C323D;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
+    color: white;
 }
 
 h1 {
     text-align: center;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 300;
-    color: white;
 }
 
 #settings-card {
