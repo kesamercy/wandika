@@ -11,6 +11,30 @@ body {
     padding: 0;
 }
 
+.topNavBar {
+    padding: 57px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    padding: 16px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+}
+
 .profilePageWrapper {
     margin: 15px;
     background-color: var(--green_font_color);
@@ -60,11 +84,7 @@ body {
     right: 79%;
 }
 
-.country p {
-    position: absolute;
-    bottom: 13%;
-    right: 84%;
-}
+.country p {}
 
 .blue-column {
     background-color: blue;
