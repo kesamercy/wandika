@@ -13,7 +13,7 @@
       <div class="topNavBar">
       
         <ul>
-            <li><a href="..\newsFeed-new.html">Community</a></li>
+            <li><a href="..\html\newsFeed-new.html">Community</a></li>
             <li><a href="..\profile-page.html">Profile</a></li>
             <li><a href="..\php\settings-api\settings.php">Settings</a></li>
             <li> <a href="..\php\acct-credentials-api\welcome-page.php"> Log Out</a></li>
