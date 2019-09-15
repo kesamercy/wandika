@@ -40,7 +40,7 @@
 
                             <div class="searchBar">
                                 <div class="search">
-                                    <input type="text" class="searchTerm" placeholder="What are you looking for?">
+                                    <input type="text" id="searchInput" class="searchTerm" placeholder="What are you looking for?">
                                     <button type="submit" class="searchButton">
                                               <i class="fa fa-search"></i>
                                             </button>
@@ -89,7 +89,7 @@
                             </div>
 
                             <div class="postButton">
-                                <input class="submitButtons postAsBlogButton" type="submit" onclick="startAjax('https://webdev.cse.buffalo.edu/wandika/final/wandika/php/newsfeed-api/newsFeed.php',{'action':'blog-post'}, loadUser);" value="Post As Blog">
+                                <input class="submitButtons postAsBlogButton" type="submit" onclick="startAjax('https://webdev.cse.buffalo.edu/wandika/wandikapp/wandika/php/newsfeed-api/newsFeed.php',{'action':'blog-post'}, loadUser);" value="Post As Blog">
                             </div>
 
                         </div>
@@ -117,7 +117,7 @@ test how to get the div to grow and strech as the elements are added -->
         //for getting data on the onload of the page.
         var posts = ['', '', '']
         window.onload = function() {
-            startAjaxOnLoad('https://webdev.cse.buffalo.edu/wandika/final/wandika/php/newsfeed-api/newsFeed.php', {
+            startAjaxOnLoad('https://webdev.cse.buffalo.edu/wandika/wandikapp/wandika/php/newsfeed-api/newsFeed.php', {
                 'action': 'on-load'
             }, loadUser);
         };
@@ -126,7 +126,7 @@ test how to get the div to grow and strech as the elements are added -->
             $(document).on('change', 'select', function() {
                 //debugger
                 var value = this.options[this.selectedIndex].value;
-                setTags('https://webdev.cse.buffalo.edu/wandika/final/wandika/php/newsfeed-api/newsFeed.php', {
+                setTags('https://webdev.cse.buffalo.edu/wandika/wandikapp/wandika/php/newsfeed-api/newsFeed.php', {
                     'action': 'set-tag',
                     'postid': this.options[this.selectedIndex].dataset.postId,
                     'tag': value
@@ -136,7 +136,7 @@ test how to get the div to grow and strech as the elements are added -->
         //set commemts for green blog post-- need to add for the rst two as well
         $(document).ready(function() {
             $("#commentSection").change(function() {
-                setComment('https://webdev.cse.buffalo.edu/wandika/final/wandika/php/newsfeed-api/newsFeed.php', {
+                setComment('https://webdev.cse.buffalo.edu/wandika/wandikapp/wandika/php/newsfeed-api/newsFeed.php', {
                     'action': 'set-comment',
                     'postid': $('#hidden2').text(),
                     'feedback': $('.commentSection').val()
