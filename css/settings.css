@@ -1,5 +1,5 @@
 :root {
-    --green_font_color: #0AA2A4;
+    --green_font_color: #2a5161;
     --std_black_color: #2C323D;
 }
 
@@ -22,7 +22,7 @@ h1 {
     margin: auto;
     width: 100%;
     height: 100vh;
-    background-color: #2C323D;
+    background-color: var(--green_font_color);
 }
 
 .settings-page-content {
