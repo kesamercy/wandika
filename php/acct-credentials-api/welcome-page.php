@@ -1,9 +1,11 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" type="text/css" href="..\..\css\wandika-main.css?version=1">
+
+
   <title>Wandika - Welcome!</title>
 </head>
 <body>
@@ -28,37 +30,19 @@
   <div class="main_content">
     <main id="left_side">
       <div class="content_details">
-        <p>
-          Write about things you want to share with the world.
-
-          Read blogs in your favorite genres.
-
-          Receive constructive feedback about your blogs from your community.
-
-          See what other bloggers say has helped them improve their blogs.
-        </p>
+        <ul>
+          <li> Write about things you want to share with the world. </li>
+          <li> Read blogs in your favorite genres. </li>
+          <li> Receive constructive feedback about your blogs from your community. </li>
+          <li> See what other bloggers say has helped them improve their blogs. </li>
+        </ul>
       </div>
     </main>
-
-<!-- chnage the spacing impelemention between these icons and also find out if you don't have to repeat code 4 times for the same icons -->
-    <div class="left_navicons">
-      <p>
-
-        <img src="..\..\Images\feather_icon.png" width="100" height="70" class="d-inline-block align-top" alt="">
-
-        <img src="..\..\Images\feather_icon.png" width="100" height="70" class="d-inline-block align-top" alt="">
-
-        <img src="..\..\Images\feather_icon.png" width="100" height="70" class="d-inline-block align-top" alt="">
-
-        <img src="..\..\Images\feather_icon.png" width="100" height="70" class="d-inline-block align-top" alt="">
-      </p>
-    </div>
-  </div>
 
   <!-- chnage the names for the buttons to the login and create account names  -->
   <div class="container">
     <button class="signup button" onclick="window.location.href='create-account.php'" >Create Account</button>
-    <button class="log button"  onclick="window.location.href='login.php'" id="left_btn">Login</button>
+    <button class="log button"  onclick="window.location.href='login.php''" id="left_btn">Login</button>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
