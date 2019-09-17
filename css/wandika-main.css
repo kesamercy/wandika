@@ -44,7 +44,7 @@ p img {
     height: 30px;
 }
 
-/* styling for the main content on the spalsh page */
+/* styling for the list on the welcome page */
 main ul {
   color: var(--std_black_color);
   position: relative;
@@ -71,9 +71,7 @@ li:before {
   background-repeat: no-repeat;
   margin-right: 10px;
 }
-.small-list {
-    font-size: 100%;
-}
+
 
 .main_content {
   position: absolute;
