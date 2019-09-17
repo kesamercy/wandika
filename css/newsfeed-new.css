@@ -35,18 +35,6 @@ body {
 }
 
 
-/* styling for the search bar */
-
-input[id=searchInput] {
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 14px;
-    box-sizing: border-box;
-}
-
-
 /* styling for the input field starts here.. input field is the place where the post is typed */
 
 ul {
@@ -94,6 +82,18 @@ li a {
 input[type=text] {
     padding: 12px 20px;
     width: 95%;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 14px;
+    box-sizing: border-box;
+}
+
+
+/* styling for the search bar */
+
+input[id=searchInput] {
+    padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
