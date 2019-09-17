@@ -3,12 +3,25 @@
     --std_black_color: #2C323D;
 }
 
+
+/* organise the styling of the css based on the order in which the elements
+appear in the html page ---- something to do during clean up */
+
 body {
     font-family: 'Quicksand', sans-serif;
     font-weight: 300;
     color: var(--std_black_color);
     margin: 0;
     padding: 0;
+}
+
+.logoSection {
+    width: 15%;
+}
+
+.logoSection img {
+    width: 100px;
+    height: 100px;
 }
 
 .topNavBar {

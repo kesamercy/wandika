@@ -10,16 +10,39 @@
 <body>
   <div>
 
-      <div class="topNavBar">
-      
-        <ul>
-            <li><a href="..\..\html\newsfeed.html">Community</a></li>
-            <li><a href="..\..\html\profile-page.html">Profile</a></li>
-            <li><a href=".\settings.php">Settings</a></li>
-            <li> <a href="..\login-and-createacct-files\welcome-page.php"> Log Out</a></li>
-        </ul>
-    
-      </div>
+  <div class="headerElem">
+
+<div class="topNavBar">
+
+    <ul>
+        <li>
+            <div class="logoSection">
+                <img src="..\..\Images\newlogo.png" class="logo" onclick="window.location.href='welcome-page.html'" alt="">
+            </div>
+
+        </li>
+        <li><a href=".\newsfeed.html">Community</a></li>
+        <li><a href=".\profile-page.html">Profile</a></li>
+        <li><a href="..\php\settings-api\settings.php">Settings</a></li>
+        <li> <a href="..\php\login-and-createacct-files\welcome-page.php"> Log Out</a></li>
+
+        <li>
+            <div class="leftHeaderElems">
+
+                <div class="search-container">
+                    <form action="/action_page.php">
+                        <input placeholder="Search.." name="search">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+
+            </div>
+
+        </li>
+    </ul>
+
+</div>
+</div>
 
       
       <div id="settings-card">

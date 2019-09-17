@@ -10,6 +10,15 @@ body {
     color: white;
 }
 
+.logoSection {
+    width: 15%;
+}
+
+.logoSection img {
+    width: 100px;
+    height: 100px;
+}
+
 .topNavBar {
     padding: 57px;
 }
