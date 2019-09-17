@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" type="text/css" href="..\..\css\wandika-main.css?version=1">
+  <link rel="stylesheet" type="text/css" href="\css\wandika-main.css">
   <title>Create Account</title>
 </head>
 <body>
@@ -33,7 +34,7 @@
               else{
                 echo '<input id="email" name="email" type="text" placeholder="Email"  minlength="3" maxlength="15">';
               }
-            ?> 
+            ?>
             <br>
             <input id="user_pass" name="user_pass" type="text" placeholder="Password" minlength="3" maxlength="15">
             <br>

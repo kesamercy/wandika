@@ -5,7 +5,8 @@
 
 body {
   font: 100% Verdana, sans-serif;
-  color: var(--green_font_color); }
+  color: var(--green_font_color);
+ }
 
 /* styling for the page title content */
 h1.wandika {
@@ -151,7 +152,7 @@ p img {
   width: 1090px;
   color: white;
 
-  font-family: Verdana, sans-serif; 
+  font-family: Verdana, sans-serif;
 }
 
 .new-user-content{
@@ -297,9 +298,9 @@ input[type=submit] {
     height: 500px;
     margin: auto;
     position: relative;
-    top: 30px; 
+    top: 30px;
   }
-  
+
   .acct-content #new_user{
     position: relative;
     top: -60px;
@@ -357,7 +358,7 @@ a:link {
 .google {
  position: relative;
   right: 4px; }
-  
+
 .error{
   color:red;
   text-align:center;

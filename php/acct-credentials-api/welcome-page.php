@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" type="text/css" href="..\..\css\wandika-main.css?version=1">
-  <title>Wandika Welcome Page</title>
+  <title>Wandika - Welcome!</title>
 </head>
 <body>
   <div class="logoSection">
@@ -33,7 +33,7 @@
 
           Read blogs in your favorite genres.
 
-          Recieve constructive feedback about your blogs from your community.
+          Receive constructive feedback about your blogs from your community.
 
           See what other bloggers say has helped them improve their blogs.
         </p>
