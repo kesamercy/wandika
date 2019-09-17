@@ -40,7 +40,7 @@
                    } else{
                         mysqli_stmt_bind_param($stmt, "ss", $hashedPwd, $uid);
                         mysqli_stmt_execute($stmt);
-                        header("Location: ../../html/newsFeed-new.html?new-user=success");
+                        header("Location: ../../html/newsfeed.html?new-user=success");
 
                  }
               }

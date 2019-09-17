@@ -48,7 +48,7 @@ if(isset($_POST['submit'])){
 		    	$_SESSION['u_email'] = $row['email'];
 		    	$_SESSION['u_pwd'] = $row['password'];
 		    	$_SESSION['u_cntry'] = $row['country'];
-		    	header("Location: ../../html/newsFeed-new.html?login=success");
+		    	header("Location: ../../html/newsfeed.html?login=success");
 	            exit();
 		      }
 		     } 

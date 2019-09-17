@@ -50,7 +50,7 @@ if(isset($_POST['submit'])){
     		       } else{
     			        mysqli_stmt_bind_param($stmt, "sssss", $first, $last, $dob, $countryCode, $uid);
     			        mysqli_stmt_execute($stmt);
-    			        header("Location: ../../html/newsFeed-new.html?new-user=success");
+    			        header("Location: ../../html/newsfeed.html?new-user=success");
 
     	         }
               }

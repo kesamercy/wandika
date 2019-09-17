@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="..\css\newsfeed-new.css?version=1">
+    <link rel="stylesheet" type="text/css" href="..\css\newsfeed.css?version=1">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>News Feed Page</title>
@@ -18,9 +18,6 @@
 
         <div class="headerElem">
 
-
-
-
             <div class="topNavBar">
 
                 <ul>
@@ -30,7 +27,7 @@
                         </div>
 
                     </li>
-                    <li><a href=".\newsFeed-new.html">Community</a></li>
+                    <li><a href=".\newsfeed.html">Community</a></li>
                     <li><a href=".\profile-page.html">Profile</a></li>
                     <li><a href="..\php\settings-api\settings.php">Settings</a></li>
                     <li> <a href="..\php\login-and-createacct-files\welcome-page.php"> Log Out</a></li>
@@ -38,13 +35,11 @@
                     <li>
                         <div class="leftHeaderElems">
 
-                            <div class="searchBar">
-                                <div class="search">
-                                    <input type="text" id="searchInput" class="searchTerm" placeholder="What are you looking for?">
-                                    <button type="submit" class="searchButton">
-                                              <i class="fa fa-search"></i>
-                                            </button>
-                                </div>
+                            <div class="search-container">
+                                <form action="/action_page.php">
+                                    <input placeholder="Search.." name="search">
+                                    <button type="submit"><i class="fa fa-search"></i></button>
+                                </form>
                             </div>
 
                         </div>
