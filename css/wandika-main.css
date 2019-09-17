@@ -39,28 +39,41 @@ hr.wandika_bar {
   position: absolute;
   right: -300px; }
 
+p img {
+    width: 50px;
+    height: 30px;
+}
+
 /* styling for the main content on the spalsh page */
-main p {
+main ul {
   color: var(--std_black_color);
   position: relative;
-  top: 300px;
+  top: 300px; /*make this 350 */
   left: 130px;
   display: inline;
   white-space: pre;
   font-size: 20px;
-  line-height: 1.4em; }
+  line-height: 1.2em;
+  list-style-type: none;
+ }
 
-p img {
-  width: 50px;
-  height: 30px; }
+li {
+    position: relative;
+}
 
-.left_navicons {
+li:before {
+  content: '';
   display: inline-block;
-  position: relative;
-  top: 223px;
-  left: 120px;
-  white-space: pre;
-  line-height: 1.4em; }
+  height: 30px;
+  width: 30px;
+  background-size: 30px;
+  background-image: url('/Images/feather_icon.png');
+  background-repeat: no-repeat;
+  margin-right: 10px;
+}
+.small-list {
+    font-size: 100%;
+}
 
 .main_content {
   position: absolute;
